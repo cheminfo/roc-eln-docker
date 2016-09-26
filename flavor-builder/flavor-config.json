@@ -1,0 +1,30 @@
+{
+  "couchurl": "http://couchdb:5984/",
+  "couchLocalUrl": "http://couchdb:5984/",
+  "couchDatabase": "visualizer",
+  "dir": "/var/www/site/flavor",
+  "home": "Home",
+  "forceUpdate": false,
+  "selfContained": false,
+  "flavorUsername": "admin@cheminfo.org",
+  "cdn": "https://www.lactame.com",
+  "direct": "https://direct.lactame.com",
+  "libFolder": "Q92ELCJKTIDXB",
+  "layouts": {},
+  "flavorLayouts": {
+    "eln": "visualizer-on-tabs"
+  },
+  "visualizerOnTabs": {
+    "_default": {
+      "rocLogin": {
+        "url": "/roc"
+      },
+      "rewriteRules": [
+        {"reg": "^[^/]+$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&/view.json"},
+        {"reg": "^[^/]+\/[^/]+$", "replace": "https://couch.cheminfo.org/$&/view.json"},
+        {"reg": "^[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/cheminfo-public/$&"},
+        {"reg": "^[^/]+\/[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/$&"}
+      ]
+    }
+  }
+}
