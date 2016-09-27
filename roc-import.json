@@ -1,0 +1,5 @@
+{
+  "name"        : "rest-on-couch-import",
+  "script"      : "/git/rest-on-couch/node_modules/rest-on-couch/bin/rest-on-couch-import.js",
+  "args"        : "--continuous"
+}

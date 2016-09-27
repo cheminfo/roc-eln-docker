@@ -19,4 +19,4 @@ RUN chmod 744 /start.sh
 
 COPY flavor-config.json /flavor-config.json
 
-CMD /start.sh && bash
+CMD /start.sh
