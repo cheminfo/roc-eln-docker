@@ -23,8 +23,8 @@ curl -X PUT http://localhost:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
-curl -X PUT http://localhost:5984/visualizer_public
-curl -X PUT http://localhost:5984/visualizer_public/_security \
+curl -X PUT http://localhost:5984/visualizer-public
+curl -X PUT http://localhost:5984/visualizer-public/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": [], "roles": [] } }'
 
