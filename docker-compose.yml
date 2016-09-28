@@ -50,6 +50,8 @@ services:
 
   flavor-builder:
     image: cheminfo/eln-flavor-builder
+    environment:
+      DEBUG: 'flavor-builder*'
     # Uncomment to use a custom flavor-builder config
     # volumes:
     #   - /usr/local/flavor-config.json:/flavor-config.json
