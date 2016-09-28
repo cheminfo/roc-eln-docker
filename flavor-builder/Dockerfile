@@ -17,8 +17,8 @@ RUN chmod 744 /etc/cron.d/flavor-cron
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
 
-COPY flavor-config.json /flavor-config.json
-
 COPY www /var/www/html
+
+COPY flavor-config.json /flavor-config.json
 
 CMD /start.sh
