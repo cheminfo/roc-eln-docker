@@ -37,8 +37,6 @@ services:
 
   rest-on-couch-import:
     image: cheminfo/rest-on-couch
-    # should work. Seems to be a bug with pm2-docker
-    #command: pm2-docker start /git/rest-on-couch/node_modules/rest-on-couch/bin/rest-on-couch-import.js -- --continuous
     command: pm2-docker start /roc-import.json
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
