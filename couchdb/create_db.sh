@@ -13,15 +13,24 @@ curl -X POST http://localhost:5984/_users \
      -H 'Content-Type: application/json' \
      -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "restoncouch77" }'
 
+curl -X PUT http://localhost:5984/eln
+curl -X PUT http://localhost:5984/eln/_security \
+     -H 'Content-Type: application/json' \
+     -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+
 curl -X PUT http://localhost:5984/visualizer
 curl -X PUT http://localhost:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
-curl -X PUT http://localhost:5984/eln
-curl -X PUT http://localhost:5984/eln/_security \
+curl -X PUT http://localhost:5984/visualizer_public
+curl -X PUT http://localhost:5984/visualizer_public/_security \
      -H 'Content-Type: application/json' \
-     -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+     -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": [], "roles": [] } }'
+
+curl -X POST http://localhost:5984/_replicator \
+     -H 'Content-Type: application/json' \
+     -d '{"source":"visualizer","target":"visualizer-public", "continuous":true, "filter": "app/copyPublic"}'
 
 # Copy data
 mkdir /couchdb-initial-data
