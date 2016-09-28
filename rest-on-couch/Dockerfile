@@ -3,7 +3,6 @@ FROM node:6
 MAINTAINER Michaël Zasso <targos@protonmail.com>
 
 # Install pm2
-# todo: move to a parent image ?
 RUN npm install -g pm2
 
 # Get rest-on-couch
