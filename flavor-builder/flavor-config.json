@@ -1,5 +1,5 @@
 {
-  "couchurl": "http://couchdb:5984/",
+  "couchurl": "../couch/",
   "couchLocalUrl": "http://couchdb:5984/",
   "couchDatabase": "visualizer-public",
   "dir": "/var/www/html",

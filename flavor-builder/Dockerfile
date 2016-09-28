@@ -19,6 +19,9 @@ RUN chmod 744 /start.sh
 
 COPY www /var/www/html
 
+COPY on-tabs-config.json /on-tabs-config.json
+RUN node /git/flavor-builder/node_modules/visualizer-on-tabs/bin/build.js --outDir=/var/www/html/ont-tabs/ --config=/on-tabs-config.json
+
 COPY flavor-config.json /flavor-config.json
 
 CMD /start.sh

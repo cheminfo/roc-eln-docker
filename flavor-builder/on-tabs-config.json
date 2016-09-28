@@ -1,0 +1,57 @@
+{
+  "possibleViews": {
+    "Home": {
+      "url": ""
+    }
+  },
+  "visualizerConfig": {
+    "modules": {
+      "folders": [
+        "modules/types"
+      ]
+    },
+    "header": {
+      "height": "30px",
+      "elements": [
+        {
+          "type": "versionselector",
+          "label": "Switch version",
+          "url": "https://www.lactame.com/visualizer/versions.json",
+          "queryType": "fragment",
+          "minVersion": "v2.60.0"
+        },
+
+        {
+          "type": "roc-views",
+          "label": "View manager",
+          "url": "../roc",
+          "database": "visualizer"
+        },
+        {
+          "type": "copyview",
+          "label": "Copy view"
+        },
+        {
+          "type": "pasteview",
+          "label": "Paste view"
+        },
+        {
+          "type": "blankview",
+          "label": "Blank view"
+        }
+      ]
+    }
+  },
+  "rocLogin": {
+    "url": "../roc",
+    "auto": true
+  },
+  "rewriteRules": [
+    {"reg": "^[^/]+$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&/view.json"},
+    {"reg": "^[^/]+\/[^/]+$", "replace": "https://couch.cheminfo.org/$&/view.json"},
+    {"reg": "^[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/cheminfo-public/$&"},
+    {"reg": "^[^/]+\/[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/$&"}
+  ],
+  "visualizerFallbackVersion": "latest",
+  "visualizerVersion": "latest"
+}
