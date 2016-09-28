@@ -15,8 +15,8 @@ services:
   couchdb:
     image: cheminfo/eln-couchdb
     environment:
+      # Customize CouchDB credentials
       COUCHDB_USER: admin
-      # Customize password
       COUCHDB_PASSWORD: password
     volumes:
       # Map local CouchDB data directory
@@ -52,6 +52,9 @@ services:
     image: cheminfo/eln-flavor-builder
     environment:
       DEBUG: 'flavor-builder*'
+      # Customize CouchDB credentials
+      COUCHDB_USER: admin
+      COUCHDB_PASSWORD: password
     # Uncomment to use a custom flavor-builder config
     # volumes:
     #   - /usr/local/flavor-config.json:/flavor-config.json

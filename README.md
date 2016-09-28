@@ -27,9 +27,9 @@ $ git clone https://github.com/cheminfo/roc-eln-docker.git
 ## Edit `docker-compose.yml`
 
 - Bind local port to the application
-- Set CouchDB admin credentials
+- Set CouchDB admin credentials (two places)
 - Set CouchDB data directory
-- Set rest-on-couch and rest-on-couch-import home directory
+- Set rest-on-couch home directory (two places)
 - Optional: set a custom `flavor-config.json`
 
 ## Start application

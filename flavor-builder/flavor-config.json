@@ -1,7 +1,7 @@
 {
   "couchurl": "../couch/",
   "couchLocalUrl": "http://couchdb:5984/",
-  "couchDatabase": "visualizer-public",
+  "couchDatabase": "visualizer",
   "dir": "/var/www/html",
   "home": "Home",
   "forceUpdate": false,

@@ -2,6 +2,7 @@
 
 # Start couchdb in the background
 /usr/local/bin/couchdb -b
+
 sleep 1
 
 # Create rest-on-couch users and databases
@@ -23,14 +24,7 @@ curl -X PUT http://localhost:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
-curl -X PUT http://localhost:5984/visualizer-public
-curl -X PUT http://localhost:5984/visualizer-public/_security \
-     -H 'Content-Type: application/json' \
-     -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": [], "roles": [] } }'
-
-curl -X POST http://localhost:5984/_replicator \
-     -H 'Content-Type: application/json' \
-     -d '{"source":"visualizer","target":"visualizer-public", "continuous":true, "filter": "app/copyPublic"}'
+sleep 1
 
 # Copy data
 mkdir /couchdb-initial-data
