@@ -12,7 +12,7 @@
   "libFolder": "Q92ELCJKTIDXB",
   "layouts": {},
   "flavorLayouts": {
-    "eln": "visualizer-on-tabs"
+    "default": "visualizer-on-tabs"
   },
   "visualizerOnTabs": {
     "_default": {
