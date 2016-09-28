@@ -19,4 +19,6 @@ RUN chmod 744 /start.sh
 
 COPY flavor-config.json /flavor-config.json
 
+COPY www /var/www/html
+
 CMD /start.sh

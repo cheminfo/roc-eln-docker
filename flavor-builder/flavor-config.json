@@ -2,7 +2,7 @@
   "couchurl": "http://couchdb:5984/",
   "couchLocalUrl": "http://couchdb:5984/",
   "couchDatabase": "visualizer",
-  "dir": "/var/www/site/flavor",
+  "dir": "/var/www/html",
   "home": "Home",
   "forceUpdate": false,
   "selfContained": false,
@@ -17,7 +17,7 @@
   "visualizerOnTabs": {
     "_default": {
       "rocLogin": {
-        "url": "/roc"
+        "url": "../roc"
       },
       "rewriteRules": [
         {"reg": "^[^/]+$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&/view.json"},

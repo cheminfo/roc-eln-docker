@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+    <title>My company - Visualizer</title>
+    <script src="https://www.lactame.com/lib/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://www.lactame.com/lib/uri.js/1.14.1/URI.min.js"></script>
+    <style>
+        #ci-visualizer {
+            min-height: 100vh;
+        }
+        body {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div data-ci-config="config.json" id="ci-visualizer"></div>
+<script>
+    $(document).ready(checkSession);
+    function checkSession() {
+        $.ajax('../roc/auth/session', {xhrFields:{withCredentials: true}}).then(function(response){
+            if (response.authenticated) {
+                loadVisualizer();
+            } else {
+                var currentURL = encodeURIComponent(location.href);
+                location.href = '../roc/auth/login?continue=' + currentURL;
+            }
+        });
+    }
+    function loadVisualizer() {
+        var cdn = 'https://www.lactame.com';
+        var direct = 'https://direct.lactame.com';
+        var $div = $('#ci-visualizer');
+        $div.attr('data-ci-config', './config.json');
+        var visualizer = document.createElement('script');
+        var uri = new URI(document.location.href);
+        var query = uri.search(true);
+        var version = 'latest';
+        if (query.v) version = query.v;
+        var prefix = (query.direct ? direct : cdn) + '/visualizer/';
+        visualizer.setAttribute('data-main', prefix + version + '/init');
+        visualizer.setAttribute('src', prefix + version + '/components/requirejs/require.js');
+        document.head.appendChild(visualizer);
+    }
+</script>
+</body>
+</html>

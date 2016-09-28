@@ -1,0 +1,36 @@
+{
+  "modules": {
+    "folders": [
+      "modules/types"
+    ]
+  },
+  "header": {
+    "height": "30px",
+    "elements": [
+      {
+        "type": "versionselector",
+        "label": "Switch version",
+        "url": "https://www.lactame.com/visualizer/versions.json",
+        "minVersion": "v2.60.0"
+      },
+      {
+        "type": "roc-views",
+        "label": "View manager",
+        "url": "../roc",
+        "database": "visualizer"
+      },
+      {
+        "type": "copyview",
+        "label": "Copy view"
+      },
+      {
+        "type": "pasteview",
+        "label": "Paste view"
+      },
+      {
+        "type": "blankview",
+        "label": "Blank view"
+      }
+    ]
+  }
+}
