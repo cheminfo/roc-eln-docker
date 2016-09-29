@@ -5,8 +5,6 @@ services:
     ports:
       # Map application to local port
       - '4444:80'
-    depends_on:
-      - couchdb
     links:
       - couchdb
       - rest-on-couch
@@ -32,7 +30,7 @@ services:
     volumes:
     # Map local roc home directory
       - /usr/local/rest-on-couch:/rest-on-couch
-    depends_on:
+    links:
       - couchdb
 
   rest-on-couch-import:
@@ -45,7 +43,7 @@ services:
     # Map local roc home directory
       - /usr/local/rest-on-couch:/rest-on-couch
       - ./roc-import.json:/roc-import.json
-    depends_on:
+    links:
       - couchdb
 
   flavor-builder:
@@ -58,5 +56,5 @@ services:
     # Uncomment to use a custom flavor-builder config
     # volumes:
     #   - /usr/local/flavor-config.json:/flavor-config.json
-    depends_on:
+    links:
       - couchdb
