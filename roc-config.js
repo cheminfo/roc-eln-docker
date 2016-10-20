@@ -6,11 +6,12 @@ module.exports = {
   keys: ['changeThisForARandomKey'],
 
   // CouchDB credentials
+  url: 'http://couchdb:5984',
   username: "rest-on-couch",
   password: "restoncouch77",
 
-  proxyPrefix: '/',
-  publicAddress: 'http://server.example.com',
+  proxyPrefix: '/roc/',
+  publicAddress: 'http://server.example.com/roc/',
   auth: {
     ldap: {
       server: {
