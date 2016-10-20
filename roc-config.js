@@ -4,12 +4,14 @@ module.exports = {
   allowedOrigins: ['http://server.example.com'],
   sessionDomain: 'server.example.com',
   keys: ['changeThisForARandomKey'],
+  logLevel: 'FATAL',
 
   // CouchDB credentials
   url: 'http://couchdb:5984',
   username: "rest-on-couch",
   password: "restoncouch77",
 
+  port: 3000,
   proxyPrefix: '/roc/',
   publicAddress: 'http://server.example.com/roc/',
   auth: {
