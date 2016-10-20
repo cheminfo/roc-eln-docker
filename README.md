@@ -36,7 +36,7 @@ $ git clone https://github.com/cheminfo/roc-eln-docker.git
 
 ### General config
 
-- Copy and modify [`config.json`](./roc-config.json)
+- Copy and modify [`roc-config.js`](./roc-config.js) in $REST_ON_COUCH_HOME_DIR/config.js
 
 ### Visualizer
 
