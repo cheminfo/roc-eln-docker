@@ -19,11 +19,10 @@
     $(document).ready(checkSession);
     function checkSession() {
         $.ajax('../roc/auth/session', {xhrFields:{withCredentials: true}}).then(function(response){
-            if (response.authenticated) {
+            if (response.authenticated && response.username === 'admin@cheminfo.org') {
                 loadVisualizer();
             } else {
-                var currentURL = encodeURIComponent(location.href);
-                location.href = '../roc/auth/login?continue=' + currentURL;
+                location.href = './login.html';
             }
         });
     }
