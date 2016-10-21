@@ -22,7 +22,7 @@
             if (response.authenticated && response.username === 'admin@cheminfo.org') {
                 loadVisualizer();
             } else {
-                location.href = './login.html';
+                location.href = './login.html?continue=/../visualizer/';
             }
         });
     }

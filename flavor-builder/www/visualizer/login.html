@@ -7,11 +7,16 @@
 </head>
 <body>
 <p>
-<form method="post" action="../roc/auth/login/couchdb?continue=../on-tabs/">
-Username: <input type="text" value="admin@cheminfo.org" name="username" /><br>
-Password: <input type="password" name="password" /><br>
+<form id="loginForm" method="post" action="../roc/auth/login/couchdb">
+Username: <input id="userInput" type="text" value="admin@cheminfo.org" name="username" /><br>
+Password: <input id="passwordInput" type="password" name="password" /><br>
 <input type="submit" value="Login" />
 </form>
 </p>
+<script>
+  var form = document.getElementById('loginForm');
+  form.action += document.location.search;
+  document.getElementById('passwordInput').focus();
+</script>
 </body>
 </html>
