@@ -1,9 +1,9 @@
-FROM node:6
+FROM node:7-slim
 
 MAINTAINER Michaël Zasso <targos@protonmail.com>
 
 # Install Apache
-RUN apt-get update && apt-get install -y apache2 cron
+RUN apt-get update && apt-get install -y apache2 cron git
 EXPOSE 80
 
 # Get flavor-builder
