@@ -38,7 +38,7 @@ services:
     command: pm2-docker start /roc-import.json
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
-      REST_ON_COUCH_LOG_LEVEL: 'fatal'
+      REST_ON_COUCH_LOG_LEVEL: 'FATAL'
     volumes:
     # Map local roc home directory
       - /usr/local/rest-on-couch:/rest-on-couch
