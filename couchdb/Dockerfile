@@ -1,7 +1,5 @@
 FROM klaemo/couchdb:1.6.1
 
-MAINTAINER Michaël Zasso <targos@protonmail.com>
-
 COPY create_db.sh /create_db.sh
 RUN /bin/bash /create_db.sh
 
