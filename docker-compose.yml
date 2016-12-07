@@ -21,7 +21,7 @@ services:
       - /usr/local/couch:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
-    image: cheminfo/rest-on-couch:3.0.0
+    image: cheminfo/rest-on-couch:v3.0.0
     command: pm2-docker start /pm2-rest-on-couch.yaml
     expose:
       - 3000
@@ -35,7 +35,7 @@ services:
       - couchdb
 
   rest-on-couch-import:
-    image: cheminfo/rest-on-couch:3.0.0
+    image: cheminfo/rest-on-couch:v3.0.0
     command: pm2-docker start /pm2-roc-import.yaml
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
