@@ -21,28 +21,29 @@ services:
       - /usr/local/couch:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
-    image: cheminfo/rest-on-couch
-    command: pm2-docker start /git/rest-on-couch/node_modules/rest-on-couch/bin/rest-on-couch-server.js
+    image: cheminfo/rest-on-couch:3.0.0
+    command: pm2-docker start /pm2-rest-on-couch.yaml
     expose:
       - 3000
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
     volumes:
+      - ./pm2-rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     # Map local roc home directory
       - /usr/local/rest-on-couch:/rest-on-couch
     links:
       - couchdb
 
   rest-on-couch-import:
-    image: cheminfo/rest-on-couch
-    command: pm2-docker start /roc-import.json
+    image: cheminfo/rest-on-couch:3.0.0
+    command: pm2-docker start /pm2-roc-import.yaml
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
       REST_ON_COUCH_LOG_LEVEL: 'FATAL'
     volumes:
     # Map local roc home directory
       - /usr/local/rest-on-couch:/rest-on-couch
-      - ./roc-import.json:/roc-import.json
+      - ./pm2-roc-import.yaml:/pm2-roc-import.yaml
     links:
       - couchdb
 
