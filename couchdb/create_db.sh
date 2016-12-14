@@ -8,11 +8,11 @@ sleep 1
 # Create rest-on-couch users and databases
 curl -X POST http://localhost:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "restoncouch77" }'
+     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "'$COUCHDB_PASSWORD'" }'
 
 curl -X POST http://localhost:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "restoncouch77" }'
+     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'$COUCHDB_PASSWORD'" }'
 
 curl -X PUT http://localhost:5984/eln
 curl -X POST http://localhost:5984/eln \
@@ -44,6 +44,5 @@ curl -X PUT http://localhost:5984/visualizer/_security \
 
 sleep 1
 
-# Copy data
-mkdir /couchdb-initial-data
-cp /usr/local/var/lib/couchdb/* /couchdb-initial-data/
+# Stop couchdb
+/usr/local/bin/couchdb -d
