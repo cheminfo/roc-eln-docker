@@ -21,7 +21,7 @@ curl -X POST http://localhost:5984/eln \
 curl -X POST http://localhost:5984/eln \
      -H 'Content-Type: application/json' \
      -d '{"$type": "group", "$owners": ["admin@cheminfo.org"], "name": "anyuserRead", "users": [], "rights": ["read"], "$lastModification": "admin@cheminfo.org", "$modificationDate": 0, "$creationDate": 0}';
-curl -X PUT http://localhost:5984/visualizer/defaultGroups \
+curl -X PUT http://localhost:5984/eln/defaultGroups \
      -H 'Content-Type: application/json' \
      -d '{"_id": "defaultGroups","$type": "db","anonymous": ["anonymousRead"],"anyuser": ["anyuserRead"]}'
 curl -X PUT http://localhost:5984/eln/_security \
