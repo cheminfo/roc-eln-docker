@@ -3,7 +3,9 @@
 # Start couchdb in the background
 /usr/local/bin/couchdb -b
 
-sleep 1
+while [ -z `cat /usr/local/var/run/couchdb/couchdb.pid` ]; do
+	sleep 1
+done
 
 # Create rest-on-couch users and databases
 curl -X POST http://localhost:5984/_users \
