@@ -18,6 +18,7 @@
   },
   "visualizerOnTabs": {
     "_default": {
+      "title": "ELN",
       "rocLogin": {
         "url": "../roc"
       },
