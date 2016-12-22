@@ -18,7 +18,7 @@ services:
       COUCHDB_PASSWORD: password
     volumes:
       # Map local CouchDB data directory
-      - /usr/local/couch:/usr/local/var/lib/couchdb/
+      - /usr/local/couchdb:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
     image: cheminfo/rest-on-couch:v3.2.0
