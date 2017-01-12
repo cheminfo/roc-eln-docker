@@ -26,6 +26,7 @@ services:
     expose:
       - 3000
     environment:
+      NODE_ENV: 'production'
       DEBUG: 'couch:error,couch:warn,couch:debug'
     volumes:
       - ./pm2-rest-on-couch.yaml:/pm2-rest-on-couch.yaml
