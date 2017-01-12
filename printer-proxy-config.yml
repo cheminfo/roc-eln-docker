@@ -1,0 +1,5 @@
+rest-on-couch:
+  url: https://couchdb, # DO NOT CHANGE
+  database: printers, # in most cases no need to change this
+  username: admin, # change here
+  password: password # change here

@@ -61,3 +61,13 @@ services:
     #   - /usr/local/flavor-config.json:/flavor-config.json
     links:
       - couchdb
+
+  printer-proxy:
+    image: cheminfo/eln-printer-proxy
+    command: pm2-docker start /pm2-proxy.yml
+    volumes:
+      - ./printer-proxy-config.yml:/config.yml
+    links:
+      - couchdb
+    expose:
+      - 7770

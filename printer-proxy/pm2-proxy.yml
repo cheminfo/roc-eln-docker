@@ -1,0 +1,3 @@
+name: stock-printer-proxy
+script: /stock-printer-proxy-source/src/server.js
+args: --config=/config.yml
