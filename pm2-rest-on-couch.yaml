@@ -1,4 +1,4 @@
 name: rest-on-couch
 cwd: /rest-on-couch-source
 script: /usr/local/bin/npm
-args: 'start:prod'
+args: 'run start:prod'
