@@ -1,5 +1,5 @@
 rest-on-couch:
-  url: https://couchdb, # DO NOT CHANGE
-  database: printers, # in most cases no need to change this
-  username: admin, # change here
+  url: http://rest-on-couch:3000 # DO NOT CHANGE
+  database: printers # in most cases no need to change this
+  username: admin@cheminfo.org # DO NOT CHANGE
   password: password # change here

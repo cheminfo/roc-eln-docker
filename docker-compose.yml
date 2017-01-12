@@ -68,6 +68,6 @@ services:
     volumes:
       - ./printer-proxy-config.yml:/config.yml
     links:
-      - couchdb
+      - rest-on-couch
     expose:
       - 7770
