@@ -52,6 +52,8 @@ fi
 	algorithm = random
 	EOF
 
+	chown couchdb:couchdb /usr/local/etc/couchdb/local.d/eln.ini
+
 	printf "[httpd]\nport = %s\nbind_address = %s\n" ${COUCHDB_HTTP_PORT:=5984} ${COUCHDB_HTTP_BIND_ADDRESS:=0.0.0.0} > /usr/local/etc/couchdb/local.d/bind_address.ini
 	chown couchdb:couchdb /usr/local/etc/couchdb/local.d/bind_address.ini
 
