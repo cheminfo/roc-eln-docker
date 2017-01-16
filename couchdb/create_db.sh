@@ -7,6 +7,8 @@ while [ -z `cat /usr/local/var/run/couchdb/couchdb.pid` ]; do
 	sleep 1
 done
 
+sleep 1
+
 # Create rest-on-couch users and databases
 curl -X POST http://localhost:5984/_users \
      -H 'Content-Type: application/json' \
