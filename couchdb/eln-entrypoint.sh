@@ -44,6 +44,14 @@ fi
 		chown couchdb:couchdb /usr/local/etc/couchdb/local.d/docker.ini
 	fi
 
+	cat >/usr/local/etc/couchdb/local.d/eln.ini<<-'EOF'
+	[compactions]
+	printers = [{db_fragmentation, "70%"}, {view_fragmentation, "70%"}]
+
+	[uuids]
+	algorithm = random
+	EOF
+
 	printf "[httpd]\nport = %s\nbind_address = %s\n" ${COUCHDB_HTTP_PORT:=5984} ${COUCHDB_HTTP_BIND_ADDRESS:=0.0.0.0} > /usr/local/etc/couchdb/local.d/bind_address.ini
 	chown couchdb:couchdb /usr/local/etc/couchdb/local.d/bind_address.ini
 
