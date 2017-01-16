@@ -9,6 +9,9 @@ services:
       - couchdb
       - rest-on-couch
       - flavor-builder
+    #Uncomment to add web assets
+    #volumes:
+    #  - ./www-assets:/data/www/
 
   couchdb:
     image: cheminfo/eln-couchdb
@@ -57,8 +60,8 @@ services:
       COUCHDB_PASSWORD: password
     # Uncomment to use a custom flavor-builder config
     # This is usually unnecessary
-    # volumes:
-    #   - /usr/local/flavor-config.json:/flavor-config.json
+    #volumes:
+    #  - /usr/local/flavor-config.json:/flavor-config.json
     links:
       - couchdb
 
