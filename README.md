@@ -46,6 +46,10 @@ $ git clone https://github.com/cheminfo/roc-eln-docker.git
 
 - Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/eln
 
+### Printers
+
+- Clone https://github.com/cheminfo/roc-printers-config.git to $REST_ON_COUCH_HOME_DIR/printers
+
 ## Start application
 
 `docker-compose up -d`
