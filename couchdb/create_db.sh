@@ -29,10 +29,10 @@ curl -X PUT http://localhost:5984/printers/_security \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 curl -X PUT http://localhost:5984/printers/rights \
      -H 'Content-Type: application/json' \
-     -d '{"_id": "rights","$type": "db","read": ["anyuser"]}'
+     -d '{"_id": "rights","$type": "db","read": ["anyuser"], "create": ["admin@cheminfo.org", "printer@cheminfo.org"]}'
 curl -X POST http://localhost:5984/printers \
      -H 'Content-Type: application/json' \
-     -d '{"$type": "group", "$owners": ["admin@cheminfo.org"], "name": "printerAdmin", "users": ["admin@cheminfo.org", "printer@cheminfo.org"], "rights": ["read", "write", "create"], "$lastModification": "admin@cheminfo.org", "$modificationDate": 0, "$creationDate": 0}';
+     -d '{"$type": "group", "$owners": ["admin@cheminfo.org"], "name": "printerAdmin", "users": ["admin@cheminfo.org", "printer@cheminfo.org"], "rights": ["read", "write"], "$lastModification": "admin@cheminfo.org", "$modificationDate": 0, "$creationDate": 0}';
 
 curl -X PUT http://localhost:5984/eln
 curl -X POST http://localhost:5984/eln \
