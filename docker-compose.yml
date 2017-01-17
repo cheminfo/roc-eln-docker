@@ -18,7 +18,8 @@ services:
     environment:
       # Customize CouchDB admin credentials
       COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
+      COUCHDB_PASSWORD: password # CHANGE HERE
+      COUCHDB_PRINTER_PASSWORD: password # CHANGE HERE
     volumes:
       # Map local CouchDB data directory
       - /usr/local/couchdb:/usr/local/var/lib/couchdb/

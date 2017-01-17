@@ -18,6 +18,11 @@ curl -X POST http://localhost:5984/_users \
      -H 'Content-Type: application/json' \
      -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'$COUCHDB_PASSWORD'" }'
 
+curl -X POST http://localhost:5984/_users \
+     -H 'Content-Type: application/json' \
+     -d '{ "_id": "org.couchdb.user:printer@cheminfo.org", "name": "printer@cheminfo.org", "type": "user", "roles": [], "password": "'$COUCHDB_PRINTER_PASSWORD'" }'
+
+
 curl -X PUT http://localhost:5984/printers
 curl -X PUT http://localhost:5984/printers/_security \
      -H 'Content-Type: application/json' \
