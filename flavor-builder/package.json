@@ -3,6 +3,6 @@
   "version": "0.0.1",
   "private": true,
   "dependencies": {
-    "flavor-builder": "1.4.0"
+    "flavor-builder": "1.4.2"
   }
 }
