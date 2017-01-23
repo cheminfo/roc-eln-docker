@@ -18,10 +18,10 @@ server {
         root /data/www;
     }
 
-    # If needed
-    location /my_secret_proxy/ {
-        proxy_pass http://rest-on-couch-
-    }
+    # Uncomment and rebuild if needed
+#    location /my_secret_file_drop/ {
+#        proxy_pass http://rest-on-couch-file-drop:3001/;
+#    }
 
     location / {
         proxy_pass http://flavor-builder/;
