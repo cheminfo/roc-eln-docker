@@ -19,8 +19,8 @@ server {
     }
 
     # Uncomment and rebuild if needed
-#    location /my_secret_file_drop/ {
-#        proxy_pass http://rest-on-couch-file-drop:3001/;
+#    location /my_secret_file_drop/MY_DATABASE/ {
+#        proxy_pass http://rest-on-couch-file-drop:3001/MY_DATABASE/;
 #    }
 
     location / {

@@ -51,6 +51,20 @@ services:
     links:
       - couchdb
 
+#  rest-on-couch-file-drop:
+#    image: cheminfo/rest-on-couch:v3.3.0
+#    command: pm2-docker start /pm2-roc-file-drop.yaml
+#    environment:
+#      DEBUG: 'couch:error,couch:warn,couch:debug'
+#    volumes:
+#      # Map local roc home directory
+#      - /usr/local/rest-on-couch:/rest-on-couch
+#      - ./pm2-roc-file-drop.yaml:/pm2-roc-file-drop.yaml
+#    links:
+#      - couchdb
+#    expose:
+#      - 3001
+
   flavor-builder:
     image: cheminfo/eln-flavor-builder
     environment:
