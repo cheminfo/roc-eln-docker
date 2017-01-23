@@ -10,7 +10,8 @@ services:
       - rest-on-couch
       - flavor-builder
     #Uncomment to add web assets
-    #volumes:
+    volumes:
+      - ./nginx-proxy/conf.nginx:/etc/nginx/conf.d/default.conf
     #  - ./www-assets:/data/www/
 
   couchdb:
@@ -51,6 +52,7 @@ services:
     links:
       - couchdb
 
+#  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
 #  rest-on-couch-file-drop:
 #    image: cheminfo/rest-on-couch:v3.3.0
 #    command: pm2-docker start /pm2-roc-file-drop.yaml
