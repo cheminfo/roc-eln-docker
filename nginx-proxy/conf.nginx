@@ -18,6 +18,11 @@ server {
         root /data/www;
     }
 
+    # If needed
+    location /my_secret_proxy/ {
+        proxy_pass http://rest-on-couch-
+    }
+
     location / {
         proxy_pass http://flavor-builder/;
     }
