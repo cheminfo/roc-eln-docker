@@ -52,4 +52,7 @@ $ git clone https://github.com/cheminfo/roc-eln-docker.git
 
 ## Start application
 
-`docker-compose up -d`
+```
+docker-compose pull
+docker-compose up -d
+```
