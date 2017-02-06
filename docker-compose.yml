@@ -24,7 +24,7 @@ services:
       COUCHDB_PRINTER_PASSWORD: password # CHANGE HERE
     volumes:
       # Map local CouchDB data directory
-      - /usr/local/couchdb:/usr/local/var/lib/couchdb/
+      - ./couchdb-data:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
     image: cheminfo/rest-on-couch:v3.5.0
@@ -36,7 +36,7 @@ services:
     volumes:
       - ./pm2-rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     # Map local roc home directory
-      - /usr/local/rest-on-couch:/rest-on-couch
+      - ./rest-on-couch-home:/rest-on-couch
     links:
       - couchdb
 
@@ -48,7 +48,7 @@ services:
       REST_ON_COUCH_LOG_LEVEL: 'FATAL'
     volumes:
     # Map local roc home directory
-      - /usr/local/rest-on-couch:/rest-on-couch
+      - ./rest-on-couch-home:/rest-on-couch
       - ./pm2-roc-import.yaml:/pm2-roc-import.yaml
     links:
       - couchdb
@@ -61,7 +61,7 @@ services:
 #      DEBUG: 'couch:error,couch:warn,couch:debug'
 #    volumes:
 #      # Map local roc home directory
-#      - /usr/local/rest-on-couch:/rest-on-couch
+#      - ./rest-on-couch-home:/rest-on-couch
 #      - ./pm2-roc-file-drop.yaml:/pm2-roc-file-drop.yaml
 #    links:
 #      - couchdb
@@ -79,7 +79,7 @@ services:
     # Uncomment to use a custom flavor-builder config
     # This is usually unnecessary
     #volumes:
-    #  - /usr/local/flavor-config.json:/flavor-config.json
+    #  - ./flavor-config.json:/flavor-config.json
     links:
       - couchdb
 
