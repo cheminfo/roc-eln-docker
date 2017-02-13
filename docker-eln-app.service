@@ -5,8 +5,8 @@ After=docker.service
 
 [Service]
 Restart=always
-ExecStart=/usr/local/bin/docker-compose -f /root/roc-eln-docker/docker-compose.yml up
-ExecStop=/usr/local/bin/docker-compose -f /root/roc-eln-docker/docker-compose.yml stop
+ExecStart=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/docker-compose.yml up
+ExecStop=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/docker-compose.yml stop
 
 [Install]
 WantedBy=local.target
