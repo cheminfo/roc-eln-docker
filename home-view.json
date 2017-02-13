@@ -1,0 +1,1843 @@
+{
+  "version": "2.77.1",
+  "grid": {
+    "layers": {
+      "Default layer": {
+        "name": "Default layer"
+      },
+      "admin": {
+        "name": "admin"
+      },
+      "Links": {
+        "name": "Links"
+      }
+    },
+    "xWidth": 10,
+    "yHeight": 10
+  },
+  "modules": [
+    {
+      "url": "modules/types/edition/slick_grid/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "slickCheck": [
+                [
+                  "enableCellNavigation",
+                  "rowNumbering",
+                  "forceFitColumns",
+                  "highlightScroll",
+                  "editable",
+                  "filterColumns"
+                ]
+              ],
+              "autoColumns": [
+                []
+              ],
+              "toolbar": [
+                []
+              ],
+              "colorjpath": [
+                []
+              ],
+              "slick.defaultColumnWidth": [
+                null
+              ],
+              "slick.rowHeight": [
+                "150"
+              ],
+              "slick.headerRowHeight": [
+                30
+              ],
+              "slick.selectionModel": [
+                "row"
+              ],
+              "idProperty": [
+                ""
+              ],
+              "filterType": [
+                "pref"
+              ],
+              "filterRow": [
+                "if(this.event === 'renderAction') {\n    if(this.column.name === 'Make public') {\n        if(this.row.item.$owners.indexOf('anonymousRead') === -1) {\n            this.renderOptions.icon = 'fa-eye-slash';\n            this.renderOptions.tooltip = 'Private.Click to make this reaction public';\n        } else {\n            this.renderOptions.icon = 'fa-eye';\n            this.renderOptions.tooltip = 'Public. Click to make this reaction private';\n        }  \n    } else if(this.column.name === 'Is owner') {\n        var user = API.cache('user');\n        if(this.row.item.$owners.indexOf(user) === -1) {\n            this.renderOptions.icon = 'fa-lock';\n            this.renderOptions.tooltip = 'You are not an owner of this reaction';\n        } else {\n            this.renderOptions.icon = 'fa-unlock';\n            this.renderOptions.tooltip = 'You are an owner of this reaction'\n        }\n    }\n}"
+              ],
+              "customJpaths": [
+                ""
+              ]
+            }
+          ],
+          "cols": [
+            [
+              {
+                "name": "Reference",
+                "jpath": [
+                  "value",
+                  "reference"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 111,
+                "hideColumn": []
+              },
+              {
+                "name": "Modif. date",
+                "jpath": [
+                  "value",
+                  "modificationDate"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "dateFormat:'YYYY-MM-DD'",
+                "editorOptions": "",
+                "width": 74,
+                "hideColumn": []
+              },
+              {
+                "name": "Structure",
+                "jpath": [
+                  "value",
+                  "oclid"
+                ],
+                "editor": "none",
+                "forceType": "oclID",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 162,
+                "hideColumn": []
+              },
+              {
+                "name": "nb 1d",
+                "jpath": [
+                  "value",
+                  "nb1d"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 40,
+                "hideColumn": []
+              },
+              {
+                "name": "nb 2d",
+                "jpath": [
+                  "value",
+                  "nb2d"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 43,
+                "hideColumn": []
+              },
+              {
+                "name": "nb mass",
+                "jpath": [
+                  "value",
+                  "hasMass"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 57,
+                "hideColumn": []
+              },
+              {
+                "name": "nb IR",
+                "jpath": [
+                  "value",
+                  "hasIR"
+                ],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 38,
+                "hideColumn": []
+              }
+            ]
+          ],
+          "actionCols": [
+            [
+              {
+                "backgroundColor": [
+                  255,
+                  255,
+                  255,
+                  1
+                ],
+                "color": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "position": "end",
+                "clickMode": "text"
+              }
+            ]
+          ],
+          "groupings": [
+            [
+              {
+                "getter": []
+              }
+            ]
+          ],
+          "actionOutButtons": [
+            [
+              {}
+            ]
+          ],
+          "data": [
+            {
+              "saveInView": [
+                []
+              ],
+              "varname": [
+                ""
+              ],
+              "data": [
+                "[]"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 8
+          },
+          "size": {
+            "width": 54,
+            "height": 72
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Click the right of the line to open the sample",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 3
+          },
+          "size": {
+            "width": 57,
+            "height": 73
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Click the right of the line to open the sample",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 51,
+            "height": 21
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 1,
+      "vars_in": [
+        {
+          "rel": "list",
+          "name": "filteredSamples"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "selectRow",
+          "name": "clickRow"
+        }
+      ],
+      "title": "",
+      "vars_out": [
+        {
+          "event": "onSelect",
+          "rel": "row",
+          "jpath": [],
+          "name": "sampleClicked"
+        },
+        {
+          "event": "onSelect",
+          "rel": "row",
+          "jpath": [
+            "value",
+            "reference"
+          ],
+          "name": "referenceClicked"
+        }
+      ],
+      "actions_out": [
+        {
+          "event": "onDoubleClick",
+          "rel": "row",
+          "jpath": [],
+          "name": "rowDoubleClicked"
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "Refresh",
+              "icon": "fa-refresh",
+              "action": "refreshSample",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              []
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/array_search/smart_array_filter/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "debounce": [
+                250
+              ],
+              "initialValue": [
+                ""
+              ],
+              "placeholder": [
+                "Search for samples"
+              ],
+              "fontSize": [
+                24
+              ],
+              "limit": [
+                null
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 35,
+            "height": 8
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 52,
+            "top": 59
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 5,
+            "top": 71
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 2,
+      "vars_in": [
+        {
+          "rel": "input",
+          "name": "samples"
+        }
+      ],
+      "actions_in": [
+        {}
+      ],
+      "title": "",
+      "vars_out": [
+        {
+          "event": "onQuery",
+          "rel": "output",
+          "jpath": [],
+          "name": "filteredSamples"
+        }
+      ],
+      "actions_out": [],
+      "zindex": 3,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [
+                [
+                  "buttons",
+                  "editor"
+                ]
+              ],
+              "execOnLoad": [
+                [
+                  "yes"
+                ]
+              ],
+              "asyncAwait": [
+                []
+              ],
+              "script": [
+                "var roc = API.cache('rocSample');\nvar couchDB = API.cache('couchDB');\nvar user = API.cache('user');\nvar domain = API.cache('domain');\n\nif(!roc) {\n    roc = new Roc({\n            url: couchDB.url,\n            database: couchDB.database,\n            processor: elnPlugin,\n            kind: 'sample'\n        }\n    );\n    roc.getGroups().then(createForm);\n    refreshSample();\n    API.cache('rocSample', roc);\n    return;\n}\n\n\nif(this.variable) {\n    refreshSample();\n}\n\nif(!this.action) return;\n\n\n\nswitch(this.action.name) {\n    case 'createSample':\n        createSample();\n        break;\n    case 'deleteSample': \n        deleteSample(this.action.value);\n        break;\n    case 'refreshSample':\n        refreshSample();\n        break;\n    case 'rowDoubleClicked':\n        openDefault(this.action.value.id, this.action.value.value.reference);\n        break;\n    default:\n        console.warn('Unhandled sample action');\n        break;\n}\n\n//sd\nif(!this.action) return;\n\nfunction createSample(sample) {\n    var entrysample = {$content: {}}\n    ui.form(`\n        <div>\n        <form>\n            <label>Sample code: &nbsp;</label><input type=\"text\" name=\"code\"/><br>\n            <label>Batch code : &nbsp; </label><input type=\"text\" name=\"batch\"/><br>\n            <input type=\"submit\" value=\"Submit\"/>\n        </form>\n        </div>\n    `).then(function(result){\n        console.log(result);\n        if(!result || !result.code || result.batch == null) return;\n        entrysample.$id = [result.code, result.batch];\n        roc.create(entrysample).then(function(sample) {\n            openDefault(sample._id, sample.$id.join(' '))\n        });\n    });\n}\n\nfunction deleteSample(entry) {\n    ui.confirm('Are you sure you want to delete ' + entry.value.reference)\n    .then(function(res) {\n        if(!res) return;\n        roc.delete(entry.id);\n    });\n}\n\nfunction refreshSample() {\n    var options = {varName: 'samples'};\n    var form = API.getData('formSample'), group;\n    if(!form) return;\n    group = form.group;\n    \n    window.localStorage.setItem('eln-default-sample-group', String(group));\n    \n    if(group === 'mine') {\n        options.mine = 1;\n    } else if(group !== 'all') {\n        options.groups = group;\n    }\n    \n    options.sort = function(a, b) {\n        if(a.value.modificationDate > b.value.modificationDate) {\n            return -1;\n        } else if(a.value.modificationDate < b.value.modificationDate) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n    \n    roc.query('sample_toc', options).then(function(data) {\n        API.createData('nbSamples', data.length);\n    });\n}\n\nfunction createForm(groups) {\n    var possibleGroups = [\"all\", \"mine\"].concat(groups);\n    var defaultGroup = window.localStorage.getItem('eln-default-sample-group');\n    if(possibleGroups.indexOf(defaultGroup) === -1) {\n        defaultGroup = 'all';\n    }\n    var schema = {\n        type: 'object',\n        properties: {\n            group: {\n                type: 'string',\n                enum: possibleGroups,\n                default: defaultGroup,\n                required: true\n            }\n        }\n    }\n    API.createData('formSchema', schema)\n}\n\nfunction openDefault(uuid, ref) {\n    IframeBridge.postMessage('tab.open', {\n        id: 'OS ' + ref,\n        url: '15c9a2dcd55c963fdedf2c18a1471b03',\n        data: {\n            couchDB: couchDB,\n            uuid: String(uuid),\n            reference: ref,\n            domain: domain\n        },\n    });\n}\n\n"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "vh/rest-on-couch/Roc",
+                "alias": "Roc"
+              },
+              {
+                "lib": "lodash",
+                "alias": "_"
+              },
+              {
+                "lib": "src/util/ui",
+                "alias": "ui"
+              },
+              {
+                "lib": "elnPlugin",
+                "alias": "elnPlugin"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute",
+                "hide": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 52,
+            "top": 51
+          },
+          "size": {
+            "width": 63,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "ROC samples",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 58,
+            "top": 3
+          },
+          "size": {
+            "width": 68,
+            "height": 73
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "ROC samples",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 34,
+            "top": 50
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 3,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "formSample"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "execute",
+          "name": "deleteSample"
+        },
+        {
+          "rel": "execute",
+          "name": "openSample"
+        },
+        {
+          "rel": "execute",
+          "name": "processNMR"
+        },
+        {
+          "rel": "execute",
+          "name": "togglePublic"
+        },
+        {
+          "rel": "execute",
+          "name": "createSample"
+        },
+        {
+          "rel": "execute",
+          "name": "refreshSample"
+        },
+        {
+          "rel": "execute",
+          "name": "updateSample"
+        },
+        {
+          "rel": "execute",
+          "name": "overlayNMR"
+        },
+        {
+          "rel": "execute",
+          "name": "peakPicking"
+        },
+        {
+          "rel": "execute",
+          "name": "rowDoubleClicked"
+        }
+      ],
+      "title": "ROC samples",
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/button_action/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "toggle": [
+                "click"
+              ],
+              "label": [
+                "New sample"
+              ],
+              "onLabel": [
+                "Toggle action off"
+              ],
+              "offLabel": [
+                "Toggle action on"
+              ],
+              "onColor": [
+                [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "offColor": [
+                [
+                  0,
+                  0,
+                  0,
+                  1
+                ]
+              ],
+              "startState": [
+                "off"
+              ],
+              "text": [
+                null
+              ],
+              "askConfirm": [
+                []
+              ],
+              "confirmText": [
+                "Are you sure?"
+              ],
+              "okLabel": [
+                "Ok"
+              ],
+              "cancelLabel": [
+                "Cancel"
+              ],
+              "content": [
+                ""
+              ],
+              "contentType": [
+                "content"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 42,
+            "top": 0
+          },
+          "size": {
+            "width": 13,
+            "height": 7
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Create new sample",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 127,
+            "top": 4
+          },
+          "size": {
+            "width": 17,
+            "height": 7
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Create new sample",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 69,
+            "top": 46
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 4,
+      "vars_in": [],
+      "actions_in": [
+        {}
+      ],
+      "title": "Create new sample",
+      "vars_out": [],
+      "actions_out": [
+        {
+          "event": "onClick",
+          "rel": "actionText",
+          "jpath": [],
+          "name": "createSample"
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "url": "modules/types/edition/onde/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "hasButton": [
+                [
+                  "onload"
+                ]
+              ],
+              "button_text": [
+                "Export"
+              ],
+              "debouncing": [
+                0
+              ],
+              "output": [
+                "new"
+              ],
+              "mode": [
+                "schema"
+              ],
+              "schemaSource": [
+                "variable"
+              ],
+              "schema": [
+                ""
+              ],
+              "onchangeFilter": [
+                null
+              ]
+            }
+          ],
+          "data": [
+            {
+              "saveInView": [
+                []
+              ],
+              "varname": [
+                ""
+              ],
+              "data": [
+                "{}"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 4
+          },
+          "size": {
+            "width": 22,
+            "height": 6
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 18,
+            "top": 41
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 5,
+      "vars_in": [
+        {
+          "rel": "schema",
+          "name": "formSchema"
+        }
+      ],
+      "actions_in": [],
+      "title": "",
+      "vars_out": [
+        {
+          "event": "onFormSubmit",
+          "rel": "outputValue",
+          "jpath": [],
+          "name": "formSample"
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/code_editor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "mode": [
+                "html"
+              ],
+              "outputType": [
+                null
+              ],
+              "btnvalue": [
+                "Send script"
+              ],
+              "iseditable": [
+                [
+                  "editable"
+                ]
+              ],
+              "hasButton": [
+                []
+              ],
+              "variable": [
+                []
+              ],
+              "storeOnChange": [
+                [
+                  "store"
+                ]
+              ],
+              "debouncing": [
+                250
+              ],
+              "script": [
+                "<style>\n#ontabs {\n    display: inline-flex;\n    flex-wrap: wrap;\n}\n#ontabs .cell {\n    position: relative;\n    border: 2px solid white;\n}\n#ontabs .content {\n    width: 120px;\n    height: 120px;\n    display: inline-flex;\n    font-size:0.8em;\n}\n#ontabs .hide {\n    background-color: rgba(255,255,255,0.6);\n    position: absolute;\n    width: 120px;\n    height: 120px;\n    top:0;\n    left:0;\n    z-index:100;\n}\n#ontabs .fa, .ci-icon {\n    font-size: 5em;\n    margin: auto;\n}\n#ontabs .center {\n    font-size: 4.5em;\n    margin: auto;\n    font-weight: bold;\n}\n#ontabs .header {\n    position:absolute;\n    font-size: 1.4em;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    z-index: 100;\n}\n#ontabs .bottomRight {\n    position:absolute;\n    bottom: 5px;\n    right: 8px;\n    font-weight: bold;\n    font-size: 1.4em;\n}\n#ontabs .reference {\n    position:absolute;\n    bottom: 1.5em;\n    left: 0;\n    text-align: center;\n    width: 100%;\n    font-size: 10px;\n    overflow: hidden;\n    white-space: pre;\n    padding: 1px;\n}\n\n#ontabs .ribbon-wrapper {\n  width: 75px;\n  height: 75px;\n  overflow: hidden;\n  position: absolute;\n  top: 0px;\n  right: 0px;\n}\n \n#ontabs .ribbon {\n  font: bold 1em Sans-Serif;\n  color: white;\n  text-align: center;\n  transform:rotate(45deg);\n  position: relative;\n  padding: 3px 0px 0px 0px;\n  left: 0px;\n  top: 10px;\n  width: 120px;\n  background-color: rgba(255,0,0,0.9);\n  z-index:10;\n  \n}\n#ontabs .ribbon.beta {\n    background-color: rgba(0,0,255,0.9);\n}\n</style>\n\n\n<div id='ontabs'>\n    {% for link in links %}\n        {% if link.kind and link.admin!=true %}\n            <div class=\"cell\" id=\"tile-menu-{{ link.id }}\" style='{%if link.isLink%}cursor: pointer;{%endif%} color: {{link.fontcolor}}; background-color: {{link.bgcolor}}' onclick='window.LinksFunction(event, \"{{link.id}}\");'>\n                <div class='content'>\n                    <div class='header'>{{ link.description }}</div>\n                        {% if link.icon %}\n                            {% if link.iconType == 'ci' %}\n                                <div class='ci-icon {{link.icon}}'></div>\n                            {% else %}\n                                <div class='fa {{link.icon}}'></div>\n                            {% endif %}\n                            <div class='bottomRight'>{{link.text}}</div>\n                        {% else %}\n                            <div class='center'>{{link.text}}</div>\n                        {% endif %}\n                        <div class='reference'>{{link.code}}</div>\n                    </div>\n                    {% if link.active!=true %}\n                    <div class='hide'></div>\n                {% endif %}\n                {% if link.isNew %}\n                <div class=\"ribbon-wrapper\">\n                    <div class=\"ribbon beta\">NEW</div>\n                </div> \n                {% endif %}\n            </div>\n        {% else %}\n            <div style='width: 100%'></div>\n        {% endif %}\n\n        \n\n    {% endfor %}\n</div>"
+              ]
+            }
+          ],
+          "ace": [
+            {
+              "useSoftTabs": [
+                [
+                  "yes"
+                ]
+              ],
+              "tabSize": [
+                4
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 119,
+            "top": 48
+          },
+          "size": {
+            "width": 83,
+            "height": 51
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 6,
+      "vars_in": [
+        {}
+      ],
+      "actions_in": [
+        {}
+      ],
+      "vars_out": [
+        {
+          "event": "onEditorChange",
+          "rel": "data",
+          "jpath": [],
+          "name": "twigTemplate"
+        }
+      ],
+      "title": "",
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "zindex": 3
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [
+                [
+                  "editor",
+                  "buttons"
+                ]
+              ],
+              "execOnLoad": [
+                [
+                  "yes"
+                ]
+              ],
+              "script": [
+                "var linksTemplate=get('linksTemplate');\nvar couchDB = API.cache('couchDB');\nvar printer = API.cache('printer');\nvar domain = API.cache('domain');\nvar couchPublicUrl = 'https://couch.cheminfo.org';\nvar couchPublicDatabase = 'cheminfo-public';\nvar idReg = new RegExp('\\/?([^\\/]+)($|\\/view\\.json.*)');\nvar revReg = /rev=(\\d+-[a-z0-9]+)/;\n\n\nvar existingCodes={};\n\nvar LinksData={};\nLinksData.sample=API.getData('sampleClicked');\n\nwindow.LinksData=LinksData;\n\n\nvar links=[];\nvar linksTemplateFilled = {};\nfor (var key in linksTemplate) {\n    var link=Object.assign({}, linksTemplate[key]);\n    links.push(link);\n    link.active=true;\n    link.id=key;\n    link.code=key;\n    if (link.icon) {\n        link.iconType=link.icon.replace(/-.*/,'');\n    }\n    if (link.requires) {\n        var requires=Array.isArray(link.requires) ? link.requires : [link.requires];\n        for (var require of requires) {\n            if (! LinksData[require]) {\n                link.active=false;\n            }\n        }\n    }\n    if (link.active && link.viewURL) {\n        link.isLink=true;\n    } else {\n        link.isLink=false;\n    }\n    \n    if ((new Date()-new Date(link.date))<1296000000) {\n        link.isNew=true;\n    } else {\n        link.isNew=false;\n    }\n    if (link.active) {\n        switch(link.kind+'') {\n            case 'sample':\n                if (LinksData.sample) {\n                link.code+=' '+LinksData.sample.value.reference;\n                }\n                break;\n            case 'nbSample':\n                link.text=API.getData('nbSamples');\n                link.code='';\n                break;\n        }\n    }\n    linksTemplateFilled[key] = link;\n}\n\nif (! window.linksFunction || true) {\n    window.LinksFunction=function(event, linkID) {\n        var link=Object.assign({}, linksTemplateFilled[linkID]);\n        var linkOriginal = Object.assign({}, linksTemplate[linkID])\n        if(event.shiftKey && link.viewURL) {\n            var id = idReg.exec(link.viewURL);\n            var rev = revReg.exec(link.viewURL);\n            if(id) id = id[1];\n            if(!id) return;\n            if(rev) rev = rev[1];\n            var prom = superagent.get(couchPublicUrl + '/' + couchPublicDatabase + '/' + id)\n                .set('Accept', 'application/json')\n                .then(function(res) {\n                    if(res.status === 200) {\n                        if(!rev) rev = res.body._rev;\n                    } else {\n                        throw new Error('This view might not be public (' + res.status + ')');\n                    }\n                    \n            });\n            prom.then(function() {\n                linkOriginal.viewURL = couchPublicDatabase + '/' + id + '/view.json' + '?rev=' + rev;\n                UI.showCode({\n                    mode: 'json',\n                    content: JSON.stringify(linkOriginal, null, '\\t')\n                });    \n            }).catch(function(err) {\n                UI.showNotification(err.message);\n            })\n            \n            return;\n        }\n        \n        switch (link.kind+'') {\n            case 'sample':\n                var sample=window.LinksData.sample;\n                var uuid = sample.id;\n                var code = sample.value.reference;\n                if (! uuid || ! code) return;\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        domain,\n                        uuid: String(uuid),\n                        reference: API.getData('referenceClicked')+'',\n                        data: link.data\n                    }\n                });\n                break;\n            case 'sampleList':\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        data: link.data\n                    }\n                });\n                break;\n            case 'optionalSample':\n                uuid = window.LinksData && window.LinksData.sample && window.LinksData.sample.id || '';\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        uuid: String(uuid),\n                        data: link.data\n                    }\n                });\n                break;\n        }\n    }\n}\n\nAPI.createData('links',links);"
+              ],
+              "asyncAwait": [
+                []
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "src/util/ui",
+                "alias": "UI"
+              },
+              {
+                "lib": "superagent",
+                "alias": "superagent"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute"
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Converting the hyperlink template to hyperlinks and create functions",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Converting the hyperlink template",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 119,
+            "top": 0
+          },
+          "size": {
+            "width": 83,
+            "height": 47
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Converting the hyperlink template",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 7,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "linksTemplate"
+        },
+        {
+          "rel": "inputValue",
+          "name": "sampleClicked"
+        },
+        {
+          "rel": "inputValue",
+          "name": "nbSamples"
+        }
+      ],
+      "actions_in": [
+        {}
+      ],
+      "title": "Converting the hyperlink template",
+      "vars_out": [
+        {
+          "event": "onScriptEnded",
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "zindex": 3,
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/display/template-twig/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "selectable": [
+                []
+              ],
+              "template": [
+                ""
+              ],
+              "modifyInForm": [
+                []
+              ],
+              "debouncing": [
+                0
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 57,
+            "top": 2
+          },
+          "size": {
+            "width": 106,
+            "height": 80
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 35
+          },
+          "size": {
+            "width": 51,
+            "height": 56
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 8,
+      "vars_in": [
+        {
+          "rel": "tpl",
+          "name": "twigTemplate"
+        },
+        {
+          "rel": "value",
+          "name": "links"
+        }
+      ],
+      "actions_in": [
+        {}
+      ],
+      "title": "",
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              []
+            ]
+          }
+        ]
+      },
+      "zindex": 1,
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/edition/object_editor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "editable": [
+                "text"
+              ],
+              "expanded": [
+                []
+              ],
+              "storeObject": [
+                [
+                  "expand"
+                ]
+              ],
+              "displayValue": [
+                []
+              ],
+              "searchBox": [
+                [
+                  "search"
+                ]
+              ],
+              "sendButton": [
+                []
+              ],
+              "output": [
+                "new"
+              ],
+              "storedObject": [
+                "{\"Empty1\":{},\"Samples\":{\"id\":\"Samples\",\"kind\":\"nbSample\",\"description\":\"Number of samples\",\"data\":\"\",\"text\":\"\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"Structure search +\":{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search using OCL\",\"viewURL\":\"83e55c39f2601bc912a45f049e2bd424\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\"},\"Structure search\":{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search\",\"viewURL\":\"aaa5f97c7cde94741de2938b106bb0d4\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\"},\"Dia\":{\"id\":\"Dia\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Diastereotopic\",\"viewURL\":\"b50564ac9d207212f8e5ae816795fb39\",\"icon\":\"ci-icon-structure-diastereotopic\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"3D\":{\"id\":\"3D\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"3D model\",\"viewURL\":\"0e019bb4d797395213d22aca403d2c93\",\"icon\":\"ci-icon-structure-3d-model\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"Conf\":{\"id\":\"Conf\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Conformations\",\"viewURL\":\"0e019bb4d797395213d22aca4043260e\",\"icon\":\"ci-icon-structure-conformers\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"empty2\":{},\"PP\":{\"id\":\"PP\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"1D NMR peak picking\",\"viewURL\":\"4c986ed7d921b11fbe6f20240f0df3a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-peak-picking\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"Overlay NMR\":{\"id\":\"Overlay NMR\",\"kind\":\"optionalSample\",\"description\":\"Overlay NMR\",\"viewURL\":\"f162299d0efd3f7c21b5542c85003689\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-overlay\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"OS\":{\"id\":\"OS\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Open/edit sample\",\"viewURL\":\"15c9a2dcd55c963fdedf2c18a1471b03\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-edit\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"empty3\":{},\"1H\":{\"id\":\"1H\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 1H\",\"viewURL\":\"eea0ba081ea2cc99da5c1aed2f29a0a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-1h\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"},\"13C\":{\"id\":\"13C\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 13C\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a45f3c\",\"icon\":\"ci-icon-nmr-13c\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"COSY\":{\"id\":\"COSY\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict COSY\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a607ed\",\"icon\":\"ci-icon-nmr-1h1h\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"HMBC\":{\"id\":\"HMBC\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict HMBC\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a68433\",\"icon\":\"ci-icon-nmr-1h13c\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"empty4\":{},\"F\":{\"id\":\"F\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Mass fragmentation\",\"viewURL\":\"0e35f561fff36fef6c9e7341a9eec858\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-bomb\",\"bgcolor\":\"pink\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"},\"MF\":{\"id\":\"MF\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Monoisotopic mass\",\"viewURL\":\"4a06cbbc25197036518fab2ea6ff961d\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"pink\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"}}"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Definition of available views",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Definition of available views",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 52,
+            "top": 0
+          },
+          "size": {
+            "width": 66,
+            "height": 91
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Definition of available views",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 9,
+      "vars_in": [
+        {}
+      ],
+      "actions_in": [
+        {}
+      ],
+      "vars_out": [
+        {
+          "event": "onObjectChange",
+          "rel": "output",
+          "jpath": [],
+          "name": "linksTemplate"
+        }
+      ],
+      "title": "Definition of available views",
+      "actions_out": [],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "zindex": 3
+    }
+  ],
+  "variables": [
+    {
+      "varname": "reagentsCalculator",
+      "jpath": [
+        "reagentsCalculator"
+      ]
+    },
+    {
+      "varname": "samplesCalculator",
+      "jpath": [
+        "samplesCalculator"
+      ]
+    },
+    {
+      "varname": "reportTemplate",
+      "jpath": [
+        "reportTemplate"
+      ]
+    },
+    {
+      "varname": "eln-procedure-snipets",
+      "jpath": [
+        "eln-procedure-snipets"
+      ]
+    },
+    {
+      "varname": "reactions",
+      "jpath": [
+        "reactions"
+      ]
+    }
+  ],
+  "aliases": [
+    {
+      "path": "https://www.lactame.com/github/cheminfo-js/visualizer-helper/6aceb37bf1078f16b7b59dfe6e0e89c03f7928c5/",
+      "alias": "vh"
+    },
+    {
+      "path": "https://www.lactame.com/lib/eln-plugin/0.0.2/eln-plugin",
+      "alias": "elnPlugin"
+    }
+  ],
+  "configuration": {
+    "title": "Samples"
+  },
+  "actionscripts": [
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": [
+              "togglePublic"
+            ],
+            "script": [
+              "require(['superagent', 'src/util/ui'], function(superagent, ui) {\n    var couchUrl = API.cache('couchUrl');\n    var database = API.cache('database');\n    var roc = API.cache('rocReaction');\n    if(value.$owners.indexOf('anonymousRead') !== -1) {\n        makePrivate();\n    } else {\n        makePublic();\n    }\n    \n    function getEntry(id) {\n        roc.get(id);\n    }\n    \n    function makePublic() {\n        superagent.put(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made public', 'success')\n                    getEntry(value._id);\n                } else {\n                    ui.showNotification('make reaction public failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction public failed', 'error');\n            });\n    }\n    \n    function makePrivate() {\n        superagent.del(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made private', 'success');\n                    getEntry(value._id)\n                } else {\n                    ui.showNotification('make reaction private failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction private failed', 'error');\n            });\n    }\n});"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "init_script": [
+    {
+      "sections": {},
+      "groups": {
+        "general": [
+          {
+            "script": [
+              "\nvar couchUrl = '/roc/';\nvar database = 'eln';\nvar couchDB = {\n    url:couchUrl,\n    database:database,\n    kind:'sample'\n}\nAPI.cache('domain', 'ch.epfl.');\n\nvar printer = {\n    couchDB: {\n        url: '/roc/',\n        database: 'printers'\n    }\n};\n\nAPI.cache('printer', printer);\nAPI.cache('couchDB',couchDB);\n\n// For demonstration purpose\nif((typeof IframeBridge)!='undefined'){\n    IframeBridge.onMessage(function(data) {\n        if (data.type === 'tab.message') {\n            switch (data.message.action) {\n                case 'selectEntry':\n                    return selectEntry(data.message.uuid);\n                default:\n                    console.log('got an unknown message', data.message);\n                    return;\n            }\n        }\n    });\n    IframeBridge.ready();\n}\n\nfunction selectEntry(uuid) {\n    if (!uuid) return;\n    const samples = API.getData('filteredSamples');\n    if (samples) {\n        const index = samples.findIndex(sample => String(sample.id) === uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    }\n}\n\n// Load custom font\nrequire(['src/util/util'], function(Util) {\n    Util.loadCss('https://www.lactame.com/lib/cheminfo-font/0.0.9/cheminfo.css');\n})"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "custom_filters": [
+    {
+      "sections": {
+        "modules": [
+          {
+            "sections": {},
+            "groups": {
+              "modules": [
+                [
+                  {}
+                ]
+              ]
+            }
+          }
+        ],
+        "filtersLib": [
+          {
+            "sections": {},
+            "groups": {
+              "filters": [
+                [
+                  {}
+                ]
+              ]
+            }
+          }
+        ],
+        "filters": [
+          {
+            "sections": {},
+            "groups": {
+              "filter": [
+                {
+                  "name": [
+                    null
+                  ],
+                  "script": [
+                    null
+                  ]
+                }
+              ],
+              "libs": [
+                [
+                  {}
+                ]
+              ]
+            }
+          }
+        ]
+      },
+      "groups": {}
+    }
+  ],
+  "actionfiles": [
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          [
+            {}
+          ]
+        ]
+      }
+    }
+  ]
+}
