@@ -11,6 +11,10 @@ $ yum install docker git -y
 
 See: https://github.com/docker/compose/releases
 
+## Permanently disable SELinux
+
+https://www.rootusers.com/how-to-enable-or-disable-selinux-in-centos-rhel-7/
+
 ## If behind a corporate proxy
 
 Follow the guide to configure Docker to use the proxy: https://docs.docker.com/engine/admin/systemd/#/http-proxy
@@ -47,11 +51,22 @@ $ cd roc-eln-docker
 
 ### Visualizer
 
-- Clone https://github.com/cheminfo/roc-visualizer-config.git to $REST_ON_COUCH_HOME_DIR/visualizer
+Clone https://github.com/cheminfo/roc-visualizer-config.git to $REST_ON_COUCH_HOME_DIR/visualizer
+
+```
+$ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
+$ git clone https://github.com/cheminfo/roc-visualizer-config.git visualizer
+```
 
 ### ELN
 
-- Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/eln
+Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/eln
+
+
+```
+$ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
+$ git clone https://github.com/cheminfo/roc-eln-config.git eln
+```
 
 ### Printers
 
@@ -62,4 +77,19 @@ $ cd roc-eln-docker
 ```
 docker-compose pull
 docker-compose up -d
+```
+
+## Add systemd service to manage application
+
+```
+$ cp docker-eln-app.service /etc/systemd/system/
+$ systemctl daemon-reload
+$ systemctl enable docker-eln-app.service # start after system boot
+```
+
+### No you can start and stop the app with systemctl
+
+```
+systemctl start docker-eln-app.service
+systemctl stop docker-eln-app.service
 ```
