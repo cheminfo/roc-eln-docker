@@ -11,6 +11,10 @@ $ yum install docker git -y
 
 See: https://github.com/docker/compose/releases
 
+## If behind a corporate proxy
+
+Follow the guide to configure Docker to use the proxy: https://docs.docker.com/engine/admin/systemd/#/http-proxy
+
 ## Start docker daemon
 
 ```
