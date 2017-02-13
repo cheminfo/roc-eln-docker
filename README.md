@@ -1,10 +1,10 @@
 # roc-eln-docker
 
-## Install docker
+## Install required system dependencies
 
 ```
 $ yum update -y
-$ yum install docker -y
+$ yum install docker git -y
 ```
 
 ## Install docker-compose
@@ -21,7 +21,10 @@ $ systemctl enable docker
 ## Clone this repo
 
 ```
+$ mkdir /usr/local/docker
+$ cd /usr/local/docker
 $ git clone https://github.com/cheminfo/roc-eln-docker.git
+$ cd roc-eln-docker
 ```
 
 ## Edit `docker-compose.yml`
