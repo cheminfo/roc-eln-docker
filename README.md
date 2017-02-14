@@ -11,6 +11,15 @@ $ yum install docker git -y
 
 See: https://github.com/docker/compose/releases
 
+## Install Node.js and yarn
+
+```
+$ curl -sL https://rpm.nodesource.com/setup_7.x | bash -
+$ yum install -y nodejs
+$ wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
+$ yum install -y yarn
+```
+
 ## Permanently disable SELinux
 
 https://www.rootusers.com/how-to-enable-or-disable-selinux-in-centos-rhel-7/
