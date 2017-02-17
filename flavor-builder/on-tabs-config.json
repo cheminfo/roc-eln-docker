@@ -50,6 +50,8 @@
     "auto": true
   },
   "rewriteRules": [
+    {"reg": "^public/(.*)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json"},
+    {"reg": "^private/(.*)$", "replace": "../roc/db/visualizer/entry/$1/view.json"},
     {"reg": "^[^/]+$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&/view.json"},
     {"reg": "^[^/]+\/[^/]+$", "replace": "https://couch.cheminfo.org/$&/view.json"},
     {"reg": "^[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/cheminfo-public/$&"},
