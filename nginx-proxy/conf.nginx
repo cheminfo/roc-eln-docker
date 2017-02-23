@@ -3,6 +3,7 @@ server {
     server_name  localhost;
 
     location /roc/ {
+        client_max_body_size 0;
         proxy_pass http://rest-on-couch:3000/;
     }
 
@@ -20,6 +21,7 @@ server {
 
     # Uncomment and rebuild if needed
 #    location /my_secret_file_drop/MY_DATABASE/ {
+#        client_max_body_size 0;
 #        proxy_pass http://rest-on-couch-file-drop:3001/MY_DATABASE/;
 #    }
 
