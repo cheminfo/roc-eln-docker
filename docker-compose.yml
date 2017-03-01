@@ -27,7 +27,7 @@ services:
       - ./couchdb-data:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
-    image: cheminfo/rest-on-couch:v3.5.0
+    image: cheminfo/rest-on-couch:v4.0.1
     command: pm2-docker start /pm2-rest-on-couch.yaml
     expose:
       - 3000
@@ -41,7 +41,7 @@ services:
       - couchdb
 
   rest-on-couch-import:
-    image: cheminfo/rest-on-couch:v3.5.0
+    image: cheminfo/rest-on-couch:v4.0.1
     command: pm2-docker start /pm2-roc-import.yaml
     environment:
       DEBUG: 'couch:error,couch:warn,couch:debug'
@@ -55,7 +55,7 @@ services:
 
 #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
 #  rest-on-couch-file-drop:
-#    image: cheminfo/rest-on-couch:v3.5.0
+#    image: cheminfo/rest-on-couch:v4.0.1
 #    command: pm2-docker start /pm2-roc-file-drop.yaml
 #    environment:
 #      DEBUG: 'couch:error,couch:warn,couch:debug'
