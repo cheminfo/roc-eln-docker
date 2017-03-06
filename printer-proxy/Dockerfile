@@ -6,10 +6,10 @@ RUN apk add --no-cache curl && \
     curl -fSL https://github.com/cheminfo/stock-printer-proxy/archive/master.tar.gz -o $VERSION.tar.gz && \
     tar -xzf $VERSION.tar.gz && \
     mv stock-printer-proxy-${VERSION} stock-printer-proxy-source && \
-    npm install -g yarn pm2 && \
+    yarn global add pm2 && \
     cd /stock-printer-proxy-source && \
     yarn && \
-    rm -rf /root/.npm /root/.cache /${VERSION}.tar.gz
+    rm -rf /root/.npm /usr/local/share/.cache /root/.cache /${VERSION}.tar.gz
 
 COPY pm2-proxy.yml /pm2-proxy.yml
 
