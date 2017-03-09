@@ -102,3 +102,21 @@ $ systemctl enable docker-eln-app.service # start after system boot
 systemctl start docker-eln-app.service
 systemctl stop docker-eln-app.service
 ```
+
+
+## FAQ
+
+### How to update a docker image ?
+
+The docker-compose.yml file contains the list of all the docker images required by this project, 
+their version as well as their dependencies.
+If you want to update the version of an image you should change the name in the docker-compose.yml. After changing
+this file you should run: `docker-compose up -d` (-d allows to put the process in background).
+
+### Don't use docker !
+
+You should not use the `docker` instruction because it is not aware of dependencies and it could lead to unexpected results.
+Please always use `docker-compose` instead.
+
+In order to check all the running docker images: `docker-compose ps`
+To restart a specific image: `docker-compose restart rocelndocker_real-rest-on-couch_1`
