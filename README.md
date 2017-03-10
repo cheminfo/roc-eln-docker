@@ -119,4 +119,4 @@ You should not use the `docker` instruction because it is not aware of dependenc
 Please always use `docker-compose` instead.
 
 In order to check all the running docker images: `docker-compose ps`
-To restart a specific image: `docker-compose restart rocelndocker_real-rest-on-couch_1`
+To restart a specific image: `docker-compose restart rest-on-couch`
