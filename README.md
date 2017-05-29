@@ -4,7 +4,7 @@
 
 ```
 $ yum update -y
-$ yum install docker git -y
+$ yum install docker git wget -y
 ```
 
 ## Install docker-compose
