@@ -1,5 +1,5 @@
 {
-  "version": "2.77.1",
+  "version": "2.81.3",
   "grid": {
     "layers": {
       "Default layer": {
@@ -71,7 +71,7 @@
           "cols": [
             [
               {
-                "name": "Reference",
+                "name": "Product reference",
                 "jpath": [
                   "value",
                   "reference"
@@ -82,11 +82,11 @@
                 "visibility": "both",
                 "rendererOptions": "",
                 "editorOptions": "",
-                "width": 111,
+                "width": 107,
                 "hideColumn": []
               },
               {
-                "name": "Modif. date",
+                "name": "Last modif.",
                 "jpath": [
                   "value",
                   "modificationDate"
@@ -97,7 +97,7 @@
                 "visibility": "both",
                 "rendererOptions": "dateFormat:'YYYY-MM-DD'",
                 "editorOptions": "",
-                "width": 74,
+                "width": 78,
                 "hideColumn": []
               },
               {
@@ -110,9 +110,9 @@
                 "forceType": "oclID",
                 "formatter": "typerenderer",
                 "visibility": "both",
-                "rendererOptions": "",
+                "rendererOptions": "useCanvas:true",
                 "editorOptions": "",
-                "width": 162,
+                "width": 142,
                 "hideColumn": []
               },
               {
@@ -127,7 +127,7 @@
                 "visibility": "both",
                 "rendererOptions": "",
                 "editorOptions": "",
-                "width": 40,
+                "width": 41,
                 "hideColumn": []
               },
               {
@@ -142,11 +142,11 @@
                 "visibility": "both",
                 "rendererOptions": "",
                 "editorOptions": "",
-                "width": 43,
+                "width": 41,
                 "hideColumn": []
               },
               {
-                "name": "nb mass",
+                "name": "nb ms",
                 "jpath": [
                   "value",
                   "hasMass"
@@ -157,7 +157,7 @@
                 "visibility": "both",
                 "rendererOptions": "",
                 "editorOptions": "",
-                "width": 57,
+                "width": 41,
                 "hideColumn": []
               },
               {
@@ -172,7 +172,7 @@
                 "visibility": "both",
                 "rendererOptions": "",
                 "editorOptions": "",
-                "width": 38,
+                "width": 50,
                 "hideColumn": []
               }
             ]
@@ -184,7 +184,7 @@
                   255,
                   255,
                   255,
-                  1
+                  0
                 ],
                 "color": [
                   0,
@@ -250,7 +250,7 @@
         "admin": {
           "position": {
             "left": 0,
-            "top": 3
+            "top": 5
           },
           "size": {
             "width": 57,
@@ -305,7 +305,7 @@
           "name": "clickRow"
         }
       ],
-      "title": "",
+      "title": "Click the right of the line to open the sample",
       "vars_out": [
         {
           "event": "onSelect",
@@ -339,6 +339,12 @@
               "title": "Refresh",
               "icon": "fa-refresh",
               "action": "refreshSample",
+              "position": "end"
+            },
+            {
+              "title": "Show user info",
+              "icon": "fa-user",
+              "action": "ShowUserInfo",
               "position": "begin"
             }
           ]
@@ -372,6 +378,9 @@
               "debounce": [
                 250
               ],
+              "limit": [
+                0
+              ],
               "initialValue": [
                 ""
               ],
@@ -380,9 +389,6 @@
               ],
               "fontSize": [
                 24
-              ],
-              "limit": [
-                null
               ]
             }
           ]
@@ -475,8 +481,12 @@
           "name": "filteredSamples"
         }
       ],
-      "actions_out": [],
-      "zindex": 3,
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 2,
       "toolbar": {
         "custom": [
           [
@@ -497,7 +507,17 @@
             ]
           }
         ]
-      }
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
     },
     {
       "url": "modules/types/client_interaction/code_executor/",
@@ -518,10 +538,12 @@
                 ]
               ],
               "asyncAwait": [
-                []
+                [
+                  "top"
+                ]
               ],
               "script": [
-                "var roc = API.cache('rocSample');\nvar couchDB = API.cache('couchDB');\nvar user = API.cache('user');\nvar domain = API.cache('domain');\n\nif(!roc) {\n    roc = new Roc({\n            url: couchDB.url,\n            database: couchDB.database,\n            processor: elnPlugin,\n            kind: 'sample'\n        }\n    );\n    roc.getGroups().then(createForm);\n    refreshSample();\n    API.cache('rocSample', roc);\n    return;\n}\n\n\nif(this.variable) {\n    refreshSample();\n}\n\nif(!this.action) return;\n\n\n\nswitch(this.action.name) {\n    case 'createSample':\n        createSample();\n        break;\n    case 'deleteSample': \n        deleteSample(this.action.value);\n        break;\n    case 'refreshSample':\n        refreshSample();\n        break;\n    case 'rowDoubleClicked':\n        openDefault(this.action.value.id, this.action.value.value.reference);\n        break;\n    default:\n        console.warn('Unhandled sample action');\n        break;\n}\n\n//sd\nif(!this.action) return;\n\nfunction createSample(sample) {\n    var entrysample = {$content: {}}\n    ui.form(`\n        <div>\n        <form>\n            <label>Sample code: &nbsp;</label><input type=\"text\" name=\"code\"/><br>\n            <label>Batch code : &nbsp; </label><input type=\"text\" name=\"batch\"/><br>\n            <input type=\"submit\" value=\"Submit\"/>\n        </form>\n        </div>\n    `).then(function(result){\n        console.log(result);\n        if(!result || !result.code || result.batch == null) return;\n        entrysample.$id = [result.code, result.batch];\n        roc.create(entrysample).then(function(sample) {\n            openDefault(sample._id, sample.$id.join(' '))\n        });\n    });\n}\n\nfunction deleteSample(entry) {\n    ui.confirm('Are you sure you want to delete ' + entry.value.reference)\n    .then(function(res) {\n        if(!res) return;\n        roc.delete(entry.id);\n    });\n}\n\nfunction refreshSample() {\n    var options = {varName: 'samples'};\n    var form = API.getData('formSample'), group;\n    if(!form) return;\n    group = form.group;\n    \n    window.localStorage.setItem('eln-default-sample-group', String(group));\n    \n    if(group === 'mine') {\n        options.mine = 1;\n    } else if(group !== 'all') {\n        options.groups = group;\n    }\n    \n    options.sort = function(a, b) {\n        if(a.value.modificationDate > b.value.modificationDate) {\n            return -1;\n        } else if(a.value.modificationDate < b.value.modificationDate) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n    \n    roc.query('sample_toc', options).then(function(data) {\n        API.createData('nbSamples', data.length);\n    });\n}\n\nfunction createForm(groups) {\n    var possibleGroups = [\"all\", \"mine\"].concat(groups);\n    var defaultGroup = window.localStorage.getItem('eln-default-sample-group');\n    if(possibleGroups.indexOf(defaultGroup) === -1) {\n        defaultGroup = 'all';\n    }\n    var schema = {\n        type: 'object',\n        properties: {\n            group: {\n                type: 'string',\n                enum: possibleGroups,\n                default: defaultGroup,\n                required: true\n            }\n        }\n    }\n    API.createData('formSchema', schema)\n}\n\nfunction openDefault(uuid, ref) {\n    IframeBridge.postMessage('tab.open', {\n        id: 'OS ' + ref,\n        url: '15c9a2dcd55c963fdedf2c18a1471b03',\n        data: {\n            couchDB: couchDB,\n            uuid: String(uuid),\n            reference: ref,\n            domain: domain\n        },\n    });\n}\n\n"
+                "var roc = API.cache('rocSample');\nvar couchDB = API.cache('couchDB');\nvar printerConfig = API.cache('printerConfig');\nvar printer = API.cache('printer');\nvar user = API.cache('user');\nvar domain = API.cache('domain');\n\nif(this.event === 'load' && printerConfig) {\n    printer = await printerLib(printerConfig.couchDB);\n    printerHelper.setup(printer, ['sample']);\n}\n\nif(!roc) {\n    roc = await new Roc({\n            url: couchDB.url,\n            database: couchDB.database,\n            processor: elnPlugin,\n            kind: 'sample'\n        }\n    );\n        \n    var userInfo = await roc.getUserInfo();\n    var user=await roc.getUser();\n    API.cache('user', user);\n    API.cache('userInfo', userInfo);\n    var groups=(await roc.getGroups()).map(g => g.name);\n    createForm(groups);\n    \n    refreshSample();\n    API.cache('rocSample', roc);\n    return;\n}\n\n\n\nif(this.variable) {\n    refreshSample();\n}\n\nif(!this.action) return;\n\n\n\nswitch(this.action.name) {\n    case 'createSample':\n        createSample();\n        break;\n    case 'deleteSample': \n        deleteSample(this.action.value);\n        break;\n    case 'refreshSample':\n        refreshSample();\n        break;\n    case 'rowDoubleClicked':\n        openDefault(this.action.value.id, this.action.value.value.reference);\n        break;\n    case 'printSample':\n        const doc = await DataObject.check(this.action.value.document).get(true);\n        printerHelper.askPrintEntry(doc, 'sample');\n        break;\n    default:\n        console.warn('Unhandled sample action');\n        break;\n}\n\n//sd\nif(!this.action) return;\n\nfunction createSample(sample) {\n    var entrysample = {$content: {}}\n    ui.form(`\n        <div>\n        <form>\n            <table>\n            <tr>\n            <th align=right>Reference<br><span style='font-size: smaller'>Reaction code</span></th>\n            <td><input type=\"text\" name=\"code\"/></td>\n            </tr>\n            <tr>\n            <th align=right>Batch<br><span style='font-size: smaller'>Fraction</span></th>\n            <td><input type=\"text\" name=\"batch\"/></td>\n            </tr>\n            <!--\n            <tr>\n            <th align=right>Sample<br><span style='font-size: smaller'>(empty most of the time)</span></th>\n            <td><input type=\"text\" name=\"sample\"/></td>\n            </tr>\n            -->\n            </table>\n            <input type=\"submit\" value=\"Submit\"/>\n        </form>\n        </div>\n    `,{}).then(function(result){\n        if (!result || !result.code || result.batch == null) return;\n        entrysample.$id = [result.code, result.batch];\n        if (result.sample) entrysample.$id.push(result.sample);\n        var userInfo = API.cache('userInfo');\n        \n        if (userInfo && userInfo.allGroups) {\n            entrysample.$owners=userInfo.allGroups;\n        }\n\n        roc.create(entrysample).then(function(sample) {\n            openDefault(sample._id, sample.$id.join(' '));\n            // we do like if we would have click on the line we just added\n            API.createData('sampleClicked', {id: sample._id});\n        });\n    });\n}\n\nfunction deleteSample(entry) {\n    ui.confirm('Are you sure you want to delete ' + entry.value.reference)\n    .then(function(res) {\n        if(!res) return;\n        roc.delete(entry.id);\n    });\n}\n\nfunction refreshSample() {\n    \n    var uuid=(API.getData('sampleClicked') || {}).id;\n    \n    var options = {varName: 'samples'};\n    var form = API.getData('formSample'), group;\n    if(!form) return;\n    group = form.group;\n    \n    window.localStorage.setItem('eln-default-sample-group', String(group));\n    \n    if(group === 'mine') {\n        options.mine = 1;\n    } else if(group !== 'all') {\n        options.groups = group;\n    }\n    \n    options.sort = function(a, b) {\n        if(a.value.modificationDate > b.value.modificationDate) {\n            return -1;\n        } else if(a.value.modificationDate < b.value.modificationDate) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n    \n    roc.query('sample_toc', options).then(function(data) {\n        API.cache('nbSamples', data.length);\n        API.doAction('renderTiles');\n        // we need to select the previously selected element\n        const index = data.findIndex(sample => String(sample.id) == uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    });\n}\n\nfunction createForm(groups) {\n    var possibleGroups = [\"all\", \"mine\"].concat(groups);\n    var defaultGroup = window.localStorage.getItem('eln-default-sample-group');\n    if(possibleGroups.indexOf(defaultGroup) === -1) {\n        defaultGroup = 'all';\n    }\n    var schema = {\n        type: 'object',\n        properties: {\n            group: {\n                type: 'string',\n                enum: possibleGroups,\n                default: defaultGroup,\n                required: true\n            }\n        }\n    }\n    API.createData('formSchema', schema)\n}\n\nfunction openDefault(uuid, ref) {\n    IframeBridge.postMessage('tab.open', {\n        id: 'OS ' + ref,\n        url: '15c9a2dcd55c963fdedf2c18a1471b03',\n        data: {\n            couchDB: couchDB,\n            uuid: String(uuid),\n            reference: ref,\n            domain: domain\n        },\n    });\n}\n\n"
               ]
             }
           ],
@@ -540,8 +562,16 @@
                 "alias": "ui"
               },
               {
-                "lib": "elnPlugin",
+                "lib": "https://www.lactame.com/lib/eln-plugin/0.0.2/eln-plugin.js",
                 "alias": "elnPlugin"
+              },
+              {
+                "lib": "vh/eln/stock/printer/printer",
+                "alias": "printerLib"
+              },
+              {
+                "lib": "vh/eln/stock/printer/helper",
+                "alias": "printerHelper"
               }
             ]
           ],
@@ -581,11 +611,11 @@
         },
         "admin": {
           "position": {
-            "left": 58,
-            "top": 3
+            "left": 59,
+            "top": 2
           },
           "size": {
-            "width": 68,
+            "width": 73,
             "height": 73
           },
           "zIndex": 0,
@@ -671,6 +701,10 @@
         {
           "rel": "execute",
           "name": "rowDoubleClicked"
+        },
+        {
+          "rel": "execute",
+          "name": "printSample"
         }
       ],
       "title": "ROC samples",
@@ -716,175 +750,6 @@
           ]
         }
       ]
-    },
-    {
-      "url": "modules/types/client_interaction/button_action/",
-      "configuration": {
-        "sections": {},
-        "groups": {
-          "group": [
-            {
-              "toggle": [
-                "click"
-              ],
-              "label": [
-                "New sample"
-              ],
-              "onLabel": [
-                "Toggle action off"
-              ],
-              "offLabel": [
-                "Toggle action on"
-              ],
-              "onColor": [
-                [
-                  0,
-                  0,
-                  0,
-                  1
-                ]
-              ],
-              "offColor": [
-                [
-                  0,
-                  0,
-                  0,
-                  1
-                ]
-              ],
-              "startState": [
-                "off"
-              ],
-              "text": [
-                null
-              ],
-              "askConfirm": [
-                []
-              ],
-              "confirmText": [
-                "Are you sure?"
-              ],
-              "okLabel": [
-                "Ok"
-              ],
-              "cancelLabel": [
-                "Cancel"
-              ],
-              "content": [
-                ""
-              ],
-              "contentType": [
-                "content"
-              ]
-            }
-          ]
-        }
-      },
-      "layers": {
-        "Default layer": {
-          "position": {
-            "left": 42,
-            "top": 0
-          },
-          "size": {
-            "width": 13,
-            "height": 7
-          },
-          "zIndex": 0,
-          "display": true,
-          "title": "Create new sample",
-          "bgColor": [
-            255,
-            255,
-            255,
-            0
-          ],
-          "wrapper": false,
-          "created": true,
-          "name": "Default layer"
-        },
-        "admin": {
-          "position": {
-            "left": 127,
-            "top": 4
-          },
-          "size": {
-            "width": 17,
-            "height": 7
-          },
-          "zIndex": 0,
-          "display": true,
-          "title": "Create new sample",
-          "bgColor": [
-            255,
-            255,
-            255,
-            0
-          ],
-          "wrapper": true,
-          "created": true,
-          "name": "admin"
-        },
-        "Links": {
-          "position": {
-            "left": 69,
-            "top": 46
-          },
-          "size": {
-            "width": 20,
-            "height": 20
-          },
-          "zIndex": 0,
-          "display": false,
-          "title": "",
-          "bgColor": [
-            255,
-            255,
-            255,
-            0
-          ],
-          "wrapper": true,
-          "created": true,
-          "name": "Links"
-        }
-      },
-      "id": 4,
-      "vars_in": [],
-      "actions_in": [
-        {}
-      ],
-      "title": "Create new sample",
-      "vars_out": [],
-      "actions_out": [
-        {
-          "event": "onClick",
-          "rel": "actionText",
-          "jpath": [],
-          "name": "createSample"
-        }
-      ],
-      "zindex": 4,
-      "toolbar": {
-        "custom": [
-          [
-            {
-              "title": "",
-              "icon": "",
-              "action": "",
-              "position": "begin"
-            }
-          ]
-        ],
-        "common": [
-          {
-            "toolbar": [
-              [
-                "Open Preferences"
-              ]
-            ]
-          }
-        ]
-      }
     },
     {
       "url": "modules/types/edition/onde/",
@@ -1004,14 +869,16 @@
           "name": "Links"
         }
       },
-      "id": 5,
+      "id": 4,
       "vars_in": [
         {
           "rel": "schema",
           "name": "formSchema"
         }
       ],
-      "actions_in": [],
+      "actions_in": [
+        {}
+      ],
       "title": "",
       "vars_out": [
         {
@@ -1095,7 +962,7 @@
                 250
               ],
               "script": [
-                "<style>\n#ontabs {\n    display: inline-flex;\n    flex-wrap: wrap;\n}\n#ontabs .cell {\n    position: relative;\n    border: 2px solid white;\n}\n#ontabs .content {\n    width: 120px;\n    height: 120px;\n    display: inline-flex;\n    font-size:0.8em;\n}\n#ontabs .hide {\n    background-color: rgba(255,255,255,0.6);\n    position: absolute;\n    width: 120px;\n    height: 120px;\n    top:0;\n    left:0;\n    z-index:100;\n}\n#ontabs .fa, .ci-icon {\n    font-size: 5em;\n    margin: auto;\n}\n#ontabs .center {\n    font-size: 4.5em;\n    margin: auto;\n    font-weight: bold;\n}\n#ontabs .header {\n    position:absolute;\n    font-size: 1.4em;\n    font-weight: bold;\n    text-align: center;\n    width: 100%;\n    z-index: 100;\n}\n#ontabs .bottomRight {\n    position:absolute;\n    bottom: 5px;\n    right: 8px;\n    font-weight: bold;\n    font-size: 1.4em;\n}\n#ontabs .reference {\n    position:absolute;\n    bottom: 1.5em;\n    left: 0;\n    text-align: center;\n    width: 100%;\n    font-size: 10px;\n    overflow: hidden;\n    white-space: pre;\n    padding: 1px;\n}\n\n#ontabs .ribbon-wrapper {\n  width: 75px;\n  height: 75px;\n  overflow: hidden;\n  position: absolute;\n  top: 0px;\n  right: 0px;\n}\n \n#ontabs .ribbon {\n  font: bold 1em Sans-Serif;\n  color: white;\n  text-align: center;\n  transform:rotate(45deg);\n  position: relative;\n  padding: 3px 0px 0px 0px;\n  left: 0px;\n  top: 10px;\n  width: 120px;\n  background-color: rgba(255,0,0,0.9);\n  z-index:10;\n  \n}\n#ontabs .ribbon.beta {\n    background-color: rgba(0,0,255,0.9);\n}\n</style>\n\n\n<div id='ontabs'>\n    {% for link in links %}\n        {% if link.kind and link.admin!=true %}\n            <div class=\"cell\" id=\"tile-menu-{{ link.id }}\" style='{%if link.isLink%}cursor: pointer;{%endif%} color: {{link.fontcolor}}; background-color: {{link.bgcolor}}' onclick='window.LinksFunction(event, \"{{link.id}}\");'>\n                <div class='content'>\n                    <div class='header'>{{ link.description }}</div>\n                        {% if link.icon %}\n                            {% if link.iconType == 'ci' %}\n                                <div class='ci-icon {{link.icon}}'></div>\n                            {% else %}\n                                <div class='fa {{link.icon}}'></div>\n                            {% endif %}\n                            <div class='bottomRight'>{{link.text}}</div>\n                        {% else %}\n                            <div class='center'>{{link.text}}</div>\n                        {% endif %}\n                        <div class='reference'>{{link.code}}</div>\n                    </div>\n                    {% if link.active!=true %}\n                    <div class='hide'></div>\n                {% endif %}\n                {% if link.isNew %}\n                <div class=\"ribbon-wrapper\">\n                    <div class=\"ribbon beta\">NEW</div>\n                </div> \n                {% endif %}\n            </div>\n        {% else %}\n            <div style='width: 100%'></div>\n        {% endif %}\n\n        \n\n    {% endfor %}\n</div>"
+                "<div id=\"sample-tiles\"></div>"
               ]
             }
           ],
@@ -1160,12 +1027,12 @@
         },
         "Links": {
           "position": {
-            "left": 119,
-            "top": 48
+            "left": 72,
+            "top": 81
           },
           "size": {
-            "width": 83,
-            "height": 51
+            "width": 29,
+            "height": 7
           },
           "zIndex": 0,
           "display": true,
@@ -1181,7 +1048,7 @@
           "name": "Links"
         }
       },
-      "id": 6,
+      "id": 5,
       "vars_in": [
         {}
       ],
@@ -1223,7 +1090,17 @@
           }
         ]
       },
-      "zindex": 3
+      "zindex": 2,
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ]
     },
     {
       "url": "modules/types/client_interaction/code_executor/",
@@ -1243,11 +1120,11 @@
                   "yes"
                 ]
               ],
-              "script": [
-                "var linksTemplate=get('linksTemplate');\nvar couchDB = API.cache('couchDB');\nvar printer = API.cache('printer');\nvar domain = API.cache('domain');\nvar couchPublicUrl = 'https://couch.cheminfo.org';\nvar couchPublicDatabase = 'cheminfo-public';\nvar idReg = new RegExp('\\/?([^\\/]+)($|\\/view\\.json.*)');\nvar revReg = /rev=(\\d+-[a-z0-9]+)/;\n\n\nvar existingCodes={};\n\nvar LinksData={};\nLinksData.sample=API.getData('sampleClicked');\n\nwindow.LinksData=LinksData;\n\n\nvar links=[];\nvar linksTemplateFilled = {};\nfor (var key in linksTemplate) {\n    var link=Object.assign({}, linksTemplate[key]);\n    links.push(link);\n    link.active=true;\n    link.id=key;\n    link.code=key;\n    if (link.icon) {\n        link.iconType=link.icon.replace(/-.*/,'');\n    }\n    if (link.requires) {\n        var requires=Array.isArray(link.requires) ? link.requires : [link.requires];\n        for (var require of requires) {\n            if (! LinksData[require]) {\n                link.active=false;\n            }\n        }\n    }\n    if (link.active && link.viewURL) {\n        link.isLink=true;\n    } else {\n        link.isLink=false;\n    }\n    \n    if ((new Date()-new Date(link.date))<1296000000) {\n        link.isNew=true;\n    } else {\n        link.isNew=false;\n    }\n    if (link.active) {\n        switch(link.kind+'') {\n            case 'sample':\n                if (LinksData.sample) {\n                link.code+=' '+LinksData.sample.value.reference;\n                }\n                break;\n            case 'nbSample':\n                link.text=API.getData('nbSamples');\n                link.code='';\n                break;\n        }\n    }\n    linksTemplateFilled[key] = link;\n}\n\nif (! window.linksFunction || true) {\n    window.LinksFunction=function(event, linkID) {\n        var link=Object.assign({}, linksTemplateFilled[linkID]);\n        var linkOriginal = Object.assign({}, linksTemplate[linkID])\n        if(event.shiftKey && link.viewURL) {\n            var id = idReg.exec(link.viewURL);\n            var rev = revReg.exec(link.viewURL);\n            if(id) id = id[1];\n            if(!id) return;\n            if(rev) rev = rev[1];\n            var prom = superagent.get(couchPublicUrl + '/' + couchPublicDatabase + '/' + id)\n                .set('Accept', 'application/json')\n                .then(function(res) {\n                    if(res.status === 200) {\n                        if(!rev) rev = res.body._rev;\n                    } else {\n                        throw new Error('This view might not be public (' + res.status + ')');\n                    }\n                    \n            });\n            prom.then(function() {\n                linkOriginal.viewURL = couchPublicDatabase + '/' + id + '/view.json' + '?rev=' + rev;\n                UI.showCode({\n                    mode: 'json',\n                    content: JSON.stringify(linkOriginal, null, '\\t')\n                });    \n            }).catch(function(err) {\n                UI.showNotification(err.message);\n            })\n            \n            return;\n        }\n        \n        switch (link.kind+'') {\n            case 'sample':\n                var sample=window.LinksData.sample;\n                var uuid = sample.id;\n                var code = sample.value.reference;\n                if (! uuid || ! code) return;\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        domain,\n                        uuid: String(uuid),\n                        reference: API.getData('referenceClicked')+'',\n                        data: link.data\n                    }\n                });\n                break;\n            case 'sampleList':\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        data: link.data\n                    }\n                });\n                break;\n            case 'optionalSample':\n                uuid = window.LinksData && window.LinksData.sample && window.LinksData.sample.id || '';\n                IframeBridge.postMessage('tab.open', {\n                    id: link.code,\n                    url: link.viewURL,\n                    data: {\n                        printer,\n                        couchDB,\n                        uuid: String(uuid),\n                        data: link.data\n                    }\n                });\n                break;\n        }\n    }\n}\n\nAPI.createData('links',links);"
-              ],
               "asyncAwait": [
                 []
+              ],
+              "script": [
+                "var tilesData=get('tiles');\nvar couchDB = API.cache('couchDB');\nvar printer = API.cache('printerConfig');\nvar domain = API.cache('domain');\nvar couchPublicUrl = 'https://couch.cheminfo.org';\nvar couchPublicDatabase = 'cheminfo-public';\n\nif(tilesData) {\n    console.log('render tiles');\n    tilesData = tilesData.resurrect().map(t => {\n        return t.empty ? {} : t;\n    })\n    tiles('sample-tiles', {\n        tiles: tilesData,\n        shouldRender: tile => {\n            let user = API.cache('user');\n            if(user) user = user.username;\n            return (checkRights(user, tile.rights, true));\n        },\n        ribbon: tile => {\n            if(tile.rights) {\n                return 'LIMITED';\n            } else if (tile.date) {\n                const d = new Date(tile.date);\n                if(new Date() - d < 1296000000) {\n                    return 'NEW';\n                }\n            }\n            return '';\n        },\n        isActive: tile => {\n            if(tile.kind === 'sample') {\n                const sample = API.getData('sampleClicked');\n                if(sample) return true;\n            } else {\n                return true;\n            }\n            return false;\n        },\n        isLink: tile => true,\n        icon: tile => tile.icon,\n        title: tile => tile.icon ? '' : checkCache(tile.title),\n        backgroundColor: tile => String(tile.bgcolor),\n        color: tile => tile.fontcolor || 'black',\n        header: tile => tile.description,\n        footer: tile => tile.id,\n        onTileClick: (event, tile) => {\n            if(event.shiftKey && tile.viewURL) {\n                return showCode(tile);\n            }\n            \n            handleClick(tile);\n        }\n    });\n}\n\n\n\nasync function showCode(tile) {\n    const copiedTile = Object.assign({}, tile);\n    delete copiedTile.line;\n    \n    if (!copiedTile.rev) {\n        const res = await superagent.get(couchPublicUrl + '/' + couchPublicDatabase + '/' + tile.viewURL)\n        .set('Accept', 'application/json');\n        if(res.status === 200) {\n            copiedTile.rev = res.body._rev;\n        } else {\n            throw new Error('This view might not be public (' + res.status + ')');\n        }\n    }\n    \n    try {\n        await UI.showCode({\n            mode: 'json',\n            content: JSON.stringify(copiedTile, null, '\\t')\n        });    \n    } catch(e) {\n        UI.showNotification(e.message, 'error');\n    }\n}\n\nfunction handleClick(tile) {\n    var sample = API.getData('sampleClicked');\n    if(sample) {\n        var uuid = sample.id;\n        var code = sample.value.reference;\n    }\n    var viewURL=tile.viewURL;\n //   if (tile.rev) viewURL+='?_rev='+tile.rev;\n    switch (String(tile.kind)) {\n        case 'sample':\n            if (! uuid || ! code) return;\n            IframeBridge.postMessage('tab.open', {\n                id: `${tile.id} ${code}`,\n                url: viewURL,\n                data: {\n                    printer,\n                    couchDB,\n                    domain,\n                    uuid: String(uuid),\n                    reference: code + '',\n                    data: tile.data\n                }\n            });\n            break;\n        case 'optionalSample':\n            console.log(printer, couchDB);\n            uuid = uuid || '';\n            IframeBridge.postMessage('tab.open', {\n                id: tile.id,\n                url: viewURL,\n                data: {\n                    printer,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data\n                }\n            });\n            break;\n    }\n}\n\nfunction checkCache(val) {\n    if(val) {\n        const parts = val.split(':');\n        if(parts[0] === 'cache') {\n            const jpath = parts[1].split('.');\n            const name = jpath.splice(0, 1);\n            if(jpath.length === 0) return API.cache(name[0]);\n            return DataObject.resurrect(DataObject.check(Object.assign({}, API.cache(name[0]))).getChildSync(jpath));\n        } else {\n            return val;\n        }\n    }\n}"
               ]
             }
           ],
@@ -1260,6 +1137,14 @@
               {
                 "lib": "superagent",
                 "alias": "superagent"
+              },
+              {
+                "lib": "vh/util/tiles",
+                "alias": "tiles"
+              },
+              {
+                "lib": "vh/util/checkRights",
+                "alias": "checkRights"
               }
             ]
           ],
@@ -1267,7 +1152,8 @@
             [
               {
                 "name": "button1",
-                "label": "Execute"
+                "label": "Execute",
+                "hide": []
               }
             ]
           ]
@@ -1320,12 +1206,12 @@
         },
         "Links": {
           "position": {
-            "left": 119,
-            "top": 0
+            "left": 0,
+            "top": 80
           },
           "size": {
-            "width": 83,
-            "height": 47
+            "width": 70,
+            "height": 43
           },
           "zIndex": 0,
           "display": true,
@@ -1341,23 +1227,22 @@
           "name": "Links"
         }
       },
-      "id": 7,
+      "id": 6,
       "vars_in": [
-        {
-          "rel": "inputValue",
-          "name": "linksTemplate"
-        },
         {
           "rel": "inputValue",
           "name": "sampleClicked"
         },
         {
           "rel": "inputValue",
-          "name": "nbSamples"
+          "name": "tiles"
         }
       ],
       "actions_in": [
-        {}
+        {
+          "rel": "execute",
+          "name": "renderTiles"
+        }
       ],
       "title": "Converting the hyperlink template",
       "vars_out": [
@@ -1392,7 +1277,7 @@
           }
         ]
       },
-      "zindex": 3,
+      "zindex": 2,
       "css": [
         {
           "fontSize": [
@@ -1422,6 +1307,11 @@
               ],
               "debouncing": [
                 0
+              ],
+              "formOptions": [
+                [
+                  "keepFormValueIfDataUndefined"
+                ]
               ]
             }
           ]
@@ -1430,12 +1320,12 @@
       "layers": {
         "Default layer": {
           "position": {
-            "left": 57,
-            "top": 2
+            "left": 55,
+            "top": 1
           },
           "size": {
-            "width": 106,
-            "height": 80
+            "width": 98,
+            "height": 84
           },
           "zIndex": 0,
           "display": true,
@@ -1475,7 +1365,7 @@
         "Links": {
           "position": {
             "left": 0,
-            "top": 35
+            "top": 23
           },
           "size": {
             "width": 51,
@@ -1495,7 +1385,7 @@
           "name": "Links"
         }
       },
-      "id": 8,
+      "id": 7,
       "vars_in": [
         {
           "rel": "tpl",
@@ -1504,6 +1394,10 @@
         {
           "rel": "value",
           "name": "links"
+        },
+        {
+          "rel": "value",
+          "name": "userInfo"
         }
       ],
       "actions_in": [
@@ -1539,7 +1433,7 @@
           }
         ]
       },
-      "zindex": 1,
+      "zindex": 2,
       "css": [
         {
           "fontSize": [
@@ -1552,41 +1446,47 @@
       ]
     },
     {
-      "url": "modules/types/edition/object_editor/",
+      "url": "modules/types/client_interaction/code_executor/",
       "configuration": {
         "sections": {},
         "groups": {
           "group": [
             {
-              "editable": [
-                "text"
-              ],
-              "expanded": [
-                []
-              ],
-              "storeObject": [
+              "display": [
                 [
-                  "expand"
+                  "editor",
+                  "buttons"
                 ]
               ],
-              "displayValue": [
+              "execOnLoad": [
                 []
               ],
-              "searchBox": [
+              "asyncAwait": [
                 [
-                  "search"
+                  "top"
                 ]
               ],
-              "sendButton": [
-                []
-              ],
-              "output": [
-                "new"
-              ],
-              "storedObject": [
-                "{\"Empty1\":{},\"Samples\":{\"id\":\"Samples\",\"kind\":\"nbSample\",\"description\":\"Number of samples\",\"data\":\"\",\"text\":\"\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"Structure search +\":{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search using OCL\",\"viewURL\":\"83e55c39f2601bc912a45f049e2bd424\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\"},\"Structure search\":{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search\",\"viewURL\":\"aaa5f97c7cde94741de2938b106bb0d4\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\"},\"Dia\":{\"id\":\"Dia\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Diastereotopic\",\"viewURL\":\"b50564ac9d207212f8e5ae816795fb39\",\"icon\":\"ci-icon-structure-diastereotopic\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"3D\":{\"id\":\"3D\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"3D model\",\"viewURL\":\"0e019bb4d797395213d22aca403d2c93\",\"icon\":\"ci-icon-structure-3d-model\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"Conf\":{\"id\":\"Conf\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Conformations\",\"viewURL\":\"0e019bb4d797395213d22aca4043260e\",\"icon\":\"ci-icon-structure-conformers\",\"bgcolor\":\"lightyellow\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"empty2\":{},\"PP\":{\"id\":\"PP\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"1D NMR peak picking\",\"viewURL\":\"4c986ed7d921b11fbe6f20240f0df3a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-peak-picking\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"Overlay NMR\":{\"id\":\"Overlay NMR\",\"kind\":\"optionalSample\",\"description\":\"Overlay NMR\",\"viewURL\":\"f162299d0efd3f7c21b5542c85003689\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-overlay\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"OS\":{\"id\":\"OS\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Open/edit sample\",\"viewURL\":\"15c9a2dcd55c963fdedf2c18a1471b03\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-edit\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\"},\"empty3\":{},\"1H\":{\"id\":\"1H\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 1H\",\"viewURL\":\"eea0ba081ea2cc99da5c1aed2f29a0a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-1h\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"},\"13C\":{\"id\":\"13C\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 13C\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a45f3c\",\"icon\":\"ci-icon-nmr-13c\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"COSY\":{\"id\":\"COSY\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict COSY\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a607ed\",\"icon\":\"ci-icon-nmr-1h1h\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"HMBC\":{\"id\":\"HMBC\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict HMBC\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a68433\",\"icon\":\"ci-icon-nmr-1h13c\",\"bgcolor\":\"lightgreen\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\"},\"empty4\":{},\"F\":{\"id\":\"F\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Mass fragmentation\",\"viewURL\":\"0e35f561fff36fef6c9e7341a9eec858\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-bomb\",\"bgcolor\":\"pink\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"},\"MF\":{\"id\":\"MF\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Monoisotopic mass\",\"viewURL\":\"4a06cbbc25197036518fab2ea6ff961d\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"pink\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\"}}"
+              "script": [
+                "var couchDB = API.cache('couchDB');\n\n// we first reload the data\n// for the specific user\nvar roc = API.cache('rocSample');\nvar options = {\n    varName: 'samples',\n    mine: 1\n};\n\nvar entries= await roc.query('sample_toc', options);\nentries=entries.slice(0,5);\nconsole.log('Need to update ',entries.length,'entries');\n\nvar counter=0;\nfor (var entry of entries) {\n    console.log('Updating',++counter,'/',entries.length,'  Record ID:',entry.id);\n    await roc.document(String(entry.id));\n}\n"
               ]
             }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "vh/eln/Sample",
+                "alias": "Sample"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Migrate from cheminfo",
+                "hide": []
+              }
+            ]
           ]
         }
       },
@@ -1602,7 +1502,7 @@
           },
           "zIndex": 0,
           "display": false,
-          "title": "Definition of available views",
+          "title": "Migrate my products from cheminfo",
           "bgColor": [
             255,
             255,
@@ -1616,15 +1516,15 @@
         "admin": {
           "position": {
             "left": 0,
-            "top": 0
+            "top": 81
           },
           "size": {
-            "width": 20,
-            "height": 20
+            "width": 69,
+            "height": 30
           },
           "zIndex": 0,
-          "display": false,
-          "title": "Definition of available views",
+          "display": true,
+          "title": "Migrate my products from cheminfo",
           "bgColor": [
             255,
             255,
@@ -1637,16 +1537,16 @@
         },
         "Links": {
           "position": {
-            "left": 52,
+            "left": 0,
             "top": 0
           },
           "size": {
-            "width": 66,
-            "height": 91
+            "width": 20,
+            "height": 20
           },
           "zIndex": 0,
-          "display": true,
-          "title": "Definition of available views",
+          "display": false,
+          "title": "Migrate my products from cheminfo",
           "bgColor": [
             255,
             255,
@@ -1658,7 +1558,7 @@
           "name": "Links"
         }
       },
-      "id": 9,
+      "id": 8,
       "vars_in": [
         {}
       ],
@@ -1667,14 +1567,14 @@
       ],
       "vars_out": [
         {
-          "event": "onObjectChange",
-          "rel": "output",
-          "jpath": [],
-          "name": "linksTemplate"
+          "jpath": []
         }
       ],
-      "title": "Definition of available views",
-      "actions_out": [],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
       "toolbar": {
         "custom": [
           [
@@ -1696,7 +1596,728 @@
           }
         ]
       },
-      "zindex": 3
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ],
+      "title": "Migrate my products from cheminfo"
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [
+                [
+                  "editor",
+                  "buttons"
+                ]
+              ],
+              "execOnLoad": [
+                []
+              ],
+              "asyncAwait": [
+                [
+                  "top"
+                ]
+              ],
+              "script": [
+                "\nvar couchDB = API.cache('couchDB');\n\n// we first reload the data\n// for the specific user\nvar roc = API.cache('rocSample');\nvar options = {\n    varName: 'samples',\n    mine: 1\n};\n\nvar entries= await roc.query('sample_toc', options);\n\nconsole.log('Need to delete ',entries.length,'entries');\n\nvar counter=0;\nfor (var entry of entries) {\n    var id=String(entry.id);\n    var uuid=entry.value._id;\n    if (uuid) {\n        if (id.match(/^[0-9]+$/)) {\n            console.log('Deleting',++counter,'/',entries.length,'  Record ID:',id,' UUID',uuid);\n            await roc.delete(uuid);\n        } else {\n            console.log('Not touching an entry added directly in ELN',id);\n        }\n    } else {\n        console.log('We have an undefined uuid. The entry was not yet copied',entry.id);\n    }\n    \n\n\n}\n"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "vh/eln/Sample",
+                "alias": "Sample"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Delete products from cheminfo",
+                "hide": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Delete all products migrated from cheminfo",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 70,
+            "top": 78
+          },
+          "size": {
+            "width": 69,
+            "height": 32
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Delete all products migrated from cheminfo",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Delete all products migrated from cheminfo",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 9,
+      "vars_in": [
+        {}
+      ],
+      "actions_in": [
+        {}
+      ],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ],
+      "title": "Delete all products migrated from cheminfo"
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [
+                [
+                  "editor",
+                  "buttons"
+                ]
+              ],
+              "execOnLoad": [
+                []
+              ],
+              "asyncAwait": [
+                [
+                  "top"
+                ]
+              ],
+              "script": [
+                "var button=getButton();\n\nswitch (button) {\n    case 'add':\n        API.doAction('createSample');\n        break;\n    case 'help':\n        API.doAction('Help');\n        break;\n}"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {}
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "help",
+                "label": "Help",
+                "hide": []
+              },
+              {
+                "name": "add",
+                "label": "Add sample",
+                "hide": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 36,
+            "top": 0
+          },
+          "size": {
+            "width": 19,
+            "height": 6
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 10,
+      "vars_in": [
+        {}
+      ],
+      "actions_in": [
+        {}
+      ],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ],
+      "title": ""
+    },
+    {
+      "url": "modules/types/edition/slick_grid/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "slickCheck": [
+                [
+                  "enableCellNavigation",
+                  "rowNumbering",
+                  "forceFitColumns",
+                  "highlightScroll",
+                  "editable",
+                  "enableAddRow"
+                ]
+              ],
+              "autoColumns": [
+                [
+                  "reorder",
+                  "remove"
+                ]
+              ],
+              "toolbar": [
+                []
+              ],
+              "colorjpath": [
+                []
+              ],
+              "slick.defaultColumnWidth": [
+                null
+              ],
+              "slick.rowHeight": [
+                null
+              ],
+              "slick.headerRowHeight": [
+                30
+              ],
+              "slick.selectionModel": [
+                "row"
+              ],
+              "idProperty": [
+                ""
+              ],
+              "filterType": [
+                "pref"
+              ],
+              "filterRow": [
+                "// Documentation: https://github.com/NPellet/visualizer/blob/87ba3af17e07f6766c266385c41b177d5094150b/src/modules/types/edition/slick_grid/view.js#L1253-L1279"
+              ],
+              "customJpaths": [
+                "title,rights,rev"
+              ]
+            }
+          ],
+          "cols": [
+            [
+              {
+                "name": "Date",
+                "jpath": [
+                  "date"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "dateFormat:YYYY-MM-DD",
+                "editorOptions": "",
+                "width": 117,
+                "hideColumn": []
+              },
+              {
+                "name": "Id",
+                "jpath": [
+                  "id"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 117,
+                "hideColumn": []
+              },
+              {
+                "name": "Kind",
+                "jpath": [
+                  "kind"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 117,
+                "hideColumn": []
+              },
+              {
+                "name": "Description",
+                "jpath": [
+                  "description"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 117,
+                "hideColumn": []
+              },
+              {
+                "name": "viewURL",
+                "jpath": [
+                  "viewURL"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 116,
+                "hideColumn": []
+              },
+              {
+                "name": "Icon",
+                "jpath": [
+                  "icon"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 116,
+                "hideColumn": []
+              },
+              {
+                "name": "Title",
+                "jpath": [
+                  "title"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 106,
+                "hideColumn": []
+              },
+              {
+                "name": "BG",
+                "jpath": [
+                  "bgcolor"
+                ],
+                "editor": "color",
+                "forceType": "color",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 48,
+                "hideColumn": []
+              },
+              {
+                "name": "FC",
+                "jpath": [
+                  "fontcolor"
+                ],
+                "editor": "color",
+                "forceType": "color",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 44,
+                "hideColumn": []
+              },
+              {
+                "name": "Rights",
+                "jpath": [
+                  "rights"
+                ],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 266,
+                "hideColumn": []
+              },
+              {
+                "name": "Empty",
+                "jpath": [
+                  "empty"
+                ],
+                "editor": "boolean",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 116,
+                "hideColumn": []
+              }
+            ]
+          ],
+          "actionCols": [
+            [
+              {
+                "backgroundColor": [
+                  255,
+                  255,
+                  255,
+                  0
+                ],
+                "color": [
+                  0,
+                  0,
+                  0,
+                  1
+                ],
+                "position": "end",
+                "clickMode": "text"
+              }
+            ]
+          ],
+          "groupings": [
+            [
+              {
+                "getter": []
+              }
+            ]
+          ],
+          "actionOutButtons": [
+            [
+              {}
+            ]
+          ],
+          "data": [
+            {
+              "saveInView": [
+                [
+                  "yes"
+                ]
+              ],
+              "varname": [
+                "tiles"
+              ],
+              "data": [
+                "[{\"id\":\"Samples\",\"kind\":\"nbSample\",\"description\":\"Number of sample\",\"data\":\"\",\"text\":\"\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"empty\":false,\"line\":0,\"title\":\"cache:nbSamples\"},{\"id\":\"Reactions\",\"viewURL\":\"a6fb774a50448cc3edd52dd6dfd275ea\",\"kind\":\"optionalSample\",\"description\":\"Notebook\",\"icon\":\"ci-icon-glassware-round-flask\",\"bgcolor\":\"rgb(255, 242, 204)\",\"line\":0,\"date\":\"2017-04-30\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search\",\"viewURL\":\"aaa5f97c7cde94741de2938b106bb0d4\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\",\"line\":0},{\"viewURL\":\"83e55c39f2601bc912a45f049e2bd424\",\"description\":\"OCL\",\"id\":\"OCL\",\"bgcolor\":\"rgb(255, 242, 204)\",\"rights\":\"admin@cheminfo.org\",\"line\":0,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"id\":\"OS\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Open/edit sample\",\"viewURL\":\"15c9a2dcd55c963fdedf2c18a1471b03\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-edit\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":0},{\"date\":\"2017-05-09\",\"id\":\"attachments\",\"kind\":\"sample\",\"description\":\"Upload attachments\",\"icon\":\"fa-edit\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"admin@cheminfo.org\",\"viewURL\":\"f795f6dc38df9221ca34bf288aa015aa\",\"line\":0},{\"id\":\"\",\"line\":1,\"empty\":true},{\"id\":\"PP\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"1D NMR peak picking\",\"viewURL\":\"4c986ed7d921b11fbe6f20240f0df3a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-peak-picking\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1},{\"id\":\"Overlay NMR\",\"kind\":\"optionalSample\",\"description\":\"Overlay NMR\",\"viewURL\":\"f162299d0efd3f7c21b5542c85003689\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-overlay\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1,\"rev\":\"\"},{\"id\":\"1H\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 1H\",\"viewURL\":\"eea0ba081ea2cc99da5c1aed2f29a0a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":1},{\"id\":\"13C\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 13C\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a45f3c\",\"icon\":\"ci-icon-nmr-13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"id\":\"COSY\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict COSY\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a607ed\",\"icon\":\"ci-icon-nmr-1h1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"id\":\"HMBC\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict HMBC\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a68433\",\"icon\":\"ci-icon-nmr-1h13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"empty\":true},{\"id\":\"F\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Mass fragmentation\",\"viewURL\":\"0e35f561fff36fef6c9e7341a9eec858\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-bomb\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":2},{\"id\":\"MF\",\"kind\":\"sample\",\"description\":\"Monoisotopic mass\",\"viewURL\":\"4a06cbbc25197036518fab2ea6ff961d\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":2},{\"viewURL\":\"b60d4cd22af351b3996cb3321f169a0e\",\"bgcolor\":\"rgb(244, 204, 204)\",\"id\":\"Cont\",\"kind\":\"optionalSample\",\"description\":\"Mass contaminants\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2},{\"viewURL\":\"8fcf268d9a86be15206e3bc1fa1dca49\",\"id\":\"jMsPept\",\"kind\":\"optionalSample\",\"description\":\"Peptide analysis\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2},{\"empty\":true},{\"id\":\"Dia\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Diastereotopic\",\"viewURL\":\"b50564ac9d207212f8e5ae816795fb39\",\"icon\":\"ci-icon-structure-diastereotopic\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3},{\"id\":\"3D\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"3D model\",\"viewURL\":\"0e019bb4d797395213d22aca403d2c93\",\"icon\":\"ci-icon-structure-3d-model\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3},{\"id\":\"Conf\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Conformations\",\"viewURL\":\"0e019bb4d797395213d22aca4043260e\",\"icon\":\"ci-icon-structure-conformers\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3,\"rights\":\"\"},{\"empty\":true},{\"viewURL\":\"105a8192b3046702221775d1c09485d2\",\"description\":\"Format manager\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"formatManager\",\"line\":4,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"description\":\"Sample manager\",\"viewURL\":\"83e55c39f2601bc912a45f049e7c9645\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"sampleManager\",\"line\":4,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\"}]"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 52,
+            "top": 0
+          },
+          "size": {
+            "width": 135,
+            "height": 79
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [
+            255,
+            255,
+            255,
+            0
+          ],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        }
+      },
+      "id": 11,
+      "vars_in": [
+        {
+          "rel": "list",
+          "name": "tiles"
+        }
+      ],
+      "actions_in": [
+        {}
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [
+              [
+                "Open Preferences"
+              ]
+            ]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [
+            ""
+          ],
+          "fontFamily": [
+            ""
+          ]
+        }
+      ],
+      "title": ""
     }
   ],
   "variables": [
@@ -1733,12 +2354,12 @@
   ],
   "aliases": [
     {
-      "path": "https://www.lactame.com/github/cheminfo-js/visualizer-helper/6aceb37bf1078f16b7b59dfe6e0e89c03f7928c5/",
+      "path": "https://www.lactame.com/github/cheminfo-js/visualizer-helper/1b065087a4f16d810b79c5ea153b00161d791c49/",
       "alias": "vh"
     },
     {
-      "path": "https://www.lactame.com/lib/eln-plugin/0.0.2/eln-plugin",
-      "alias": "elnPlugin"
+      "path": "https://a17ef982.ngrok.io/cheminfo-js/visualizer-helper/",
+      "alias": "vhxx"
     }
   ],
   "configuration": {
@@ -1759,6 +2380,36 @@
           }
         ]
       }
+    },
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": [
+              "Help"
+            ],
+            "script": [
+              "var url='https://docs.google.com/document/d/1wfKyk9aw34F_mY9w1OZn089TOWgf8i6FVDwtL0FFbpo/edit?usp=sharing';\n \nrequire(['src/util/ui'], function(UI) {\n    UI.dialog(\n        '<iframe width=\"100%\" height=\"100%\" src=\"'+url+'\"></iframe>',\n        {width:1000, height: 800}\n    );\n})\n\n\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": [
+              "ShowUserInfo"
+            ],
+            "script": [
+              "require(['vh/rest-on-couch/showUserInfo'], function(showUserInfo) {\n    var userInfo=API.cache('userInfo');\n    showUserInfo(userInfo);\n})"
+            ]
+          }
+        ]
+      }
     }
   ],
   "init_script": [
@@ -1768,7 +2419,7 @@
         "general": [
           {
             "script": [
-              "\nvar couchUrl = '/roc/';\nvar database = 'eln';\nvar couchDB = {\n    url:couchUrl,\n    database:database,\n    kind:'sample'\n}\nAPI.cache('domain', 'ch.epfl.');\n\nvar printer = {\n    couchDB: {\n        url: '/roc/',\n        database: 'printers'\n    }\n};\n\nAPI.cache('printer', printer);\nAPI.cache('couchDB',couchDB);\n\n// For demonstration purpose\nif((typeof IframeBridge)!='undefined'){\n    IframeBridge.onMessage(function(data) {\n        if (data.type === 'tab.message') {\n            switch (data.message.action) {\n                case 'selectEntry':\n                    return selectEntry(data.message.uuid);\n                default:\n                    console.log('got an unknown message', data.message);\n                    return;\n            }\n        }\n    });\n    IframeBridge.ready();\n}\n\nfunction selectEntry(uuid) {\n    if (!uuid) return;\n    const samples = API.getData('filteredSamples');\n    if (samples) {\n        const index = samples.findIndex(sample => String(sample.id) === uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    }\n}\n\n// Load custom font\nrequire(['src/util/util'], function(Util) {\n    Util.loadCss('https://www.lactame.com/lib/cheminfo-font/0.0.9/cheminfo.css');\n})"
+              "\nvar couchUrl = 'http://icmbpc139.epfl.ch/roc/';\nvar database = 'eln';\nvar couchDB = {\n    url:couchUrl,\n    database:database,\n    kind:'sample'\n}\nAPI.cache('domain', 'ch.epfl.');\n\n/*\nvar printer = {\n    couchDB: {\n        url: 'https://eln.epfl.ch/roc/',\n        database: 'printers',\n        proxy: 'https://eln.epfl.ch/printer-proxy'\n    },\n    proxy: 'https://eln.epfl.ch/printer-proxy'\n};\n\nAPI.cache('printerConfig', printer);\n*/\n\nAPI.cache('couchDB',couchDB);\n\n// For demonstration purpose\nif((typeof IframeBridge)!='undefined'){\n    IframeBridge.onMessage(function(data) {\n        switch (data.type) {\n            case 'tab.message':\n                switch (data.message.action) {\n                    case 'selectEntry':\n                        return selectEntry(data.message.uuid);\n                    default:\n                        console.log('got an unknown message', data.message);\n                        return;\n                }\n                break;\n            case 'tab.focus':\n                API.doAction('refreshSample');\n                break;\n        }\n    });\n    IframeBridge.ready();\n}\n\nfunction selectEntry(uuid) {\n    if (!uuid) return;\n    const samples = API.getData('filteredSamples');\n    if (samples) {\n        const index = samples.findIndex(sample => String(sample.id) === uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    }\n}\n\n// Load custom font\nrequire(['src/util/util'], function(Util) {\n    Util.loadCss('https://www.lactame.com/lib/cheminfo-font/0.1.4/style.css');\n})"
             ]
           }
         ]

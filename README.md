@@ -58,6 +58,9 @@ $ cd roc-eln-docker
 
 - Copy and modify [`roc-config.js`](./roc-config.js) in $REST_ON_COUCH_HOME_DIR/config.js
 
+Take care of the final name !!! Not having any configuration file may yield to unexptected results, mainly at
+the level of domain associated with cookies.
+
 ### Visualizer
 
 Clone https://github.com/cheminfo/roc-visualizer-config.git to $REST_ON_COUCH_HOME_DIR/visualizer
@@ -75,6 +78,8 @@ Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/
 ```
 $ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
 $ git clone https://github.com/cheminfo/roc-eln-config.git eln
+$ cd eln
+$ yarn
 ```
 
 ### Printers

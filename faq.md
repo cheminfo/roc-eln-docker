@@ -25,13 +25,14 @@ systemctl enable httpd
 
 By default the docker nginx-proxy listen to port 4444. You should add in `/etc/httpd/conf.d` a proxy to this port.
 
+NEVER put a ServerAlias !!!! Because the authentication is valid only from one domain.
+
 `vi /etc/httpd/conf.d/eln.conf`
 
 ```
 <VirtualHost *:80>
     ServerAdmin     a@b.com
     ServerName      eln.myinstitution.org
-    ServerAlias     eln
 
     SetEnvIf Origin "^(.*)$" AccessControlAllowOrigin=$0
     Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
@@ -45,7 +46,7 @@ By default the docker nginx-proxy listen to port 4444. You should add in `/etc/h
 
 You should then start httpd:
 ```
-systemctl start httpd
+$ systemctl start httpd
 ```
 
 If you have an error in your apache configuration file you can use `apachectl configtest` to determine the line with
@@ -72,6 +73,21 @@ Docker will install new chains in iptables. This means you may not restart iptab
 If you really have to restart iptables service then you will have also to restart docker and docker-compose.
 
 ```
-systemctl docker restart
-docker-compose restart
-`
+$ systemctl docker restart
+$ docker-compose restart
+```
+
+
+### Allow Google login
+
+You should login on your google developper account and create a key for your website
+
+
+https://console.developers.google.com
+
+Credentials -> Create credentials -> Create OAuth client ID -> Web applications
+Authorized JavaScript origins: https://myServerName/
+Authorized redirect URIs: https://myServerName/roc/auth/login/google/callback
+
+After you need to edit `rest-on-couch-home/config.js`, uncomment the google login part and
+set the clientID and clientSecret.
