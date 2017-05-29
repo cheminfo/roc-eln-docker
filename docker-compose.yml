@@ -4,6 +4,9 @@ services:
     image: cheminfo/eln-nginx-proxy
     ports:
       # Map application to local port
+      # It is better to use in apache a Proxy from port 80 to port 4444 in order
+      # also to setup easily a certificate
+      # You should not change the container port number ! In this case 80.
       - '4444:80'
     links:
       - couchdb
@@ -23,7 +26,8 @@ services:
       COUCHDB_PASSWORD: password # CHANGE HERE
       COUCHDB_PRINTER_PASSWORD: password # CHANGE HERE
     volumes:
-      # Map local CouchDB data directory
+      # Map local CouchDB data directory. You should not change the container directory !
+      # in this case: /usr/local/var/lib/couchdb/
       - ./couchdb-data:/usr/local/var/lib/couchdb/
 
   rest-on-couch:
