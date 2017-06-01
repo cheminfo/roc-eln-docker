@@ -23,12 +23,13 @@
         "url": "../roc"
       },
       "rewriteRules": [
-        {"reg": "^public/(.*)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json"},
-        {"reg": "^private/(.*)$", "replace": "../roc/db/visualizer/entry/$1/view.json"},
-        {"reg": "../couch/visualizer/(.*)", "replace": "../roc/db/visualizer/entry/$1"},
-        {"reg": "^([a-z0-9]+)\\?(.*)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json/$2"},
+        {"reg": "^public/([a-z0-9]+)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json"},
+        {"reg": "^public/([a-z0-9]+)\\?(.*)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json?$2"},
+        {"reg": "^private/([a-z0-9]+)$", "replace": "../roc/db/visualizer/entry/$1/view.json"},
+        {"reg": "^private/([a-z0-9]+)\\?(.*)$", "replace": "../roc/db/visualizer/entry/$1/view.json?$2"},
         {"reg": "^[a-z0-9]+$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&/view.json"},
-        {"reg": "^[a-z0-9]+\/view.json.*$", "replace": "https://couch.cheminfo.org/cheminfo-public/$&"}
+        {"reg": "^([a-z0-9]+)\\?(.*)$", "replace": "https://couch.cheminfo.org/cheminfo-public/$1/view.json?$2"},
+        {"reg": "^[^/]+\/view.json.*", "replace": "https://couch.cheminfo.org/cheminfo-public/$&"}
       ]
     }
   }
