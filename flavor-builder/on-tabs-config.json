@@ -55,7 +55,7 @@
     {"reg": "^private/([a-z0-9]{32})$", "replace": "../roc/db/visualizer/entry/$1/view.json"},
     [
       {"reg": "^private/([a-z0-9]{32})\\?(.*)$", "replace": "../roc/db/visualizer/entry/$1/view.json?$2"},
-      {"reg": "rev=[a-z0-9\\-]+", "replace": ""},
+      {"reg": "rev=[a-z0-9\\-]+", "replace": "", "optionalMatch": true},
       {"reg": "&&", "replace": "&", "optionalMatch": true},
       {"reg": "\\?&", "replace": "?", "optionalMatch": true},
       {"reg": "\\?$", "replace": "", "optionalMatch": true},
