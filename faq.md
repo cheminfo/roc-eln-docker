@@ -73,8 +73,7 @@ Docker will install new chains in iptables. This means you may not restart iptab
 If you really have to restart iptables service then you will have also to restart docker and docker-compose.
 
 ```
-$ systemctl docker restart
-$ docker-compose restart
+$ systemctl restart docker
 ```
 
 
