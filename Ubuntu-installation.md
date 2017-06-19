@@ -74,7 +74,7 @@ apt-get install yarn
 ```
 
 ## Configure
-Follow instruction in the main readme
+Follow instruction in the [main readme](https://github.com/cheminfo/roc-eln-docker/blob/master/README.md)
 
 :warning: Skip the part on selinux as it is disabled by default on ubuntu
 
