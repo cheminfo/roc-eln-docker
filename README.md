@@ -96,7 +96,7 @@ $ git clone https://github.com/cheminfo/roc-printers-config.git printers
 
 ```
 docker-compose pull
-docker-compose up -d
+docker-compose up -d --build
 ```
 
 ## Add systemd service to manage application

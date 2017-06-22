@@ -6,7 +6,7 @@
 The docker-compose.yml file contains the list of all the docker images required by this project,
 their version as well as their dependencies.
 If you want to update the version of an image you should change the name in the docker-compose.yml. After changing
-this file you should run: `docker-compose up -d` (-d allows to put the process in background).
+this file you should run: `docker-compose up -d --build` (-d allows to put the process in background).
 
 ### Don't use docker !
 

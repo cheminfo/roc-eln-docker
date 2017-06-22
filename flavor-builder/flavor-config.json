@@ -2,6 +2,7 @@
   "couchurl": "../couch/",
   "couchLocalUrl": "http://couchdb:5984/",
   "couchDatabase": "visualizer",
+  "designDoc": "app",
   "dir": "/var/www/html",
   "home": "Home",
   "forceUpdate": false,

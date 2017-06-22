@@ -7,10 +7,6 @@ server {
         proxy_pass http://rest-on-couch:3000/;
     }
 
-    location /couch/ {
-        proxy_pass http://couchdb:5984/;
-    }
-
     location /printer-proxy/ {
         proxy_pass http://printer-proxy:7770/;
     }
