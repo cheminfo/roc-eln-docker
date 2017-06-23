@@ -29,6 +29,7 @@ services:
       # Map local CouchDB data directory. You should not change the container directory !
       # in this case: /opt/couchdb/data
       - ./couchdb-data:/opt/couchdb/data
+      - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
 
   rest-on-couch:
     build: ./rest-on-couch
