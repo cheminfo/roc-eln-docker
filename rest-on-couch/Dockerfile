@@ -1,4 +1,4 @@
-FROM cheminfo/rest-on-couch:v5.0.1
+FROM cheminfo/rest-on-couch:v5.1.0
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
