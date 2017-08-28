@@ -11,13 +11,11 @@ $ yum install docker git wget -y
 
 See: https://github.com/docker/compose/releases
 
-## Install Node.js and yarn
+## Install Node.js
 
 ```
-$ curl -sL https://rpm.nodesource.com/setup_7.x | bash -
+$ curl -sL https://rpm.nodesource.com/setup_8.x | bash -
 $ yum install -y nodejs
-$ wget https://dl.yarnpkg.com/rpm/yarn.repo -O /etc/yum.repos.d/yarn.repo
-$ yum install -y yarn
 ```
 
 ## Permanently disable SELinux
@@ -79,7 +77,7 @@ Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/
 $ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
 $ git clone https://github.com/cheminfo/roc-eln-config.git eln
 $ cd eln
-$ yarn
+$ npm i
 ```
 
 ### Printers
