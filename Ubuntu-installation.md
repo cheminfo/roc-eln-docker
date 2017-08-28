@@ -59,18 +59,11 @@ Test the installation
 docker-compose --version
 ```
 
-## Install Node.js and yarn
+## Install Node.js
 Install recent stable node.js version
 ```bash
-curl -sL https://deb.nodesource.com/setup_7.x | bash -
+curl -sL https://deb.nodesource.com/setup_8.x | bash -
 apt-get install nodejs
-```
-
-Install stable yarn release
-```bash
-curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
-echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
-apt-get install yarn
 ```
 
 ## Configure
