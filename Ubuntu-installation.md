@@ -76,7 +76,7 @@ apt-get install yarn
 ## Configure
 Follow instruction in the [main readme](https://github.com/cheminfo/roc-eln-docker/blob/master/README.md)
 
-:warning: Skip the part on selinux as it is disabled by default on ubuntu
+:warning: The part on SELinux is different. SELinux is disabled by default on Ubuntu.
 
 ## Install nginx
 ```bash
