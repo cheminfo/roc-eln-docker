@@ -1,4 +1,4 @@
-FROM node:7-slim
+FROM node:8-slim
 
 # Install Apache
 RUN apt-get update && apt-get install -y apache2 cron git
