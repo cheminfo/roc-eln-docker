@@ -7,7 +7,7 @@ EXPOSE 80
 # Get flavor-builder
 WORKDIR /git/flavor-builder
 COPY package.json package.json
-RUN yarn && rm -rf /root/.npm /usr/local/share/.cache /root/.cache
+RUN npm i && rm -rf /root/.npm /usr/local/share/.cache /root/.cache
 
 COPY crontab /etc/cron.d/flavor-cron
 RUN chmod 744 /etc/cron.d/flavor-cron
