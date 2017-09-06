@@ -76,7 +76,6 @@ If you really have to restart iptables service then you will have also to restar
 $ systemctl restart docker
 ```
 
-
 ### Allow Google login
 
 You should login on your google developper account and create a key for your website
@@ -90,3 +89,27 @@ Authorized redirect URIs: https://myServerName/roc/auth/login/google/callback
 
 After you need to edit `rest-on-couch-home/config.js`, uncomment the google login part and
 set the clientID and clientSecret.
+
+### Automatic importation of files (jcamp, etc.)
+
+rest-on-couch allows to import automatically files based on a filter that is placed
+in the corresponding folder.
+
+In `roc-eln-docker` folder you will find `rest-on-couch` that contains a folder `eln`
+that corresponds to the name of the couchDB database. In this folder you are
+free to put any number of folders that will contain a file named `ìmport.js` describing
+how to import files that are dropped in the folder.
+So all the files that you would like to import of the kind nmr
+for example could be placed in:
+`/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/to_process` and once they are
+processed they will be moved to 
+`/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/processed` or in case of error to 
+`/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/errored`.
+
+
+
+
+
+
+
+
