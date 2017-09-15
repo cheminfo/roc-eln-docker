@@ -1,5 +1,7 @@
 # roc-eln-docker
 
+This project installs the necessary services (dockers) to run a full electronic laboratory book. A deployed version can be found at www.c6h6.org.
+
 ## Install required system dependencies
 
 ```
