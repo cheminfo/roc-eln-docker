@@ -15,7 +15,7 @@ services:
     #Uncomment to add web assets
     volumes:
       - ./nginx-proxy/conf.nginx:/etc/nginx/conf.d/default.conf
-    #  - ./www-assets:/data/www/
+      - ./www:/data/www/
 
   couchdb:
     image: docker.io/klaemo/couchdb:2.0.0
@@ -91,6 +91,8 @@ services:
     #  - ./flavor-config.json:/flavor-config.json
     links:
       - couchdb
+    volumes:
+      - ./www:/var/www/html/
 
   printer-proxy:
     image: docker.io/cheminfo/eln-printer-proxy

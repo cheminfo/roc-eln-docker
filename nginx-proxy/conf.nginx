@@ -11,10 +11,6 @@ server {
         proxy_pass http://printer-proxy:7770/;
     }
 
-    location /assets/ {
-        root /data/www;
-    }
-
     # Uncomment and rebuild if needed
 #    location /my_secret_file_drop/MY_DATABASE/ {
 #        client_max_body_size 0;
@@ -22,7 +18,7 @@ server {
 #    }
 
     location / {
-        proxy_pass http://flavor-builder/;
+        root /data/www;
     }
 
     error_page   500 502 503 504  /50x.html;
