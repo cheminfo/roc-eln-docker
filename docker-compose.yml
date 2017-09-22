@@ -85,14 +85,13 @@ services:
       # They must be the same as in the "couchdb" container
       COUCHDB_USER: admin
       COUCHDB_PASSWORD: password
+    volumes:
+      - ./www:/var/www/html/
     # Uncomment to use a custom flavor-builder config
     # This is usually unnecessary
-    #volumes:
     #  - ./flavor-config.json:/flavor-config.json
     links:
       - couchdb
-    volumes:
-      - ./www:/var/www/html/
 
   printer-proxy:
     image: docker.io/cheminfo/eln-printer-proxy
