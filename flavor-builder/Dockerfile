@@ -8,8 +8,8 @@ WORKDIR /git/flavor-builder
 COPY package.json package.json
 RUN npm i && rm -rf /root/.npm /usr/local/share/.cache /root/.cache
 
-COPY crontab /etc/cron.d/flavor-cron
-RUN chmod 744 /etc/cron.d/flavor-cron
+COPY crontab /etc/cron.d/flavorbuilder
+RUN chmod 744 /etc/cron.d/flavorbuilder
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
