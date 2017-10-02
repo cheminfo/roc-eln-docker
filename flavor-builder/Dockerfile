@@ -10,6 +10,7 @@ RUN npm i && rm -rf /root/.npm /usr/local/share/.cache /root/.cache
 
 COPY crontab /etc/cron.d/flavorbuilder
 RUN chmod 744 /etc/cron.d/flavorbuilder
+RUN touch /var/log/cron.log
 
 COPY start.sh /start.sh
 RUN chmod 744 /start.sh
