@@ -37,9 +37,10 @@ services:
       # CouchDB admin credentials
       # They must be the same as in the "couchdb" container
       COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
+      COUCHDB_PASSWORD: password # CHANGE HERE. Must be the same as before
       COUCHDB_PRINTER_PASSWORD: password2 # CHANGE HERE. This password must not be the same as the admin password
       DEBUG: 'couch:error,couch:warn,couch:debug'
+      REST_ON_COUCH_SESSION_KEY: koa:replace_me # CHANGE HERE. change 'replace_me' with something else.
     expose:
       - 3000
     volumes:
@@ -84,7 +85,7 @@ services:
       # CouchDB admin credentials
       # They must be the same as in the "couchdb" container
       COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
+      COUCHDB_PASSWORD: password # CHANGE HERE. Must be the same as before
     volumes:
       - ./www:/var/www/html/
     # Uncomment to use a custom flavor-builder config
