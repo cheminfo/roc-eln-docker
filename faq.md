@@ -125,8 +125,10 @@ the following command (replacing the URL's):
 
 ```bash
 curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicate -d \
-' { "source": "http://admin:admin_password@production:5984/foo", "target": "http://admin:admin_password@stage:5984/foo", "create_target": true }'
+' { "source": "http://admin:admin_password@productionServerHostname:5984/eln", "target": "http://admin:admin_password@productionServerHostname:5984/eln", "create_target": true }'
 ```
+
+do that for `eln`, `visualizer` and `printers` databases.
 
 __note__: take care if you are running this command from the roc-eln-docker couchdb container
 because the available port outside of the container is 4445 but inside is the 5984.
