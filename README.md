@@ -47,9 +47,10 @@ $ cd roc-eln-docker
 ## Edit `docker-compose.yml`
 
 - Bind local port to the application
-- Set CouchDB admin credentials (two places)
+- Set CouchDB admin credentials (three places)
 - Set CouchDB data directory and create corresponding host directory
 - Set rest-on-couch home directory (two places) and create corresponding host directory
+- Change REST_ON_COUCH_SESSION_KEY name with `openssl rand -hex 16` (or generate a random string)
 - Optional: set a custom `flavor-config.json`
 
 ## Configure rest-on-couch

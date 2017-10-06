@@ -18,7 +18,7 @@ services:
       - ./www:/data/www/
 
   couchdb:
-    image: docker.io/klaemo/couchdb:2.0.0
+    image: docker.io/apache/couchdb:2.1.0
     ports:
       - '4445:5984'
     environment:
@@ -37,9 +37,10 @@ services:
       # CouchDB admin credentials
       # They must be the same as in the "couchdb" container
       COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
+      COUCHDB_PASSWORD: password # CHANGE HERE. Must be the same as before
       COUCHDB_PRINTER_PASSWORD: password2 # CHANGE HERE. This password must not be the same as the admin password
       DEBUG: 'couch:error,couch:warn,couch:debug'
+      REST_ON_COUCH_SESSION_KEY: koa:replace_me # CHANGE HERE. change 'replace_me' with 'openssl rand -hex 16'.
     expose:
       - 3000
     volumes:
@@ -84,7 +85,7 @@ services:
       # CouchDB admin credentials
       # They must be the same as in the "couchdb" container
       COUCHDB_USER: admin
-      COUCHDB_PASSWORD: password
+      COUCHDB_PASSWORD: password # CHANGE HERE. Must be the same as before
     volumes:
       - ./www:/var/www/html/
     # Uncomment to use a custom flavor-builder config
