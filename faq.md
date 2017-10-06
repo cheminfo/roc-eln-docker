@@ -147,3 +147,15 @@ __note__: even if you are on couchdb 2.0.0, you have to manually migrate all
           data manually because there's no backward compatibility. [click here to see more](http://docs.couchdb.org/en/2.1.0/install/troubleshooting.html#upgrading)
 
 You can also give a try to the new `couchup` utility explained [here](http://docs.couchdb.org/en/2.1.0/install/upgrading.html#manual-couchdb-1-x-migration)
+
+
+
+### Building docker flavor-builder
+
+```bash
+cd flavor-builder
+
+docker build .
+docker tag 4b0026ee3294 cheminfo/eln-flavor-builder
+docker push cheminfo/eln-flavor-builder
+```
