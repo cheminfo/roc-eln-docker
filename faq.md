@@ -118,5 +118,30 @@ To get the help of the import you can run:
 You can test the importation of an errored file with an instruction like: 
 `node bin/rest-on-couch-import.js --dry-run /rest-on-couch/eln/nmr/errored/2017/08/28/abc.jdx eln nmr`
 
+### Migrating from any previous version of couchdb to couchdb 2.1.0
 
+you should have other installation of couchdb (can be local), then you execute 
+the following command (replacing the URL's):
 
+```bash
+curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicate -d \
+' { "source": "http://admin:admin_password@production:5984/foo", "target": "http://admin:admin_password@stage:5984/foo", "create_target": true }'
+```
+
+__note__: take care if you are running this command from the roc-eln-docker couchdb container
+because the available port outside of the container is 4445 but inside is the 5984.
+
+Then you do:
+
+* `docker-compose down`.
+* delete the `couchdb-data` folder.
+* update the `docker-compose.yml` with the couchdb:2.1.0 image (docker.io/apache/couchdb:2.1.0)
+* `docker-compose pull`
+* `docker-compose up -d`
+* execute the same bash command as before but changing the source and target.
+ 
+
+__note__: even if you are on couchdb 2.0.0, you have to manually migrate all
+          data manually because there's no backward compatibility. [click here to see more](http://docs.couchdb.org/en/2.1.0/install/troubleshooting.html#upgrading)
+
+You can also give a try to the new `couchup` utility explained [here](http://docs.couchdb.org/en/2.1.0/install/upgrading.html#manual-couchdb-1-x-migration)
