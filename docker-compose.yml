@@ -18,7 +18,7 @@ services:
       - ./www:/data/www/
 
   couchdb:
-    image: docker.io/apache/couchdb:2.1.0
+    image: docker.io/couchdb:2.1.1
     ports:
       - '4445:5984'
     environment:
