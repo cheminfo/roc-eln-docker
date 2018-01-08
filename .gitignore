@@ -1,5 +1,5 @@
 /couchdb-data
 /rest-on-couch-home
 /flavor-config*
-/www
+/www/*
 !/www/visualizer
