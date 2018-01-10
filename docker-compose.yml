@@ -96,10 +96,13 @@ services:
       - couchdb
 
   printer-proxy:
-    image: docker.io/cheminfo/eln-printer-proxy
+    image: docker.io/cheminfo/eln-printer-proxy:v1.0.0
     command: pm2-docker start /pm2-proxy.yml
     volumes:
       - ./printer-proxy-config.yml:/config.yml
+      # Uncomment to use a custom pm2 config
+      # This should normally not be necessary
+      #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
     links:
       - rest-on-couch
     expose:
