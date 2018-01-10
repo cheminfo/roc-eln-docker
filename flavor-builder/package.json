@@ -1,8 +1,0 @@
-{
-  "name": "flavor-builder-docker",
-  "version": "0.0.1",
-  "private": true,
-  "dependencies": {
-    "flavor-builder": "3.0.3"
-  }
-}

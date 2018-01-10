@@ -1,2 +1,0 @@
-* * * * * root . /env.sh; cd /git/flavor-builder; (/usr/local/bin/node /git/flavor-builder/node_modules/flavor-builder/bin/build.js --config=/flavor-config.json >> /var/log/cron.log 2>&1)
-

@@ -79,7 +79,7 @@ services:
 #      - 3001
 
   flavor-builder:
-    image: docker.io/cheminfo/eln-flavor-builder
+    image: docker.io/cheminfo/eln-flavor-builder:v0.0.1
     environment:
       DEBUG: 'flavor-builder*'
       # CouchDB admin credentials
@@ -87,10 +87,11 @@ services:
       COUCHDB_USER: admin
       COUCHDB_PASSWORD: password # CHANGE HERE. Must be the same as before
     volumes:
+      - ./flavor-builder-config.json:/flavor-config.json
       - ./www:/var/www/html/
-    # Uncomment to use a custom flavor-builder config
+    # Uncomment to use a custom on-tabs flavor-builder config
     # This is usually unnecessary
-    #  - ./flavor-config.json:/flavor-config.json
+    #  - ./flavor-builder-on-tabs-config.json:/on-tabs-config.json
     links:
       - couchdb
 
