@@ -46,7 +46,7 @@ services:
     volumes:
     # Map local roc home directory
       - ./rest-on-couch-home:/rest-on-couch
-      - ./pm2-rest-on-couch.yaml:/pm2-rest-on-couch.yaml
+      - ./pm2/rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     links:
       - couchdb
 
@@ -59,7 +59,7 @@ services:
     volumes:
     # Map local roc home directory
       - ./rest-on-couch-home:/rest-on-couch
-      - ./pm2-roc-import.yaml:/pm2-roc-import.yaml
+      - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
     links:
       - couchdb
 
@@ -72,7 +72,7 @@ services:
 #    volumes:
 #      # Map local roc home directory
 #      - ./rest-on-couch-home:/rest-on-couch
-#      - ./pm2-roc-file-drop.yaml:/pm2-roc-file-drop.yaml
+#      - ./pm2/roc-file-drop.yaml:/pm2-roc-file-drop.yaml
 #    links:
 #      - couchdb
 #    expose:
