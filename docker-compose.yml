@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx-proxy:
-    image: docker.io/cheminfo/eln-nginx-proxy
+    image: nginx:1.12-alpine
     ports:
       # Map application to local port
       # It is better to use in apache a Proxy from port 80 to port 4444 in order
@@ -14,7 +14,7 @@ services:
       - printer-proxy
     #Uncomment to add web assets
     volumes:
-      - ./nginx-proxy/conf.nginx:/etc/nginx/conf.d/default.conf
+      - ./conf.nginx:/etc/nginx/conf.d/default.conf
       - ./www:/data/www/
 
   couchdb:
