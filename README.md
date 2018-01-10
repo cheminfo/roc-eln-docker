@@ -46,20 +46,20 @@ $ cd roc-eln-docker
 
 ## Edit `docker-compose.yml`
 
-- Bind local port to the application
-- Set CouchDB admin credentials (three places)
-- Set CouchDB data directory and create corresponding host directory
-- Set rest-on-couch home directory (two places) and create corresponding host directory
-- Change REST_ON_COUCH_SESSION_KEY name with `openssl rand -hex 16` (or generate a random string)
-- Optional: set a custom `flavor-config.json`
+* Bind local port to the application
+* Set CouchDB admin credentials (three places)
+* Set CouchDB data directory and create corresponding host directory
+* Set rest-on-couch home directory (two places) and create corresponding host directory
+* Change REST_ON_COUCH_SESSION_KEY name with `openssl rand -hex 16` (or generate a random string)
+* Optional: edit `flavor-builder-config.json` to configure home page
 
 ## Configure rest-on-couch
 
 ### General config
 
-- Copy and modify [`roc-config.js`](./roc-config.js) in $REST_ON_COUCH_HOME_DIR/config.js
+* Edit $REST_ON_COUCH_HOME_DIR/config.js
 
-Take care of the final name !!! Not having any configuration file may yield to unexptected results, mainly at
+Take care of the final name !!! Not having any configuration file may yield to unexpected results, mainly at
 the level of domain associated with cookies.
 
 ### Visualizer
@@ -75,7 +75,6 @@ $ git clone https://github.com/cheminfo/roc-visualizer-config.git visualizer
 
 Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/eln
 
-
 ```
 $ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
 $ git clone https://github.com/cheminfo/roc-eln-config.git eln
@@ -85,13 +84,12 @@ $ npm i
 
 ### Printers
 
-- Clone https://github.com/cheminfo/roc-printers-config.git to $REST_ON_COUCH_HOME_DIR/printers
+* Clone https://github.com/cheminfo/roc-printers-config.git to $REST_ON_COUCH_HOME_DIR/printers
 
 ```
 $ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
 $ git clone https://github.com/cheminfo/roc-printers-config.git printers
 ```
-
 
 ## Start application
 
