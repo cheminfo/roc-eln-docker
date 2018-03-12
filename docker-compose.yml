@@ -79,7 +79,7 @@ services:
 #      - 3001
 
   flavor-builder:
-    image: docker.io/cheminfo/eln-flavor-builder:v0.0.1
+    image: docker.io/cheminfo/eln-flavor-builder:v1.0.0
     environment:
       DEBUG: 'flavor-builder*'
       # CouchDB admin credentials
