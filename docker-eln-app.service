@@ -9,4 +9,4 @@ ExecStart=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/dock
 ExecStop=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/docker-compose.yml stop
 
 [Install]
-WantedBy=local.target
+WantedBy=multi-user.target
