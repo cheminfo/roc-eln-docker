@@ -100,6 +100,8 @@ docker-compose up -d --build
 
 ## Add systemd service to manage application
 
+Please take care than in some case docker-compose is installed in `/usr/bin/docker-compose`instaad of
+`/usr/local/bin/docker-compose`
 
 
 ```
