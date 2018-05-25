@@ -4,21 +4,9 @@ Requires=docker.service
 After=docker.service
 
 [Service]
-if [ -f '/usr/local/bin/docker-compose' ]; then
-	DOCKER_COMPOSE=/usr/local/bin/docker-compose
-else 
-	if [ -f '/usr/bin/docker-compose' ]; then
-		DOCKER_COMPOSE=/usr/bin/docker-compose
-    else 
-		echo "Missing docker-compose !!!"
-		dmesg "Missing docker-compose !!!"
-        exit 1;
-	fi
-fi
-
 Restart=always
-ExecStart=DOCKER_COMPOSE -f /usr/local/docker/roc-eln-docker/docker-compose.yml up --build
-ExecStop=DOCKER_COMPOSE -f /usr/local/docker/roc-eln-docker/docker-compose.yml stop
+ExecStart=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/docker-compose.yml up --build
+ExecStop=/usr/local/bin/docker-compose -f /usr/local/docker/roc-eln-docker/docker-compose.yml stop
 
 [Install]
-WantedBy=multi-user.target
+WantedBy=default.target
