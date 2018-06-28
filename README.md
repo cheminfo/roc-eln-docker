@@ -2,21 +2,18 @@
 
 This project installs the necessary services (dockers) to run a full electronic laboratory book. A deployed version can be found at www.c6h6.org.
 
-## Install required system dependencies
+## Install docker and docker-compose and some dependencies
 
 ```
 $ yum update -y
-$ yum install docker git wget -y
+$ yum install epel-release -y
+$ yum install git docker docker-compose -y
 ```
-
-## Install docker-compose
-
-See: https://github.com/docker/compose/releases
 
 ## Install Node.js
 
 ```
-$ curl -sL https://rpm.nodesource.com/setup_8.x | bash -
+$ curl -sL https://rpm.nodesource.com/setup_10.x | bash -
 $ yum install -y nodejs
 ```
 
