@@ -8,7 +8,7 @@ services:
       # also to setup easily a certificate
       # You should not change the container port number ! In this case 80.
       - '4444:80'
-    links:
+    depends_on:
       - rest-on-couch
       - flavor-builder
       - printer-proxy
@@ -47,7 +47,7 @@ services:
     # Map local roc home directory
       - ./rest-on-couch-home:/rest-on-couch
       - ./pm2/rest-on-couch.yaml:/pm2-rest-on-couch.yaml
-    links:
+    depends_on:
       - couchdb
 
   rest-on-couch-import:
@@ -60,7 +60,7 @@ services:
     # Map local roc home directory
       - ./rest-on-couch-home:/rest-on-couch
       - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
-    links:
+    depends_on:
       - couchdb
 
 #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
@@ -73,7 +73,7 @@ services:
 #      # Map local roc home directory
 #      - ./rest-on-couch-home:/rest-on-couch
 #      - ./pm2/roc-file-drop.yaml:/pm2-roc-file-drop.yaml
-#    links:
+#    depends_on:
 #      - couchdb
 #    expose:
 #      - 3001
@@ -92,7 +92,7 @@ services:
     # Uncomment to use a custom on-tabs flavor-builder config
     # This is usually unnecessary
     #  - ./flavor-builder-on-tabs-config.json:/on-tabs-config.json
-    links:
+    depends_on:
       - couchdb
 
   printer-proxy:
@@ -103,7 +103,7 @@ services:
       # Uncomment to use a custom pm2 config
       # This should normally not be necessary
       #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
-    links:
+    depends_on:
       - rest-on-couch
     expose:
       - 7770
