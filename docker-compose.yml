@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./www:/data/www/
+    restart: always
 
   couchdb:
     image: docker.io/couchdb:2.1.1
@@ -23,6 +24,7 @@ services:
     volumes:
       - ${COUCHDB_DATA_DIRECTORY}:/opt/couchdb/data
       - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
+    restart: always
 
   rest-on-couch:
     build: ./rest-on-couch
@@ -36,6 +38,7 @@ services:
       - ./pm2/rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     depends_on:
       - couchdb
+    restart: always
 
   rest-on-couch-import:
     build: ./rest-on-couch
@@ -47,6 +50,7 @@ services:
       - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
     depends_on:
       - couchdb
+    restart: always
 
 #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
 #  rest-on-couch-file-drop:
@@ -59,6 +63,7 @@ services:
 #      - couchdb
 #    expose:
 #      - 3001
+#    restart: always
 
   flavor-builder:
     image: docker.io/cheminfo/eln-flavor-builder:v1.0.0
@@ -74,6 +79,7 @@ services:
     #  - ./flavor-builder-on-tabs-config.json:/on-tabs-config.json
     depends_on:
       - couchdb
+    restart: always
 
   printer-proxy:
     image: docker.io/cheminfo/eln-printer-proxy:v1.2.0
@@ -87,3 +93,4 @@ services:
       - rest-on-couch
     expose:
       - 7770
+    restart: always
