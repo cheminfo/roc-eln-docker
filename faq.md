@@ -159,3 +159,7 @@ docker build .
 docker tag 4b0026ee3294 cheminfo/eln-flavor-builder
 docker push cheminfo/eln-flavor-builder
 ```
+
+### selinux
+
+https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
