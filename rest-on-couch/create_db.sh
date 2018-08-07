@@ -14,11 +14,11 @@ curl -X POST -H "Content-Type: application/json" http://${COUCHDB_USER}:${COUCHD
 # Create rest-on-couch users and databases
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "'${COUCHDB_PASSWORD}'" }'
+     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "'${COUCHDB_ROC_SERVER_PASSWORD}'" }'
 
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'${COUCHDB_PASSWORD}'" }'
+     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'${COUCHDB_ROC_ADMIN_PASSWORD}'" }'
 
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \

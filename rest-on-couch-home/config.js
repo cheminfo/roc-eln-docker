@@ -1,45 +1,44 @@
 'use strict';
 
+const ldapConfig = require('./ldap');
+
+const keys = process.env.REST_ON_COUCH_APP_KEYS;
+if (keys === '') {
+  throw new Error(
+    'There must be at least one app key defined in REST_ON_COUCH_APP_KEYS'
+  );
+}
+const appKeys = keys.split(',');
+
+const origins = process.env.REST_ON_COUCH_ORIGINS;
+if (origins === '') {
+  throw new Error(
+    'There must be at least one origin defined in REST_ON_COUCH_ORIGINS'
+  );
+}
+const allowedOrigins = origins.split(',');
+
+const adminUsers = process.env.REST_ON_COUCH_ADMIN_USERS;
+let administrators = ['admin@cheminfo.org'];
+if (adminUsers !== '') {
+  administrators.push(...adminUsers.split(','));
+}
+
+const proxyPrefix = process.env.REST_ON_COUCH_PROXY_PATH || '';
+
 module.exports = {
-  // Change this to the base address of your server
-  allowedOrigins: ['http://server.example.com'],
-  // Same as above, without http://
-  sessionDomain: 'server.example.com',
-  // put a 32 character random string
-  keys: ['changeThisForARandomKey'],
-  
-  // keep admin@cheminfo.org. You can add more admins if you want
-  administrators: ['admin@cheminfo.org'],
-  
-  password: "password", // put the COUCHDB_PASSWORD from docker-compose.yml
-  
-  // if your application is behind a reverse proxy, add the prefix here (but keep /roc/ at the end)
-  // example: app is available at http://server.example.com/my/app. proxyPrefix must be '/my/app/roc/'
-  proxyPrefix: '/roc/',
-  // main address from allowedOrigins
-  publicAddress: 'http://server.example.com/',
+  allowedOrigins, // ['https://server1.example.com', 'https://server2.example.com', ...]
+  keys: appKeys, // ['key1', 'key2', ...]
+  administrators, // ['admin1@example.com', 'admin2@example.com', ...]
+  port: 3000,
+  url: 'http://couchdb:5984',
+  username: 'rest-on-couch',
+  password: process.env.COUCHDB_ROC_SERVER_PASSWORD,
+  logLevel: 'FATAL',
+  proxyPrefix: proxyPrefix + '/roc/',
+  publicAddress: allowedOrigins[0],
   auth: {
-    /* uncomment and configure for ldap login
-    ldap: {
-      server: {
-        url: 'ldaps://ldap.epfl.ch',
-        searchBase: 'c=ch',
-        searchFilter: 'uid={{username}}'
-      },
-      getUserInfo: function(user) {
-        return {
-          uid: user.uid[0],
-          group: user.uid[1].replace(/^.*@/, '')
-        };
-      }
-    },
-    */
-    /* uncomment and configure for google login
-    google: {
-      clientID: "mylongclientid.apps.googleusercontent.com",
-      clientSecret: "myclientsecret"
-    },
-    */
+    ldap: ldapConfig,
     // do not disable couchdb login. You can enable "showLogin" if necessary
     couchdb: {
       showLogin: false
@@ -52,12 +51,5 @@ module.exports = {
     read: [],
     write: [],
     create: ['anyuser']
-  },
-  
-  
-  // From here, DO NOT CHANGE ANYTHING unless you know what you are doing!
-  logLevel: 'FATAL',
-  port: 3000,
-  url: 'http://couchdb:5984',
-  username: "rest-on-couch"
+  }
 };

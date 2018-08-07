@@ -1,4 +1,3 @@
-
 ## FAQ
 
 ### How to update a docker image ?
@@ -41,10 +40,10 @@ NEVER put a ServerAlias !!!! Because the authentication is valid only from one d
 	ProxyPass / http://localhost:4444/
 	ProxyPassReverse / http://localhost:4444/
 </VirtualHost>
-
 ```
 
 You should then start httpd:
+
 ```
 $ systemctl start httpd
 ```
@@ -80,7 +79,6 @@ $ systemctl restart docker
 
 You should login on your google developper account and create a key for your website
 
-
 https://console.developers.google.com
 
 Credentials -> Create credentials -> Create OAuth client ID -> Web applications
@@ -102,11 +100,11 @@ how to import files that are dropped in the folder.
 So all the files that you would like to import of the kind nmr
 for example could be placed in:
 `/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/to_process` and once they are
-processed they will be moved to 
-`/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/processed` or in case of error to 
+processed they will be moved to
+`/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/processed` or in case of error to
 `/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/errored`.
 
-In order to debug a file that is in errored and to edit the import.js file you may run the 
+In order to debug a file that is in errored and to edit the import.js file you may run the
 importation in an interactive way.
 For this you may go in the docker image. First find the id of the `rest-on-couch-import`image
 using `docker ps` and then go in the image using `docker exec -it fe2acfbb9bba sh` (replace
@@ -115,12 +113,12 @@ the correct image ID).
 To get the help of the import you can run:
 `node bin/rest-on-couch-import.js --help`
 
-You can test the importation of an errored file with an instruction like: 
+You can test the importation of an errored file with an instruction like:
 `node bin/rest-on-couch-import.js --dry-run /rest-on-couch/eln/nmr/errored/2017/08/28/abc.jdx eln nmr`
 
 ### Migrating from any previous version of couchdb to couchdb 2.1.0
 
-you should have other installation of couchdb (can be local), then you execute 
+you should have other installation of couchdb (can be local), then you execute
 the following command (replacing the URL's):
 
 ```bash
@@ -130,25 +128,22 @@ curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicat
 
 do that for `eln`, `visualizer` and `printers` databases.
 
-__note__: take care if you are running this command from the roc-eln-docker couchdb container
+**note**: take care if you are running this command from the roc-eln-docker couchdb container
 because the available port outside of the container is 4445 but inside is the 5984.
 
 Then you do:
 
-* `docker-compose down`.
-* delete the `couchdb-data` folder.
-* update the `docker-compose.yml` with the couchdb:2.1.0 image (docker.io/apache/couchdb:2.1.0)
-* `docker-compose pull`
-* `docker-compose up -d`
-* execute the same bash command as before but changing the source and target.
- 
+- `docker-compose down`.
+- delete the `couchdb-data` folder.
+- update the `docker-compose.yml` with the couchdb:2.1.0 image (docker.io/apache/couchdb:2.1.0)
+- `docker-compose pull`
+- `docker-compose up -d`
+- execute the same bash command as before but changing the source and target.
 
-__note__: even if you are on couchdb 2.0.0, you have to manually migrate all
-          data manually because there's no backward compatibility. [click here to see more](http://docs.couchdb.org/en/2.1.0/install/troubleshooting.html#upgrading)
+**note**: even if you are on couchdb 2.0.0, you have to manually migrate all
+data manually because there's no backward compatibility. [click here to see more](http://docs.couchdb.org/en/2.1.0/install/troubleshooting.html#upgrading)
 
 You can also give a try to the new `couchup` utility explained [here](http://docs.couchdb.org/en/2.1.0/install/upgrading.html#manual-couchdb-1-x-migration)
-
-
 
 ### Building docker flavor-builder
 

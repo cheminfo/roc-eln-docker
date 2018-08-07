@@ -1,7 +1,7 @@
 version: '2'
 services:
   nginx-proxy:
-    image: nginx:1.12-alpine
+    image: docker.io/nginx:1.14-alpine
     ports:
       - '${NGINX_PORT}:80'
     depends_on:
@@ -14,7 +14,7 @@ services:
     restart: always
 
   couchdb:
-    image: docker.io/couchdb:2.1.1
+    image: docker.io/couchdb:2.1
     ports:
       - '${COUCHDB_PORT}:5984'
     environment:
