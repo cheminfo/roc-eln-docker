@@ -1,6 +1,9 @@
 #!/bin/sh
 
-sleep 1
+while [ $(curl --write-out %{http_code} --silent --output /dev/null http://couchdb:5984/_users) == "000" ]; do
+  echo "CouchDB is starting up..."
+  sleep 3
+done
 
 response=$(curl --write-out %{http_code} --silent --output /dev/null http://couchdb:5984/_users)
 
@@ -63,5 +66,10 @@ curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/d
 curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+
+else
+
+echo "Response: ${response}"
+echo "CouchDB is already initialized"
 
 fi
