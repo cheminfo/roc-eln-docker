@@ -12,8 +12,6 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ./www:/data/www/
     restart: always
-    env_file:
-      - .env
 
   couchdb:
     image: docker.io/couchdb:2.1
@@ -27,8 +25,6 @@ services:
       - ${COUCHDB_DATA_DIRECTORY}:/opt/couchdb/data
       - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
     restart: always
-    env_file:
-      - .env
 
   rest-on-couch:
     build: ./rest-on-couch
@@ -90,8 +86,6 @@ services:
     depends_on:
       - couchdb
     restart: always
-    env_file:
-      - .env
 
   printer-proxy:
     image: docker.io/cheminfo/eln-printer-proxy:v1.2.0
@@ -106,5 +100,3 @@ services:
     expose:
       - 7770
     restart: always
-    env_file:
-      - .env
