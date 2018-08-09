@@ -2,6 +2,3 @@
 /flavor-config*
 /www/*
 !/www/visualizer
-/rest-on-couch-home/eln/
-/rest-on-couch-home/printers/
-/rest-on-couch-home/visualizer/

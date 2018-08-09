@@ -1,6 +1,9 @@
 #!/bin/sh
 
-sleep 1
+while [ $(curl --write-out %{http_code} --silent --output /dev/null http://couchdb:5984/_users) == "000" ]; do
+  echo "CouchDB is starting up..."
+  sleep 3
+done
 
 response=$(curl --write-out %{http_code} --silent --output /dev/null http://couchdb:5984/_users)
 
@@ -14,11 +17,11 @@ curl -X POST -H "Content-Type: application/json" http://${COUCHDB_USER}:${COUCHD
 # Create rest-on-couch users and databases
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "'${COUCHDB_PASSWORD}'" }'
+     -d '{ "_id": "org.couchdb.user:rest-on-couch", "name": "rest-on-couch", "type": "user", "roles": [], "password": "'${COUCHDB_ROC_SERVER_PASSWORD}'" }'
 
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \
-     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'${COUCHDB_PASSWORD}'" }'
+     -d '{ "_id": "org.couchdb.user:admin@cheminfo.org", "name": "admin@cheminfo.org", "type": "user", "roles": [], "password": "'${COUCHDB_ROC_ADMIN_PASSWORD}'" }'
 
 curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users \
      -H 'Content-Type: application/json' \
@@ -63,5 +66,10 @@ curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/d
 curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+
+else
+
+echo "Response: ${response}"
+echo "CouchDB is already initialized"
 
 fi

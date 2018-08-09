@@ -32,60 +32,60 @@ $ systemctl start docker
 $ systemctl enable docker
 ```
 
-## Clone this repo
+## Copy this repo
 
 ```
 $ mkdir /usr/local/docker
 $ cd /usr/local/docker
-$ git clone https://github.com/cheminfo/roc-eln-docker.git
+$ curl -L https://github.com/cheminfo/roc-eln-docker/archive/master.tar.gz | tar xz
+$ mv roc-eln-docker-master roc-eln-docker
 $ cd roc-eln-docker
 ```
 
-## Edit `docker-compose.yml`
+## Edit configuration
 
-* Bind local port to the application
-* Set CouchDB admin credentials (three places)
-* Set CouchDB data directory and create corresponding host directory
-* Set rest-on-couch home directory (two places) and create corresponding host directory
-* Change REST_ON_COUCH_SESSION_KEY name with `openssl rand -hex 16` (or generate a random string)
-* Optional: edit `flavor-builder-config.json` to configure home page
+### Setup options in `.env`
 
-## Configure rest-on-couch
+Mandatory configuration options have the value REPLACEME
 
-### General config
+### Optional: edit `flavor-builder-config.json` to configure home page
 
-* Edit $REST_ON_COUCH_HOME_DIR/config.js
+### Configure rest-on-couch
 
-Take care of the final name !!! Not having any configuration file may yield to unexpected results, mainly at
-the level of domain associated with cookies.
+#### LDAP config
 
-### Visualizer
+If LDAP configuration is needed, edit `rest-on-couch-home/ldap.js`.
 
-Clone https://github.com/cheminfo/roc-visualizer-config.git to $REST_ON_COUCH_HOME_DIR/visualizer
+#### Visualizer
+
+Copy the visualizer config to `rest-on-couch-home/visualizer`:
 
 ```
-$ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
-$ git clone https://github.com/cheminfo/roc-visualizer-config.git visualizer
+$ cd rest-on-couch-home
+$ curl -L https://github.com/cheminfo/roc-visualizer-config/archive/master.tar.gz | tar xz
+$ mv roc-visualizer-config-master visualizer
 ```
 
 ### ELN
 
-Clone https://github.com/cheminfo/roc-eln-config.git to $REST_ON_COUCH_HOME_DIR/eln
+Copy the ELN config to `rest-on-couch-home/eln`:
 
 ```
-$ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
-$ git clone https://github.com/cheminfo/roc-eln-config.git eln
+$ cd rest-on-couch-home
+$ curl -L https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz | tar xz
+$ mv roc-eln-config-master eln
 $ cd eln
 $ npm i
 ```
 
 ### Printers
 
-* Clone https://github.com/cheminfo/roc-printers-config.git to $REST_ON_COUCH_HOME_DIR/printers
+Copy the printer config to `rest-on-couch-home/printers`:
 
 ```
-$ cd /usr/local/docker/roc-eln-docker/rest-on-couch-home
-$ git clone https://github.com/cheminfo/roc-printers-config.git printers
+$ cd rest-on-couch-home
+$ curl -L https://github.com/cheminfo/roc-printers-config/archive/master.tar.gz | tar xz
+$ mv roc-printers-config-master printers
 ```
 
 ## Start application
@@ -100,9 +100,8 @@ docker-compose up -d --build
 Please take care than in some case docker-compose is installed in `/usr/bin/docker-compose`instaad of
 `/usr/local/bin/docker-compose`
 
-
 ```
-$ cp docker-eln-app.service /etc/systemd/system/
+$ ln -s $(realpath docker-eln-app.service) /etc/systemd/system/docker-eln-app.service
 $ systemctl daemon-reload
 $ systemctl enable docker-eln-app.service # start after system boot
 ```
