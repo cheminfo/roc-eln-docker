@@ -23,7 +23,7 @@ services:
       COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
     volumes:
       - ${COUCHDB_DATA_DIRECTORY}:/opt/couchdb/data
-      - ./couchdb/local.ini:/opt/couchdb/etc/local.d/local.ini
+      - ./couchdb/couch.ini:/opt/couchdb/etc/local.d/couch.ini
     restart: always
 
   rest-on-couch:
