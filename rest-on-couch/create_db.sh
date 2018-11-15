@@ -1,5 +1,7 @@
 #!/bin/bash
 
+set -e
+
 /wait.sh
 
 response=$(curl --write-out %{http_code} --silent --output /dev/null http://couchdb:5984/_users)
@@ -63,6 +65,8 @@ curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/d
 curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/_security \
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+
+node /copy-views.js
 
 else
 
