@@ -75,19 +75,6 @@ If you really have to restart iptables service then you will have also to restar
 $ systemctl restart docker
 ```
 
-### Allow Google login
-
-You should login on your google developper account and create a key for your website
-
-https://console.developers.google.com
-
-Credentials -> Create credentials -> Create OAuth client ID -> Web applications
-Authorized JavaScript origins: https://myServerName/
-Authorized redirect URIs: https://myServerName/roc/auth/login/google/callback
-
-After you need to edit `rest-on-couch-home/config.js`, uncomment the google login part and
-set the clientID and clientSecret.
-
 ### Automatic importation of files (jcamp, etc.)
 
 rest-on-couch allows to import automatically files based on a filter that is placed

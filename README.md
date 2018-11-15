@@ -54,24 +54,24 @@ Mandatory configuration options have the value REPLACEME
 
 #### LDAP config
 
-If LDAP configuration is needed, edit `rest-on-couch-home/ldap.js`.
+If LDAP configuration is needed, edit `rest-on-couch/home/ldap.js`.
 
 #### Visualizer
 
-Copy the visualizer config to `rest-on-couch-home/visualizer`:
+Copy the visualizer config to `rest-on-couch/home/visualizer`:
 
 ```
-$ cd rest-on-couch-home
+$ cd rest-on-couch/home
 $ curl -L https://github.com/cheminfo/roc-visualizer-config/archive/master.tar.gz | tar xz
 $ mv roc-visualizer-config-master visualizer
 ```
 
 ### ELN
 
-Copy the ELN config to `rest-on-couch-home/eln`:
+Copy the ELN config to `rest-on-couch/home/eln`:
 
 ```
-$ cd rest-on-couch-home
+$ cd rest-on-couch/home
 $ curl -L https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz | tar xz
 $ mv roc-eln-config-master eln
 $ cd eln
@@ -80,10 +80,10 @@ $ npm i
 
 ### Printers
 
-Copy the printer config to `rest-on-couch-home/printers`:
+Copy the printer config to `rest-on-couch/home/printers`:
 
 ```
-$ cd rest-on-couch-home
+$ cd rest-on-couch/home
 $ curl -L https://github.com/cheminfo/roc-printers-config/archive/master.tar.gz | tar xz
 $ mv roc-printers-config-master printers
 ```

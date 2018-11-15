@@ -34,7 +34,6 @@ services:
     expose:
       - 3000
     volumes:
-      - ./rest-on-couch-home:/rest-on-couch
       - ./pm2/rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     depends_on:
       - couchdb
@@ -44,11 +43,11 @@ services:
 
   rest-on-couch-import:
     build: ./rest-on-couch
-    command: pm2-docker start /pm2-roc-import.yaml
+    command: >
+      bash -c "/wait.sh && pm2-docker start /pm2-roc-import.yaml"
     environment:
       REST_ON_COUCH_LOG_LEVEL: 'FATAL'
     volumes:
-      - ./rest-on-couch-home:/rest-on-couch
       - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
     depends_on:
       - couchdb
@@ -56,20 +55,19 @@ services:
     env_file:
       - .env
 
-#  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
-#  rest-on-couch-file-drop:
-#    build: ./rest-on-couch
-#    command: pm2-docker start /pm2-roc-file-drop.yaml
-#    volumes:
-#      - ./rest-on-couch-home:/rest-on-couch
-#      - ./pm2/roc-file-drop.yaml:/pm2-roc-file-drop.yaml
-#    depends_on:
-#      - couchdb
-#    expose:
-#      - 3001
-#    restart: always
-#    env_file:
-#      - .env
+  #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
+  #  rest-on-couch-file-drop:
+  #    build: ./rest-on-couch
+  #    command: pm2-docker start /pm2-roc-file-drop.yaml
+  #    volumes:
+  #      - ./pm2/roc-file-drop.yaml:/pm2-roc-file-drop.yaml
+  #    depends_on:
+  #      - couchdb
+  #    expose:
+  #      - 3001
+  #    restart: always
+  #    env_file:
+  #      - .env
 
   flavor-builder:
     image: docker.io/cheminfo/eln-flavor-builder:v1.0.0
