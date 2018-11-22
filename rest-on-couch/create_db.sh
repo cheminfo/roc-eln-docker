@@ -66,7 +66,7 @@ curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/visualizer/_
      -H 'Content-Type: application/json' \
      -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
-node /copy-views.js
+node /init-views/copy-views.js
 
 else
 

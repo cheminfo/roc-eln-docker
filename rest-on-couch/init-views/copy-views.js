@@ -14,7 +14,7 @@ const viewsDir = '/init-views/views';
 
 (async () => {
   if (fs.existsSync(viewsDir)) {
-    const files = fs.readdirSync();
+    const files = fs.readdirSync(viewsDir);
     for (const file of files) {
       if (!file.endsWith('.json')) {
         continue;
@@ -40,7 +40,7 @@ const viewsDir = '/init-views/views';
         $creationDate: 1540000000000
       });
       const { id, rev } = result;
-      await db.attachment.insert(id, 'view.json', data, 'application/json', {
+      await visualizer.attachment.insert(id, 'view.json', data, 'application/json', {
         rev
       });
     }
