@@ -14,7 +14,7 @@ services:
     restart: always
 
   couchdb:
-    image: docker.io/couchdb:2.2
+    image: docker.io/couchdb:2.3
     ports:
       - '${COUCHDB_PORT}:5984'
     environment:
