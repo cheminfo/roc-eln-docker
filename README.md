@@ -95,22 +95,4 @@ docker-compose pull
 docker-compose up -d --build
 ```
 
-## Add systemd service to manage application
-
-Please take care than in some case docker-compose is installed in `/usr/bin/docker-compose`instaad of
-`/usr/local/bin/docker-compose`
-
-```
-$ ln -s $(realpath docker-eln-app.service) /etc/systemd/system/docker-eln-app.service
-$ systemctl daemon-reload
-$ systemctl enable docker-eln-app.service # start after system boot
-```
-
-### Now you can start and stop the app with systemctl
-
-```
-systemctl start docker-eln-app.service
-systemctl stop docker-eln-app.service
-```
-
 ## [FAQ](faq.md)
