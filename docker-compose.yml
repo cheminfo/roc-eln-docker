@@ -3,7 +3,7 @@ services:
   nginx-proxy:
     image: docker.io/nginx:1.14-alpine
     ports:
-      - '${NGINX_PORT}:80'
+      - 'localhost:${NGINX_PORT}:80'
     depends_on:
       - rest-on-couch
       - flavor-builder
@@ -16,7 +16,7 @@ services:
   couchdb:
     image: docker.io/couchdb:2.3
     ports:
-      - '${COUCHDB_PORT}:5984'
+      - 'localhost:${COUCHDB_PORT}:5984'
     environment:
       # CouchDB admin credentials
       COUCHDB_USER: admin
