@@ -1,6 +1,6 @@
 'use strict';
 
-const ldapConfig = require('./ldap');
+#const ldapConfig = require('./ldap');
 
 const keys = process.env.REST_ON_COUCH_APP_KEYS;
 if (keys === '') {
@@ -38,14 +38,14 @@ module.exports = {
   proxyPrefix: proxyPrefix + '/roc/',
   publicAddress: allowedOrigins[0],
   auth: {
-    ldap: ldapConfig,
-    google: {
-      clientID: "CLIENT_ID.apps.googleusercontent.com",
-      clientSecret: "THE_SECRET"
-    },
+#    ldap: ldapConfig,
+#    google: {
+#      clientID: "CLIENT_ID.apps.googleusercontent.com",
+#      clientSecret: "THE_SECRET"
+#    },
     // do not disable couchdb login. You can enable "showLogin" if necessary
     couchdb: {
-      showLogin: false,
+      showLogin: true,
       title: "Login with a Cheminfo account"
     }
   },
