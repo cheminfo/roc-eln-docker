@@ -132,6 +132,10 @@ data manually because there's no backward compatibility. [click here to see more
 
 You can also give a try to the new `couchup` utility explained [here](http://docs.couchdb.org/en/2.1.0/install/upgrading.html#manual-couchdb-1-x-migration)
 
+### Login using google
+
+You should edit the file: `rest-on-couch/home/config.js`
+
 ### Building docker flavor-builder
 
 ```bash
@@ -145,3 +149,4 @@ docker push cheminfo/eln-flavor-builder
 ### selinux
 
 https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
+
