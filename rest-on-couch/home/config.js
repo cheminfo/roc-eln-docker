@@ -39,9 +39,14 @@ module.exports = {
   publicAddress: allowedOrigins[0],
   auth: {
     ldap: ldapConfig,
+    google: {
+      clientID: "CLIENT_ID.apps.googleusercontent.com",
+      clientSecret: "THE_SECRET"
+    },
     // do not disable couchdb login. You can enable "showLogin" if necessary
     couchdb: {
-      showLogin: false
+      showLogin: false,
+      title: "Login with a Cheminfo account"
     }
   },
 
