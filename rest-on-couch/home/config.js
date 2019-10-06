@@ -1,6 +1,6 @@
 'use strict';
 
-// const ldapConfig = require('./ldap');
+const ldapConfig = require('./ldap');
 
 const keys = process.env.REST_ON_COUCH_APP_KEYS;
 if (keys === '') {
@@ -38,7 +38,7 @@ module.exports = {
   proxyPrefix: proxyPrefix + '/roc/',
   publicAddress: allowedOrigins[0],
   auth: {
-//    ldap: ldapConfig,
+    ldap: ldapConfig,
 //    google: {
 //      clientID: "CLIENT_ID.apps.googleusercontent.com",
 //      clientSecret: "THE_SECRET"
