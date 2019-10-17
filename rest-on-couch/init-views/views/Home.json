@@ -1,1 +1,2650 @@
-{"version":"2.99.0","grid":{"layers":{"Default layer":{"name":"Default layer"},"admin":{"name":"admin"},"Links":{"name":"Links"},"CopyView":{"name":"CopyView"}},"xWidth":10,"yHeight":10},"modules":[{"url":"modules/types/edition/slick_grid/","configuration":{"sections":{},"groups":{"group":[{"slickCheck":[["enableCellNavigation","rowNumbering","forceFitColumns","highlightScroll","editable"]],"copyPaste":[[]],"copyPasteOptions":[["newRows"]],"autoColumns":[[]],"toolbar":[[]],"colorjpath":[[]],"slick.defaultColumnWidth":[null],"slick.rowHeight":["150"],"slick.headerRowHeight":[30],"slick.selectionModel":["row"],"idProperty":[""],"filterType":["pref"],"filterRow":["if(this.event === 'renderAction') {\n    if(this.column.name === 'Make public') {\n        if(this.row.item.$owners.indexOf('anonymousRead') === -1) {\n            this.renderOptions.icon = 'fa-eye-slash';\n            this.renderOptions.tooltip = 'Private.Click to make this reaction public';\n        } else {\n            this.renderOptions.icon = 'fa-eye';\n            this.renderOptions.tooltip = 'Public. Click to make this reaction private';\n        }  \n    } else if(this.column.name === 'Is owner') {\n        var user = API.cache('user');\n        if(this.row.item.$owners.indexOf(user) === -1) {\n            this.renderOptions.icon = 'fa-lock';\n            this.renderOptions.tooltip = 'You are not an owner of this reaction';\n        } else {\n            this.renderOptions.icon = 'fa-unlock';\n            this.renderOptions.tooltip = 'You are an owner of this reaction'\n        }\n    }\n}"],"customJpaths":[""]}],"cols":[[{"name":"Product reference","jpath":["value"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"twig:` <div style=\"line-height:normal\"> \t<b>{{reference}}</b> \t<table style=\"font-size:xx-small\"> \t{% for k in keyword %} \t\t<tr> \t\t<th style=\"text-align: left\">{{k.kind}}</th> \t\t<td>{{k.value}}</td> \t\t</tr> \t{%endfor%} \t</table> </div>`","editorOptions":"","width":107,"hideColumn":[]},{"name":"Last modif.","jpath":["value","modificationDate"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"dateFormat:'YYYY-MM-DD'","editorOptions":"","width":78,"hideColumn":[]},{"name":"Structure","jpath":["value","ocl"],"editor":"none","forceType":"oclID","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":142,"hideColumn":[]},{"name":"nb 1d","jpath":["value","nb1d"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":41,"hideColumn":[]},{"name":"nb 2d","jpath":["value","nb2d"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":41,"hideColumn":[]},{"name":"nb ms","jpath":["value","hasMass"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":41,"hideColumn":[]},{"name":"nb IR","jpath":["value","hasIR"],"editor":"none","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":50,"hideColumn":[]}]],"actionCols":[[{"backgroundColor":[255,255,255,0],"color":[0,0,0,1],"position":"end","clickMode":"text"}]],"groupings":[[{"getter":[]}]],"actionOutButtons":[[{}]],"data":[{"saveInView":[[]],"varname":[""],"data":["[]"]}]}},"layers":{"Default layer":{"position":{"left":0,"top":16},"size":{"width":54,"height":72},"zIndex":0,"display":true,"title":"Double click to open a sample, one click to select it","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":46,"top":0},"size":{"width":41,"height":73},"zIndex":0,"display":true,"title":"Double click to open a sample, one click to select it","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":51,"height":21},"zIndex":0,"display":true,"title":"Double click to open a sample, one click to select it","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":16},"size":{"width":54,"height":72},"zIndex":0,"display":false,"title":"Double click to open a sample, one click to select it","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"}},"id":1,"vars_in":[{"rel":"list","name":"filteredSamples"}],"actions_in":[{"rel":"selectRow","name":"clickRow"}],"title":"Double click to open a sample, one click to select it","vars_out":[{"event":"onRowActive","rel":"row","jpath":[],"name":"sampleClicked"},{"event":"onRowActive","rel":"row","jpath":["value","reference"],"name":"referenceClicked"}],"actions_out":[{"event":"onDoubleClick","rel":"row","jpath":[],"name":"rowDoubleClicked"}],"zindex":3,"toolbar":{"custom":[[{"title":"Refresh","icon":"fa-refresh","action":"refreshSample","position":"end","color":[100,100,100,1]},{"title":"Show user info","icon":"fa-user","action":"ShowUserInfo","position":"begin","color":[100,100,100,1]}]],"common":[{"toolbar":[[]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/array_search/smart_array_filter/","configuration":{"sections":{},"groups":{"group":[{"debounce":[250],"limit":[0],"initialValue":[""],"placeholder":["Search for samples"],"fontSize":[24]}]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":35,"height":8},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":52,"top":59},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":5,"top":71},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":35,"height":8},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":2,"vars_in":[{"rel":"input","name":"samples"}],"actions_in":[{}],"title":"","vars_out":[{"event":"onQuery","rel":"output","jpath":[],"name":"filteredSamples"}],"actions_out":[{"jpath":[]}],"zindex":2,"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/client_interaction/code_executor/","configuration":{"sections":{},"groups":{"group":[{"display":[["buttons","editor"]],"execOnLoad":[["yes"]],"asyncAwait":[["top"]],"script":["var roc = API.cache('rocSample');\nvar couchDB = API.cache('couchDB');\nvar printerConfig = API.cache('printerConfig');\nvar user = API.cache('user');\n// var domain = API.cache('domain');\n\nif(this.event === 'load' && printerConfig) {\n    var printer = await printerLib(printerConfig.couchDB);\n    printerHelper.setup(printer, ['sample']);\n}\n\nif(!roc) {\n    roc = await new Roc({\n            url: couchDB.url,\n            database: couchDB.database,\n            processor: elnPlugin,\n            kind: 'sample'\n        }\n    );\n        \n    var userInfo = await roc.getUserInfo();\n    var user=await roc.getUser();\n    API.cache('user', user);\n    API.cache('userInfo', userInfo);\n    var groups = (await roc.getGroupMembership()).map(g => g.name);\n    createForm(groups);\n    \n    refreshSample();\n    API.cache('rocSample', roc);\n    return;\n}\n\n\nif(this.variable) {\n    refreshSample();\n}\n\nif(!this.action) return;\n\n\n\nswitch(this.action.name) {\n    case 'createSample':\n        createSample();\n        break;\n    case 'deleteSample': \n        deleteSample(this.action.value);\n        break;\n    case 'refreshSample':\n        refreshSample();\n        break;\n    case 'rowDoubleClicked':\n        openDefault({\n            uuid:this.action.value.id,\n            reference: this.action.value.key.slice(1).join(' ')\n        });\n        break;\n    case 'printSample':\n        const doc = await DataObject.check(this.action.value.document).get(true);\n        printerHelper.askPrintEntry(doc, 'sample');\n        break;\n    case 'handleTileClick':\n        handleTileClick(this.action.value);\n        break;\n    case 'openView': {\n        const viewURL = await ui.enterValue({label: 'Enter view uuid'});\n        let sample = API.getData('sampleClicked');\n        if(sample) {\n            sample = {\n                reference: sample.value.reference,\n                uuid: sample.id\n            }\n        }\n        handleTileClick({\n            sample,\n            tile: {\n                kind: 'sample',\n                viewURL,\n                id: viewURL.substr(0, 6)\n            }\n        });\n    }\n    default:\n        console.warn('Unhandled sample action');\n        break;\n}\n\n//sd\nif(!this.action) return;\n\nfunction createSample(sample) {\n    var entrysample = {$content: {}}\n    ui.form(`\n        <div>\n        <form>\n            <table>\n            <tr>\n            <th align=right>Reference<br><span style='font-size: smaller'>Reaction code</span></th>\n            <td><input type=\"text\" name=\"code\" pattern=\"[A-Za-z0-9 .-]{3,}\"/></td>\n            </tr>\n            <tr>\n            <th align=right>Batch<br><span style='font-size: smaller'>Fraction</span></th>\n            <td><input type=\"text\" name=\"batch\" pattern=\"[A-Za-z0-9 .-]*\"/></td>\n            </tr>\n            <!--\n            <tr>\n            <th align=right>Sample<br><span style='font-size: smaller'>(empty most of the time)</span></th>\n            <td><input type=\"text\" name=\"sample\" pattern=\"[A-Za-z0-9 .-]*\"/></td>\n            </tr>\n            -->\n            </table>\n            <input type=\"submit\" value=\"Submit\"/>\n        </form>\n        </div>\n    `,{}).then(function(result){\n        if (!result || !result.code || result.batch == null) return;\n        entrysample.$id = [result.code, result.batch];\n        if (result.sample) entrysample.$id.push(result.sample);\n        var reference=result.code + ( result.batch ? ' '+result.batch : '');\n        var userInfo = API.cache('userInfo');\n        \n        if (userInfo && userInfo.allGroups) {\n            entrysample.$owners=userInfo.allGroups;\n        }\n\n        roc.create(entrysample).then(function(sample) {\n            openDefault({\n                uuid: sample._id,\n                reference\n            });\n            // we do like if we would have click on the line we just added\n            API.createData('sampleClicked', {id: sample._id});\n        });\n    });\n}\n\nfunction deleteSample(entry) {\n    ui.confirm('Are you sure you want to delete ' + entry.value.reference)\n    .then(function(res) {\n        if(!res) return;\n        roc.delete(entry.id);\n    });\n}\n\nfunction refreshSample() {\n    \n    var uuid=(API.getData('sampleClicked') || {}).id;\n    \n    var options = {varName: 'samples'};\n    var form = API.getData('formSample'), group;\n    if(!form) return;\n    group = form.group;\n    \n    window.localStorage.setItem('eln-default-sample-group', String(group));\n    \n    if(group === 'mine') {\n        options.mine = 1;\n    } else if(group !== 'all') {\n        options.groups = group;\n    }\n    \n    options.sort = function(a, b) {\n        if(a.value.modificationDate > b.value.modificationDate) {\n            return -1;\n        } else if(a.value.modificationDate < b.value.modificationDate) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n    \n    roc.query('sample_toc', options).then(function(data) {\n        API.cache('nbSamples', data.length);\n        API.doAction('renderTiles');\n        // we need to select the previously selected element\n        const index = data.findIndex(sample => String(sample.id) == uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    });\n}\n\nfunction createForm(groups) {\n    var possibleGroups = [\"all\", \"mine\"].concat(groups);\n    var defaultGroup = window.localStorage.getItem('eln-default-sample-group');\n    if(possibleGroups.indexOf(defaultGroup) === -1) {\n        defaultGroup = 'all';\n    }\n    var schema = {\n        type: 'object',\n        properties: {\n            group: {\n                type: 'string',\n                enum: possibleGroups,\n                default: defaultGroup,\n                required: true\n            }\n        }\n    }\n    API.createData('formSchema', schema)\n}\n\nfunction openDefault(sample) {\n    var defaultTileURL='15c9a2dcd55c963fdedf2c18a1471b03';\n    var defaultTile=API.getData('tiles').filter(a => String(a.viewURL)===defaultTileURL);\n    if (defaultTile.length!==1) {\n        console.log('Default tile not found !!!');\n        return;\n    }\n    var tile=defaultTile[0];\n    handleTileClick({\n            tile,\n            sample\n        }\n    );\n}\n\nfunction handleTileClick(value={}) {\n    var {\n        tile,\n        sample={}\n    } = value;\n    \n    var uuid = sample.uuid;\n    var reference = sample.reference;\n\n    var referer=document.location.href.replace(/(\\/\\/.*?\\/).*/,'$1').replace('blob:','');\n    var viewURL=tile.viewURL;\n    viewURL+='?referer='+encodeURIComponent(referer);\n    if (tile.rev) viewURL+='&rev='+tile.rev;\n    \n    switch (String(tile.kind)) {\n        case 'sample':\n            if (! uuid || ! reference) return;\n            IframeBridge.postMessage('tab.open', {\n                id: `${tile.id} ${reference}`,\n                url: viewURL,\n                data: {\n                    printer: printerConfig,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                    reference\n                }\n            });\n            break;\n        case 'optionalSample':\n            uuid = uuid || '';\n            IframeBridge.postMessage('tab.open', {\n                id: tile.id,\n                url: viewURL,\n                data: {\n                    printer: printerConfig,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                }\n            });\n            break;\n        case 'rawIframe':\n            IframeBridge.postMessage('tab.open', {\n                id: tile.id,\n                url: tile.viewURL,\n                rawIframe: true,\n                data: {\n                    printer: printerConfig,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                }\n            });\n            break;\n        default:\n            console.warn(`unknown tile kind: ${tile.kind}`);\n            break;\n    }\n    \n}"]}],"libs":[[{"lib":"vh/rest-on-couch/Roc","alias":"Roc"},{"lib":"lodash","alias":"_"},{"lib":"src/util/ui","alias":"ui"},{"lib":"https://www.lactame.com/lib/eln-plugin/0.0.2/eln-plugin.js","alias":"elnPlugin"},{"lib":"vh/eln/stock/printer/printer","alias":"printerLib"},{"lib":"vh/eln/stock/printer/helper","alias":"printerHelper"}]],"buttons":[[{"name":"button1","label":"Execute","hide":[],"disable":[]}]]}},"layers":{"Default layer":{"position":{"left":52,"top":51},"size":{"width":63,"height":20},"zIndex":0,"display":false,"title":"Process all the actions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":88,"top":0},"size":{"width":100,"height":73},"zIndex":0,"display":true,"title":"Process all the actions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":34,"top":50},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"Process all the actions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":52,"top":51},"size":{"width":63,"height":20},"zIndex":0,"display":false,"title":"Process all the actions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"}},"id":3,"vars_in":[{"rel":"inputValue","name":"formSample"}],"actions_in":[{"rel":"execute","name":"deleteSample"},{"rel":"execute","name":"openSample"},{"rel":"execute","name":"processNMR"},{"rel":"execute","name":"togglePublic"},{"rel":"execute","name":"createSample"},{"rel":"execute","name":"refreshSample"},{"rel":"execute","name":"updateSample"},{"rel":"execute","name":"overlayNMR"},{"rel":"execute","name":"peakPicking"},{"rel":"execute","name":"rowDoubleClicked"},{"rel":"execute","name":"printSample"},{"rel":"execute","name":"handleTileClick"},{"rel":"execute","name":"openView"}],"title":"Process all the actions","vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"zindex":3,"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin","color":[100,100,100,1]}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/edition/onde/","configuration":{"sections":{},"groups":{"group":[{"hasButton":[["onload"]],"button_text":["Export"],"debouncing":[0],"output":["new"],"mode":["schema"],"schemaSource":["variable"],"schema":[""],"onchangeFilter":[null]}],"data":[{"saveInView":[[]],"varname":[""],"data":["{}"]}]}},"layers":{"Default layer":{"position":{"left":0,"top":4},"size":{"width":22,"height":6},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":21,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"admin"},"Links":{"position":{"left":18,"top":41},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":4},"size":{"width":22,"height":6},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":4,"vars_in":[{"rel":"schema","name":"formSchema"}],"actions_in":[{}],"title":"","vars_out":[{"event":"onFormSubmit","rel":"outputValue","jpath":[],"name":"formSample"}],"actions_out":[{"jpath":[]}],"zindex":3,"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/client_interaction/code_editor/","configuration":{"sections":{},"groups":{"group":[{"mode":["html"],"outputType":[null],"btnvalue":["Send script"],"iseditable":[["editable"]],"hasButton":[[]],"variable":[[]],"storeOnChange":[["store"]],"debouncing":[250],"script":["<div id=\"sample-tiles\"></div>"]}],"ace":[{"useSoftTabs":[["yes"]],"tabSize":[4]}]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":52,"top":80},"size":{"width":41,"height":13},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"}},"id":5,"vars_in":[{}],"actions_in":[{}],"vars_out":[{"event":"onEditorChange","rel":"data","jpath":[],"name":"twigTemplate"}],"title":"","actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"zindex":3,"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/client_interaction/code_executor/","configuration":{"sections":{},"groups":{"group":[{"display":[["editor","buttons"]],"execOnLoad":[["yes"]],"asyncAwait":[[]],"script":["var tilesData=get('tiles');\nvar couchDB = API.cache('couchDB');\nvar printer = API.cache('printerConfig');\nvar domain = API.cache('domain');\nvar couchPublicUrl = 'https://couch.cheminfo.org';\nvar couchPublicDatabase = 'cheminfo-public';\n\nif(tilesData) {\n    tilesData = tilesData.resurrect().map(t => {\n        return t.empty ? {} : t;\n    })\n    tiles('sample-tiles', {\n        tiles: tilesData,\n        shouldRender: tile => {\n            if(tile.hide) return false;\n            let user = API.cache('user');\n            if(user) user = user.username;\n            return (checkRights(user, tile.rights, true));\n        },\n        ribbon: tile => {\n            if(tile.rights) {\n                return 'LIMITED';\n            } else if (tile.date) {\n                const d = new Date(tile.date);\n                if(new Date() - d < 1296000000) {\n                    return 'NEW';\n                }\n            }\n            return '';\n        },\n        isActive: tile => {\n            if(tile.kind === 'sample') {\n                const sample = API.getData('sampleClicked');\n                if(sample) return true;\n            } else {\n                return true;\n            }\n            return false;\n        },\n        isLink: tile => true,\n        icon: tile => tile.icon,\n        title: tile => tile.icon ? '' : checkCache(tile.title),\n        backgroundColor: tile => String(tile.bgcolor),\n        color: tile => tile.fontcolor || 'black',\n        header: tile => tile.description,\n        footer: tile => tile.id,\n        onTileClick: (event, tile) => {\n            if(event.shiftKey && tile.viewURL) {\n                return showCode(tile);\n            }\n            \n            handleTileClick(tile);\n        }\n    });\n}\n\n\n\nasync function showCode(tile) {\n    const copiedTile = Object.assign({}, tile);\n    delete copiedTile.line;\n    \n    const res = await superagent.get(couchPublicUrl + '/' + couchPublicDatabase + '/' + tile.viewURL)\n    .set('Accept', 'application/json');\n    if(res.status === 200) {\n        copiedTile.rev = res.body._rev;\n    } else {\n        throw new Error('This view might not be public (' + res.status + ')');\n    }\n    \n    const roc = new Roc({\n        url: 'https://mydb.cheminfo.org',\n        database: 'visualizer'\n    });\n    \n    let title = '';\n    try {\n        const view = await roc.get(tile.viewURL);\n        if(res.body._rev === view._rev) {\n            title = 'Private and public revs match';\n        } else {\n            title = `Private: rev ${revNumber(view._rev)}, Pubilc: rev ${revNumber(res.body._rev)}`;\n        }\n    } catch(e) {\n        title = 'not able to get private revision of the view';\n    }\n    \n    try {\n        await UI.showCode({\n            mode: 'json',\n            content: JSON.stringify(copiedTile, null, '\\t'),\n            title: title\n        });    \n    } catch(e) {\n        UI.showNotification(e.message, 'error');\n    }\n}\n\nfunction handleTileClick(tile) {\n    console.log(tile)\n    var sample = API.getData('sampleClicked');\n    API.doAction('handleTileClick', {\n        sample: {\n            uuid: sample && sample.id,\n            reference: sample && sample.key.slice(1).join(' ')\n        },\n        tile\n    })\n}\n\nfunction checkCache(val) {\n    if(val) {\n        const parts = val.split(':');\n        if(parts[0] === 'cache') {\n            const jpath = parts[1].split('.');\n            const name = jpath.splice(0, 1);\n            if(jpath.length === 0) return API.cache(name[0]);\n            return DataObject.resurrect(DataObject.check(Object.assign({}, API.cache(name[0]))).getChildSync(jpath));\n        } else {\n            return val;\n        }\n    }\n}\n\nfunction revNumber(rev) {\n    const m = /^(\\d+)/.exec(rev);\n    return m && m[1];\n}"]}],"libs":[[{"lib":"src/util/ui","alias":"UI"},{"lib":"superagent","alias":"superagent"},{"lib":"vh/util/tiles","alias":"tiles"},{"lib":"vh/util/checkRights","alias":"checkRights"},{"lib":"vh/rest-on-couch/Roc","alias":"Roc"}]],"buttons":[[{"name":"button1","label":"Execute","hide":[]}]]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"Converting the hyperlink template to hyperlinks and create functions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"Converting the hyperlink template","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":22},"size":{"width":51,"height":106},"zIndex":0,"display":true,"title":"Converting the hyperlink template","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"Converting the hyperlink template to hyperlinks and create functions","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"}},"id":6,"vars_in":[{"rel":"inputValue","name":"sampleClicked"},{"rel":"inputValue","name":"tiles"}],"actions_in":[{"rel":"execute","name":"renderTiles"}],"title":"Converting the hyperlink template","vars_out":[{"event":"onScriptEnded","jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"zindex":3,"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/display/template-twig/","configuration":{"sections":{},"groups":{"group":[{"selectable":[[]],"template":[""],"modifyInForm":[[]],"debouncing":[0],"formOptions":[["keepFormValueIfDataUndefined"]]}]}},"layers":{"Default layer":{"position":{"left":56,"top":0},"size":{"width":126,"height":88},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":4},"size":{"width":45,"height":60},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":98,"top":80},"size":{"width":89,"height":40},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":56,"top":0},"size":{"width":126,"height":88},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":7,"vars_in":[{"rel":"tpl","name":"twigTemplate"},{"rel":"value","name":"links"},{"rel":"value","name":"userInfo"}],"actions_in":[{}],"title":"","vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[[]]}]},"zindex":11,"css":[{"fontSize":[""],"fontFamily":[""]}]},{"url":"modules/types/client_interaction/code_executor/","configuration":{"sections":{},"groups":{"group":[{"display":[["editor","buttons"]],"execOnLoad":[[]],"asyncAwait":[["top"]],"script":["var button=getButton();\n\nswitch (button) {\n    case 'add':\n        API.doAction('createSample');\n        break;\n    case 'help':\n        API.doAction('Help');\n        break;\n}"]}],"libs":[[{}]],"buttons":[[{"name":"help","label":"Help","hide":[]},{"name":"add","label":"Add sample","hide":[]}]]}},"layers":{"Default layer":{"position":{"left":36,"top":0},"size":{"width":19,"height":5},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":36,"top":0},"size":{"width":19,"height":5},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":8,"vars_in":[{}],"actions_in":[{}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":"","zindex":3},{"url":"modules/types/edition/slick_grid/","configuration":{"sections":{},"groups":{"group":[{"slickCheck":[["enableCellNavigation","rowNumbering","forceFitColumns","highlightScroll","editable","enableAddRow"]],"copyPaste":[[]],"copyPasteOptions":[["newRows"]],"autoColumns":[["reorder","remove"]],"toolbar":[[]],"colorjpath":[[]],"slick.defaultColumnWidth":[null],"slick.rowHeight":[null],"slick.headerRowHeight":[30],"slick.selectionModel":["row"],"idProperty":[""],"filterType":["pref"],"filterRow":["// Documentation: https://github.com/NPellet/visualizer/blob/87ba3af17e07f6766c266385c41b177d5094150b/src/modules/types/edition/slick_grid/view.js#L1253-L1279"],"customJpaths":["title,rights,rev,hide,data"]}],"cols":[[{"name":"Date","jpath":["date"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"dateFormat:YYYY-MM-DD","editorOptions":"","width":117,"hideColumn":[]},{"name":"Id","jpath":["id"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":117,"hideColumn":[]},{"name":"Kind","jpath":["kind"],"editor":"select","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"sample;optionalSample;rawIframe","width":117,"hideColumn":[]},{"name":"Description","jpath":["description"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":117,"hideColumn":[]},{"name":"viewURL","jpath":["viewURL"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":116,"hideColumn":[]},{"name":"rev","jpath":["rev"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","hideColumn":[]},{"name":"Icon","jpath":["icon"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":116,"hideColumn":[]},{"name":"Title","jpath":["title"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":106,"hideColumn":[]},{"name":"BG","jpath":["bgcolor"],"editor":"color","forceType":"color","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":48,"hideColumn":[]},{"name":"Rights","jpath":["rights"],"editor":"string","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":266,"hideColumn":[]},{"name":"Hide","jpath":["hide"],"editor":"boolean","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","hideColumn":[]},{"name":"Empty","jpath":["empty"],"editor":"boolean","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","width":116,"hideColumn":[]},{"name":"Data","jpath":["data"],"editor":"longtext","forceType":"","formatter":"typerenderer","copyFormatter":"default","visibility":"both","rendererOptions":"","editorOptions":"","hideColumn":[]}]],"actionCols":[[{"name":"updateView","tooltip":"Update view","icon":"fa-sync","backgroundColor":[255,255,255,0],"color":[0,0,0,1],"action":"updateView","position":"end","clickMode":"text","isAction":true},{"name":"insertAfter","tooltip":"Insert view after","icon":"fa-plus","backgroundColor":[255,255,255,0],"color":[74,134,232,1],"action":"insertAfter","position":"end","clickMode":"text","isAction":true}]],"groupings":[[{"getter":[]}]],"actionOutButtons":[[{}]],"data":[{"saveInView":[["yes"]],"varname":["tiles"],"data":["[{\"id\":\"Samples\",\"kind\":\"nbSample\",\"description\":\"Number of sample\",\"data\":\"\",\"text\":\"\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"empty\":false,\"line\":0,\"title\":\"cache:nbSamples\"},{\"id\":\"ELN\",\"viewURL\":\"a6fb774a50448cc3edd52dd6dfd275ea\",\"kind\":\"optionalSample\",\"description\":\"Notebook\",\"icon\":\"ci-icon-glassware-round-flask\",\"bgcolor\":\"rgb(255, 242, 204)\",\"line\":0,\"date\":\"2017-04-30\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search\",\"viewURL\":\"aaa5f97c7cde94741de2938b106bb0d4\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\",\"line\":0,\"rev\":\"\"},{\"viewURL\":\"83e55c39f2601bc912a45f049e2bd424\",\"description\":\"OCL\",\"id\":\"OCL\",\"bgcolor\":\"rgb(255, 242, 204)\",\"rights\":\"admin@cheminfo.org\",\"line\":0,\"fontcolor\":\"rgb(0, 0, 0)\",\"kind\":\"optionalSample\"},{\"id\":\"OS\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Open/edit sample\",\"viewURL\":\"15c9a2dcd55c963fdedf2c18a1471b03\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-edit\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":0},{\"date\":\"2017-05-09\",\"id\":\"attachments\",\"kind\":\"sample\",\"description\":\"Upload attachments\",\"icon\":\"fa-edit\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"admin@cheminfo.org\",\"viewURL\":\"f795f6dc38df9221ca34bf288aa015aa\",\"line\":0},{\"date\":\"2018-05-15\",\"id\":\"Lipinski\",\"kind\":\"optionalSample\",\"viewURL\":\"5ba3ccc2681bc1ff7f370e78efd335c3\",\"description\":\"Lipinski\",\"rights\":\"\",\"bgcolor\":\"rgb(255, 242, 204)\",\"line\":0,\"icon\":\"ci-icon-chart-multi2\"},{\"id\":\"aliquots\",\"rev\":\"4-2ee8ecda523a54526b18dfc684f24ef5\",\"icon\":\"fa-question\",\"description\":\"Aliquots\",\"viewURL\":\"4d4d4afc298d37652a1ef3342b821cca\",\"bgcolor\":\"rgb(255, 255, 255)\",\"empty\":false,\"line\":0,\"kind\":\"sample\",\"rights\":\"admin@cheminfo.org\",\"date\":\"2018-08-17\"},{\"viewURL\":\"c643f200b55c2f584b3ffcd00a53d3e1\",\"kind\":\"optionalSample\",\"date\":\"2018-10-\",\"id\":\"Add \",\"description\":\"FromSDF\",\"icon\":\"fa-plus\",\"bgcolor\":\"rgb(255, 255, 255)\",\"rights\":\"admin@cheminfo.org\",\"line\":0},{\"id\":\"\",\"line\":1,\"empty\":true},{\"id\":\"PP\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"1D NMR peak picking\",\"viewURL\":\"4c986ed7d921b11fbe6f20240f0df3a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-peak-picking\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1},{\"id\":\"Overlay NMR\",\"kind\":\"optionalSample\",\"description\":\"Overlay NMR\",\"viewURL\":\"f162299d0efd3f7c21b5542c85003689\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-overlay\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1,\"rev\":\"\"},{\"id\":\"1H\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 1H\",\"viewURL\":\"eea0ba081ea2cc99da5c1aed2f29a0a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":1},{\"id\":\"13C\",\"kind\":\"optionalSample\",\"requires\":\"sample\",\"description\":\"NMR predict 13C\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a45f3c\",\"icon\":\"ci-icon-nmr-13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"id\":\"COSY\",\"kind\":\"optionalSample\",\"requires\":\"sample\",\"description\":\"NMR predict COSY\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a607ed\",\"icon\":\"ci-icon-nmr-1h1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"id\":\"HMBC\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict HMBC\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a68433\",\"icon\":\"ci-icon-nmr-1h13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1},{\"viewURL\":\"901378074eeb9b75396aadff96b3b83a\",\"date\":\"2017-06-20\",\"id\":\"Search\",\"kind\":\"optionalSample\",\"description\":\"Search by δ\",\"icon\":\"ci-icon-nmr-search\",\"bgcolor\":\"rgb(182, 215, 168)\",\"line\":1,\"rights\":\"\"},{\"date\":\"2018-02-20\",\"kind\":\"optionalSample\",\"viewURL\":\"4b7669c5ec0a15e6fb3994f53b950277\",\"description\":\"Simulate spin system\",\"bgcolor\":\"rgb(182, 215, 168)\",\"id\":\"Spin system\",\"icon\":\"ci-icon-nmr-simulator\",\"line\":1},{\"date\":\"2018-02-20\",\"kind\":\"optionalSample\",\"bgcolor\":\"rgb(182, 215, 168)\",\"viewURL\":\"06d3c6ed57762b356b993a0d8138ae04\",\"description\":\"Multiplet simulator\",\"id\":\"Mutiplet\",\"line\":1,\"icon\":\"ci-icon-nmr-tree\"},{\"viewURL\":\"da522035c4cce8f1473093c7ed4f6dcb\",\"date\":\"2017-11-13\",\"kind\":\"sample\",\"bgcolor\":\"rgb(182, 215, 168)\",\"id\":\"Deconvolution\",\"description\":\"NMR SVD\",\"line\":1,\"rights\":\"admin@cheminfo.org,goodyear-test@cheminfo.org \"},{\"date\":\"2017-11-30\",\"id\":\"General Spectra Similarity\",\"kind\":\"optionalSample\",\"description\":\"Similarity\",\"viewURL\":\"023641398c730e5eea384269664a7192\",\"rights\":\"admin@cheminfo.org,goodyear-test@cheminfo.org \",\"line\":1,\"bgcolor\":\"rgb(182, 215, 168)\",\"rev\":\"\"},{\"empty\":true},{\"id\":\"Frag\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Mass fragmentation\",\"viewURL\":\"0e35f561fff36fef6c9e7341a9eec858\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-bomb\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":2},{\"viewURL\":\"d9bd75989166b0459041ad75bb6020b4\",\"date\":\"2017-09-01\",\"rights\":\"admin@cheminfo.org\",\"id\":\"OLD Analyse mass\",\"kind\":\"sample\",\"description\":\"OLD HR mass\",\"bgcolor\":\"rgb(244, 204, 204)\",\"line\":2},{\"empty\":false,\"viewURL\":\"daf2eda5bf803818ce48655dd963ca21\",\"id\":\"analyseMS\",\"date\":\"2018-03-20\",\"kind\":\"sample\",\"description\":\"Analyse HR mass\",\"bgcolor\":\"rgb(244, 204, 204)\",\"rights\":\"\",\"line\":2,\"icon\":\"ci-icon-mass-monoisotopic\"},{\"id\":\"EM\",\"kind\":\"sample\",\"description\":\"Monoisotopic mass\",\"viewURL\":\"4a06cbbc25197036518fab2ea6ff961d\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":2,\"rights\":\"admin@cheminfo.org\"},{\"viewURL\":\"2294a250c8c1da87ca6753a6eb93c166\",\"rights\":\"\",\"date\":\"2018-03-20\",\"id\":\"EM\",\"kind\":\"sample\",\"description\":\"Monoisotopic mass\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"rgb(244, 204, 204)\",\"line\":2},{\"viewURL\":\"4cf732cabaf4941a66d2f19cbc5875f2\",\"kind\":\"optionalSample\",\"id\":\"overlayMS\",\"date\":\"2017-09-01\",\"description\":\"Overlay Mass\",\"rights\":\"\",\"bgcolor\":\"rgb(244, 204, 204)\",\"line\":2,\"icon\":\"ci-icon-mass-overlay\"},{\"viewURL\":\"b60d4cd22af351b3996cb3321f169a0e\",\"bgcolor\":\"rgb(244, 204, 204)\",\"id\":\"Cont\",\"kind\":\"sample\",\"description\":\"Mass contaminants\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2,\"icon\":\"ci-icon-mass-impurities\"},{\"viewURL\":\"8fcf268d9a86be15206e3bc1fa1dca49\",\"id\":\"peptideMS\",\"kind\":\"sample\",\"description\":\"Peptide analysis\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2,\"icon\":\"ci-icon-misc-peptide\"},{\"viewURL\":\"f8b2a67c144b612f89580e05f8c02509\",\"id\":\"deconvolution\",\"description\":\"Mass deconvolution\",\"bgcolor\":\"rgb(244, 204, 204)\",\"rights\":\"\",\"kind\":\"sample\",\"date\":\"2017-08-30\",\"line\":2,\"icon\":\"ci-icon-mass-sum\"},{\"viewURL\":\"8863f8f1546748df4d552ae7c6006e8e\",\"date\":\"2018-06-30\",\"id\":\"uploadMS\",\"description\":\"Upload mass\",\"bgcolor\":\"rgb(244, 204, 204)\",\"kind\":\"optionalSample\",\"icon\":\"ci-icon-mass-upload\",\"rights\":\"admin@cheminfo.org\",\"line\":2},{\"empty\":true},{\"viewURL\":\"a7448bb6798371144f9a5ecab184e100\",\"date\":\"2017-06-25\",\"id\":\"IR\",\"kind\":\"sample\",\"description\":\"Process IR spectra\",\"bgcolor\":\"rgb(252, 229, 205)\",\"line\":3,\"icon\":\"ci-icon-ir-assignment\"},{\"viewURL\":\"df238595c62b7f6dac535921e99afba4\",\"date\":\"2017-10-15\",\"id\":\"Overlay IR\",\"kind\":\"optionalSample\",\"description\":\"Overlay infrared\",\"bgcolor\":\"rgb(252, 229, 205)\",\"rights\":\"\",\"line\":3,\"icon\":\"ci-icon-ir-overlay\"},{\"date\":\"2017-07-30\",\"viewURL\":\"afcd626f66f6803b17f7102fb61af080\",\"rights\":\"admin@cheminfo.org\",\"bgcolor\":\"rgb(252, 229, 205)\",\"kind\":\"sample\",\"id\":\"HR gclcMS\",\"description\":\"Visualize HR GC/LC MS\",\"line\":3},{\"date\":\"2018-09-01\",\"id\":\"gclcMS\",\"kind\":\"sample\",\"description\":\"Visualize GC/LC MS\",\"rights\":\"\",\"viewURL\":\"088e53bb9d86f832fa90961ee70a17aa\",\"bgcolor\":\"rgb(252, 229, 205)\",\"line\":3},{\"date\":\"2017-08-03\",\"id\":\"gcIntegration ??\",\"kind\":\"sample\",\"description\":\"GC/LC integration\",\"bgcolor\":\"rgb(252, 229, 205)\",\"rights\":\"admin@cheminfo.org\",\"viewURL\":\"ab10245211be28889d989193b3f48fc9\",\"line\":3},{\"viewURL\":\"62fb57eef6b94ccb8bef741dec8d9baf\",\"date\":\"2017-11-10\",\"kind\":\"sample\",\"id\":\"Chromatogram\",\"description\":\"Peak picking and integration\",\"rights\":\"admin@cheminfo.org,goodyear-test@cheminfo.org \",\"bgcolor\":\"rgb(252, 229, 205)\",\"line\":3},{\"date\":\"2018-07-01\",\"id\":\"IV viewer\",\"kind\":\"sample\",\"viewURL\":\"f2ddd6af4507d2da8ffa42acd925d33b\",\"bgcolor\":\"rgb(252, 229, 205)\",\"line\":3},{\"viewURL\":\"30f10e274924e7216563b97c61b0f18a\",\"id\":\"DSC\",\"kind\":\"sample\",\"description\":\"Differential scanning calorimetry\",\"bgcolor\":\"rgb(252, 229, 205)\",\"rights\":\"admin@cheminfo.org,goodyear-test@cheminfo.org \",\"date\":\"2017-11-10\",\"line\":3},{\"viewURL\":\"e83aeebeb956c8174cc6a53a5d11def8\",\"id\":\"TGA\",\"kind\":\"sample\",\"description\":\"Thermogravimetric analysis\",\"date\":\"2017-11-10\",\"bgcolor\":\"rgb(252, 229, 205)\",\"rights\":\"admin@cheminfo.org,goodyear-test@cheminfo.org \",\"line\":3},{\"viewURL\":\"d0378051a415008bdee4eb326c787a23\",\"date\":\"2017-08-15\",\"description\":\"Upload chromatogram\",\"id\":\"uploadChromatogram\",\"kind\":\"sample\",\"icon\":\"fa-plus\",\"bgcolor\":\"rgb(252, 229, 205)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"\",\"line\":3},{\"id\":\"x\",\"empty\":true},{\"id\":\"3D\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"3D model\",\"viewURL\":\"0e019bb4d797395213d22aca403d2c93\",\"icon\":\"ci-icon-structure-3d-model\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":4},{\"id\":\"Conf\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Conformations\",\"viewURL\":\"0e019bb4d797395213d22aca4043260e\",\"icon\":\"ci-icon-structure-conformers\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":4,\"rights\":\"\"},{\"id\":\"Dia\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Diastereotopic\",\"viewURL\":\"b50564ac9d207212f8e5ae816795fb39\",\"icon\":\"ci-icon-structure-diastereotopic\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":4},{\"kind\":\"optionalSample\",\"viewURL\":\"d9498d0a2ea400ea71efec8840a1273b\",\"description\":\"Property explorer\",\"bgcolor\":\"rgb(207, 226, 243)\",\"id\":\"Info\",\"date\":\"2018-06-30\",\"icon\":\"fa-calculator\",\"line\":4},{\"date\":\"2017-06-10\",\"id\":\"Xray\",\"kind\":\"sample\",\"viewURL\":\"07223c3391c6b0cde342518d240d3426\",\"description\":\"Xray structure\",\"icon\":\"ci-icon-misc-cristal2\",\"bgcolor\":\"rgb(207, 226, 243)\",\"line\":4},{\"date\":\"x\",\"empty\":true},{\"rights\":\"\",\"viewURL\":\"0471a3b7a296450267555b7982ae29ad\",\"id\":\"DNA Upload\",\"description\":\"View / Upload DNA seq\",\"date\":\"2018-06-15\",\"bgcolor\":\"rgb(234, 209, 220)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"line\":5,\"icon\":\"ci-icon-bio-upload-dna\",\"kind\":\"sample\"},{\"date\":\"2018-06-15\",\"id\":\"dnaFeatures\",\"kind\":\"optionalSample\",\"description\":\"Search features\",\"viewURL\":\"0f7ebf89799296e234a73591bafb6e5e\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"fontcolor\":\"rgb(0, 0, 0)\",\"line\":5},{\"date\":\"2018-06-15\",\"id\":\"dnaSimilar\",\"kind\":\"optionalSample\",\"description\":\"Search similar\",\"viewURL\":\"b4af40ab0f57303185700745410032db\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"line\":5},{\"id\":\"plasmidSearch\",\"date\":\"2018-06-15\",\"kind\":\"optionalSample\",\"description\":\"Search plasmids\",\"viewURL\":\"9ffc86418ff71dcef36a5def49d944e8\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"admin@cheminfo.org\",\"line\":5},{\"date\":\"2018-06-15\",\"id\":\"Isoelectric point\",\"kind\":\"optionalSample\",\"description\":\"IEP\",\"viewURL\":\"8a6a09eabcd80af204583be5814e2d4a\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"line\":5,\"icon\":\"ci-icon-misc-peptide\"},{\"icon\":\"ci-icon-bio-protein\",\"bgcolor\":\"rgb(234, 209, 220)\",\"viewURL\":\"46548ab75e0ca6e1e95bbc30663bee0a\",\"id\":\"Prot\",\"kind\":\"optionalSample\",\"date\":\"2018-06-30\",\"description\":\"PDB visualisation\",\"line\":5},{\"empty\":true},{\"kind\":\"optionalSample\",\"icon\":\"fa-list-alt\",\"id\":\"Report\",\"description\":\"Report\",\"date\":\"2018-11-20\",\"viewURL\":\"7b27528bcf8f1d6b4bef966125021698\",\"bgcolor\":\"rgb(217, 210, 233)\"},{\"viewURL\":\"6680a21f3889348522e1968dda9f6aa7\",\"description\":\"Zenodo\",\"kind\":\"optionalSample\",\"id\":\"Zenodo\",\"date\":\"2018-05-20\",\"bgcolor\":\"rgb(217, 210, 233)\",\"rights\":\"\",\"icon\":\"ci-icon-misc-zenodo\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"date\":\"2017-08-19\",\"kind\":\"optionalSample\",\"id\":\"Tokens\",\"description\":\"Access tokens\",\"bgcolor\":\"rgb(217, 210, 233)\",\"rights\":\"admin@cheminfo.org\",\"viewURL\":\"6a1d02a76eec96c43177a6c503c3f933\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\",\"icon\":\"fa-user-cog\"},{\"id\":\"request\",\"kind\":\"sample\",\"icon\":\"ci-icon-mass-request\",\"bgcolor\":\"rgb(217, 210, 233)\",\"date\":\"2018-06-30\",\"description\":\"Analytical request\",\"viewURL\":\"b1af0ae8843bc4b72b5501c717197b5f\",\"rights\":\"\",\"line\":6},{\"viewURL\":\"105a8192b3046702221775d1c09485d2\",\"description\":\"Format manager\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"formatManager\",\"line\":6,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"viewURL\":\"343af97da2f69b4abaa244065faefaee\",\"date\":\"2018-06-30\",\"id\":\"Templates manager\",\"description\":\"Templates manager\",\"kind\":\"optionalSample\",\"icon\":\"fa-notes-medical\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"admin@cheminfo.org\"},{\"description\":\"Sample manager\",\"viewURL\":\"83e55c39f2601bc912a45f049e7c9645\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"sampleManager\",\"line\":6,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"viewURL\":\"187642421e225f8cfcd65a9243394a72\",\"icon\":\"ci-icon-misc-electron-microscopy\",\"description\":\"SEM / TEM image analysis\",\"id\":\"sem\",\"kind\":\"sample\",\"date\":\"2017-06-15\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"id\":\"addStock\",\"kind\":\"optionalSample\",\"description\":\"Add Stock\",\"viewURL\":\"435e7dd9a4a474308d681831307220a9\",\"icon\":\"fa-plus\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-06-16\",\"rights\":\"admin@cheminfo.org\",\"line\":6},{\"date\":\"2017-06-16\",\"id\":\"searchStock\",\"kind\":\"optionalSample\",\"description\":\"Search Stock\",\"viewURL\":\"eeb03ca6c7a82d043456704a340e6d04\",\"rights\":\"admin@cheminfo.org\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"icon\":\"ci-icon-structure-search\",\"line\":6},{\"date\":\"2017-07-02\",\"id\":\"printerManagement\",\"kind\":\"optionalSample\",\"description\":\"Printer Management\",\"icon\":\"fa-print\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"admin@cheminfo.org\",\"viewURL\":\"a2d22457b39108ecdbaa2d4556395053\",\"line\":6},{\"rights\":\"admin@cheminfo.org\",\"date\":\"2017-06-01\",\"id\":\"Inventory\",\"kind\":\"optionalSample\",\"description\":\"Inventory\",\"viewURL\":\"c2a672b13238215f40fab85ff6fa04b4\",\"bgcolor\":\"rgb(217, 210, 233)\",\"icon\":\"fa-book\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"date\":\"2017-11-28\",\"id\":\"Test stock\",\"kind\":\"optionalSample\",\"description\":\"new add stock\",\"viewURL\":\"8d230dd129d38a5755bb7e3128f4e8b5\",\"bgcolor\":\"rgb(217, 210, 233)\",\"rights\":\"admin@cheminfo.org\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"date\":\"2017-12-11\",\"id\":\"General Deconvolution\",\"kind\":\"sample\",\"description\":\"deconvolution 2\",\"viewURL\":\"36211a07a9a78e9493f4188d601d5f25\",\"rights\":\"admin@cheminfo.org\",\"line\":6,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"date\":\"2017-12-26\",\"id\":\"NMR Tree \",\"kind\":\"sample\",\"description\":\"tree \",\"viewURL\":\"1c6e56b7f559de31a804f37f3e9f8762\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":6,\"rights\":\"admin@cheminfo.org\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"date\":\"2018-02-15\",\"id\":\"MSDS\",\"kind\":\"optionalSample\",\"description\":\"MSDS\",\"viewURL\":\"59dec54d14e5e206142256823eb92a7c\",\"line\":6,\"bgcolor\":\"rgb(217, 210, 233)\",\"icon\":\"ci-icon-safety-toxic\",\"fontcolor\":\"rgb(0, 0, 0)\"},{\"viewURL\":\"0728f3778cd29613c3c685cd1ba2e2f3\",\"date\":\"2018-06-10\",\"id\":\"Share data\",\"kind\":\"optionalSample\",\"description\":\"Publication\",\"icon\":\"fa-share-alt\",\"bgcolor\":\"rgb(217, 210, 233)\",\"rights\":\"admin@cheminfo.org\",\"line\":6,\"fontcolor\":\"rgb(0, 0, 0)\"},{\"viewURL\":\"58d02720b825b75293792ec50dc8d4fe\",\"icon\":\"ci-icon-misc-search-request\",\"date\":\"2018-07-01\",\"id\":\"Search requests\",\"kind\":\"optionalSample\",\"description\":\"Search requests\",\"rights\":\"admin@cheminfo.org\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":6},{\"id\":\"aliquots\",\"rev\":\"\",\"description\":\"Aliquots\",\"viewURL\":\"4d4d4afc298d37652a1ef3342b821cca\",\"bgcolor\":\"rgb(217, 210, 233)\",\"empty\":false,\"line\":6,\"date\":\"2018-08-25\",\"rights\":\"admin@cheminfo.org\",\"kind\":\"sample\"},{\"rights\":\"admin@cheminfo.org\",\"kind\":\"rawIframe\",\"line\":6,\"description\":\"TEST\",\"id\":\"TEST\",\"date\":\"2018-10-26\",\"bgcolor\":\"rgb(204, 0, 0)\",\"viewURL\":\"/next/demo/forms/general/index.html\"},{\"viewURL\":\"fc05789282a6d18f268366c117d421d3\",\"id\":\"Quill\",\"kind\":\"optionalSample\",\"description\":\"Quill\",\"line\":6,\"rights\":\"admin@cheminfo.org\"}]"]}]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":52,"top":0},"size":{"width":135,"height":77},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":78,"height":69},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"}},"id":9,"vars_in":[{"rel":"list","name":"tiles"}],"actions_in":[{"rel":"prependRow","name":"prependTile"},{"rel":"insertRow","name":"insertTile"}],"actions_out":[{"jpath":[]}],"vars_out":[{"event":"onRowsSelect","rel":"rows","jpath":[],"name":"selectedButtons"}],"toolbar":{"custom":[[{"title":"Add view","icon":"fa-plus-circle","action":"addView","position":"begin","color":[100,100,100,1]}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":"","zindex":3},{"url":"modules/types/edition/rich_text/","configuration":{"sections":{},"groups":{"group":[{"editable":[[]],"debouncing":[0],"modifyInVariable":[[]],"storeInView":[["yes"]],"autoHeight":[[]],"bgColor":[[255,255,255,1]],"postit":[[]],"html":[["yes"]]}]}},"layers":{"Default layer":{"position":{"left":148,"top":1},"size":{"width":27,"height":15},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":148,"top":1},"size":{"width":27,"height":15},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":10,"vars_in":[{}],"actions_in":[{}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"richtext":"<p><a href=\"http://isic.epfl.ch\" target=\"_blank\"><img src=\"https://www.lactame.com/files/images/logo/epfl.svg\" style=\"height:70px\" /> </a> &nbsp; <a href=\"http://www.univalle.edu.co/\" target=\"_blank\"> <img src=\"https://www.lactame.com/files/images/logo/univalle.svg\" style=\"width:70px\" /> </a></p>\n","title":"","zindex":2},{"url":"modules/types/client_interaction/button_action/","configuration":{"sections":{},"groups":{"group":[{"toggle":["click"],"label":["Action"],"onLabel":["Toggle action off"],"offLabel":["Toggle action on"],"title":[""],"onColor":[[0,0,0,1]],"offColor":[[0,0,0,1]],"startState":["off"],"text":[""],"askConfirm":[[]],"confirmText":["Are you sure?"],"okLabel":["Ok"],"cancelLabel":["Cancel"],"content":["<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n<!DOCTYPE svg PUBLIC \"-//W3C//DTD SVG 1.1//EN\" \"http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd\">\n<svg version=\"1.1\" id=\"Capa_1\" xmlns=\"http://www.w3.org/2000/svg\" xmlns:xlink=\"http://www.w3.org/1999/xlink\" x=\"0px\" y=\"0px\"\n\t width=\"70px\" height=\"70px\" viewBox=\"0 0 511.626 511.626\" style=\"enable-background:new 0 0 511.626 511.626;\"\n\t xml:space=\"preserve\">\n\n\t<g>\n\t\t<path d=\"M49.106,178.729c6.472,4.567,25.981,18.131,58.528,40.685c32.548,22.554,57.482,39.92,74.803,52.099\n\t\t\tc1.903,1.335,5.946,4.237,12.131,8.71c6.186,4.476,11.326,8.093,15.416,10.852c4.093,2.758,9.041,5.852,14.849,9.277\n\t\t\tc5.806,3.422,11.279,5.996,16.418,7.7c5.14,1.718,9.898,2.569,14.275,2.569h0.287h0.288c4.377,0,9.137-0.852,14.277-2.569\n\t\t\tc5.137-1.704,10.615-4.281,16.416-7.7c5.804-3.429,10.752-6.52,14.845-9.277c4.093-2.759,9.229-6.376,15.417-10.852\n\t\t\tc6.184-4.477,10.232-7.375,12.135-8.71c17.508-12.179,62.051-43.11,133.615-92.79c13.894-9.703,25.502-21.411,34.827-35.116\n\t\t\tc9.332-13.699,13.993-28.07,13.993-43.105c0-12.564-4.523-23.319-13.565-32.264c-9.041-8.947-19.749-13.418-32.117-13.418H45.679\n\t\t\tc-14.655,0-25.933,4.948-33.832,14.844C3.949,79.562,0,91.934,0,106.779c0,11.991,5.236,24.985,15.703,38.974\n\t\t\tC26.169,159.743,37.307,170.736,49.106,178.729z\"/>\n\t\t<path d=\"M483.072,209.275c-62.424,42.251-109.824,75.087-142.177,98.501c-10.849,7.991-19.65,14.229-26.409,18.699\n\t\t\tc-6.759,4.473-15.748,9.041-26.98,13.702c-11.228,4.668-21.692,6.995-31.401,6.995h-0.291h-0.287\n\t\t\tc-9.707,0-20.177-2.327-31.405-6.995c-11.228-4.661-20.223-9.229-26.98-13.702c-6.755-4.47-15.559-10.708-26.407-18.699\n\t\t\tc-25.697-18.842-72.995-51.68-141.896-98.501C17.987,202.047,8.375,193.762,0,184.437v226.685c0,12.57,4.471,23.319,13.418,32.265\n\t\t\tc8.945,8.949,19.701,13.422,32.264,13.422h420.266c12.56,0,23.315-4.473,32.261-13.422c8.949-8.949,13.418-19.694,13.418-32.265\n\t\t\tV184.437C503.441,193.569,493.927,201.854,483.072,209.275z\"/>\n\t</g>\n\n</svg>\n"],"contentType":["svg"],"maskOpacity":[0.6]}]}},"layers":{"Default layer":{"position":{"left":136,"top":3},"size":{"width":8,"height":12},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"Admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Admin"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"CopyView":{"position":{"left":136,"top":3},"size":{"width":8,"height":12},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":11,"vars_in":[],"actions_in":[{}],"actions_out":[{"event":"onClick","rel":"actionText","jpath":[],"name":"ContactLuc"}],"vars_out":[],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":"","zindex":12},{"url":"modules/types/edition/rich_text/","configuration":{"sections":{},"groups":{"group":[{"editable":[[]],"debouncing":[0],"modifyInVariable":[[]],"storeInView":[["yes"]],"autoHeight":[[]],"bgColor":[[255,255,255,1]],"postit":[[]],"html":[["yes"]]}]}},"layers":{"Default layer":{"position":{"left":0,"top":7},"size":{"width":55,"height":10},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":7},"size":{"width":55,"height":10},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":false,"created":true,"name":"Default layer"}},"id":12,"vars_in":[{}],"actions_in":[{}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"richtext":"<h3>If you are using those tools please don&#39;t forget to cite us !</h3>\n\n<p>The C6H6 NMR repository: An integral solution to control the flow of your data from the magnet to the public.<br />\nPatiny L, Zasso M, Kostro D, Bernal A, Castillo AM, Bola&ntilde;os A, Asencio MA, Pellet N, Todd M, Schloerer N, Kuhn S. Magnetic Resonance in Chemistry.&nbsp;<strong>2017.</strong></p>\n\n<p>&nbsp;</p>\n","title":"","zindex":1},{"url":"modules/types/client_interaction/code_executor/","configuration":{"sections":{},"groups":{"group":[{"display":[["editor","buttons"]],"execOnLoad":[[]],"asyncAwait":[["top"]],"script":["var buttons = JSON.parse(JSON.stringify(API.getData('selectedButtons')));\n\nvar prepend=''; // public/\n\nconsole.log(buttons);\nbuttons.forEach( (button) => {\n    button.viewURL=prepend+button.viewURL;\n})\n\nAPI.createData('toExport', buttons);"]}],"libs":[[{}]],"buttons":[[{"name":"button1","label":"Execute","hide":[],"disable":[]}]]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":79,"top":0},"size":{"width":47,"height":22},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"CopyView"}},"id":13,"vars_in":[{"rel":"inputValue","name":"selectedButtons"}],"actions_in":[{}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":""},{"url":"modules/types/edition/object_editor/","configuration":{"sections":{},"groups":{"group":[{"editable":["text"],"expanded":[[]],"storeObject":[[]],"displayValue":[[]],"searchBox":[["search"]],"sendButton":[[]],"output":["new"],"storedObject":["{}"]}]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":79,"top":23},"size":{"width":49,"height":46},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"CopyView"}},"id":14,"vars_in":[{"rel":"value","name":"toExport"}],"actions_in":[{}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin"}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":""},{"url":"modules/types/client_interaction/code_executor/","configuration":{"sections":{},"groups":{"group":[{"display":[["editor","buttons"]],"execOnLoad":[[]],"asyncAwait":[["top"]],"script":["switch(this.action.name) {\n    case 'addView': {\n        const choice = await getViewChoice();\n        if(!choice) return;\n        const doc = await getLatestView(choice.id);\n        API.doAction('prependTile', getTileDefinition(doc));\n        break;\n    }\n    case 'insertAfter': {\n        const row = this.action.value;\n        const arr = row.__parent;\n        const idx = arr.indexOf(row);\n        const choice = await getViewChoice();\n        debugger;\n        const doc = await getLatestView(choice.id);\n        if(!choice) return;\n        API.doAction('insertTile', {\n            row: idx,\n            item: getTileDefinition(doc)\n        });\n        break;\n    }\n    case 'updateView': {\n        let viewURL = this.action.value.viewURL;\n        if(!viewURL) return;\n        viewURL = String(viewURL);\n        const doc = await getLatestView(viewURL);\n        if(doc) {\n            this.action.value.setChildSync(['rev'], doc._rev)\n            ui.showNotification(`revision updated to ${doc._rev}`, 'success')\n        }\n        break;\n    }\n    default: {\n        console.log('unhandled action');\n    }\n}\n\nasync function getViewChoice() {\n    const {body} = await superagent\n        .get('https://www.cheminfo.org/couch/cheminfo-public/_design/app/_view/docs?key=[%22c6h6%22,%20%22admin@cheminfo.org%22]')\n        .set('Accept', 'application/json');\n    \n    const choice = await ui.chooseSearch(body.rows, {\n        text: el => el.value.title,\n        groupBy: (el) => el.value.category || 'No category'\n    });\n    return choice;\n}\n\nasync function getLatestView(id) {\n    // Get latest revision\n    const {body: doc} = await superagent\n        .get(`https://www.cheminfo.org/couch/cheminfo-public/${id}`)\n        .set('Accept', 'application/json');\n    return doc;\n}\n\nfunction getTileDefinition(doc) {\n    return {\n        id: doc.$content.name,\n        rev: doc._rev,\n        icon: doc.$content.icon,\n        description: doc.$content.title,\n        viewURL: doc._id,\n        bgcolor: 'rgb(255, 255, 255)',\n        empty: false\n    }\n}\n\n"]}],"libs":[[{"lib":"superagent","alias":"superagent"},{"lib":"src/util/ui","alias":"ui"}]],"buttons":[[{"name":"button1","label":"Execute","hide":[],"disable":[]}]]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":188,"top":0},"size":{"width":47,"height":38},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"CopyView"}},"id":15,"vars_in":[{"rel":"inputValue","name":"addView"}],"actions_in":[{"rel":"execute","name":"addView"},{"rel":"execute","name":"updateView"},{"rel":"execute","name":"insertAfter"}],"vars_out":[{"jpath":[]}],"actions_out":[{"jpath":[]}],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin","color":[100,100,100,1]}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":""},{"url":"modules/types/client_interaction/button_action/","configuration":{"sections":{},"groups":{"group":[{"toggle":["click"],"label":["Open custom view"],"onLabel":["Toggle action off"],"offLabel":["Toggle action on"],"title":[""],"onColor":[[0,0,0,1]],"offColor":[[0,0,0,1]],"startState":["off"],"text":[""],"askConfirm":[[]],"confirmText":["Are you sure?"],"okLabel":["Ok"],"cancelLabel":["Cancel"],"content":[""],"contentType":["content"],"maskOpacity":[0.6]}]}},"layers":{"Default layer":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Default layer"},"admin":{"position":{"left":0,"top":65},"size":{"width":15,"height":9},"zIndex":0,"display":true,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"admin"},"Links":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"Links"},"CopyView":{"position":{"left":0,"top":0},"size":{"width":20,"height":20},"zIndex":0,"display":false,"title":"","bgColor":[255,255,255,0],"wrapper":true,"created":true,"name":"CopyView"}},"id":16,"vars_in":[],"actions_in":[{}],"actions_out":[{"event":"onClick","rel":"actionText","jpath":[],"name":"openView"}],"vars_out":[],"toolbar":{"custom":[[{"title":"","icon":"","action":"","position":"begin","color":[100,100,100,1]}]],"common":[{"toolbar":[["Open Preferences"]]}]},"css":[{"fontSize":[""],"fontFamily":[""]}],"title":""}],"variables":[{"varname":"reagentsCalculator","jpath":["reagentsCalculator"]},{"varname":"samplesCalculator","jpath":["samplesCalculator"]},{"varname":"reportTemplate","jpath":["reportTemplate"]},{"varname":"eln-procedure-snipets","jpath":["eln-procedure-snipets"]},{"varname":"reactions","jpath":["reactions"]}],"aliases":[{"path":"https://www.lactame.com/github/cheminfo-js/visualizer-helper/e400393e4fc920e76e7e7541d7aeb837fdd38b7d/","alias":"vh"},{"path":"https://a17ef982.ngrok.io/cheminfo-js/visualizer-helper/","alias":"vhxx"}],"configuration":{"title":"Samples"},"actionscripts":[{"sections":{},"groups":{"action":[{"name":["togglePublic"],"script":["require(['superagent', 'src/util/ui'], function(superagent, ui) {\n    var couchUrl = API.cache('couchUrl');\n    var database = API.cache('database');\n    var roc = API.cache('rocReaction');\n    if(value.$owners.indexOf('anonymousRead') !== -1) {\n        makePrivate();\n    } else {\n        makePublic();\n    }\n    \n    function getEntry(id) {\n        roc.get(id);\n    }\n    \n    function makePublic() {\n        superagent.put(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made public', 'success')\n                    getEntry(value._id);\n                } else {\n                    ui.showNotification('make reaction public failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction public failed', 'error');\n            });\n    }\n    \n    function makePrivate() {\n        superagent.del(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made private', 'success');\n                    getEntry(value._id)\n                } else {\n                    ui.showNotification('make reaction private failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction private failed', 'error');\n            });\n    }\n});"]}]}},{"sections":{},"groups":{"action":[{"name":["Help"],"script":["var url='https://docs.google.com/document/d/e/2PACX-1vR0GL9cCSK_PI6pGgoiXp6_rCsBKd5Qksg9L75Nc_FKicYZ8NqSGhATSy_xSA3FWzEjxk0c_HJdKCJR/pub?embedded=true';\n \nrequire(['src/util/ui'], function(UI) {\n    UI.dialog(\n        '<iframe frameBorder=\"0\" width=\"100%\" height=\"100%\" src=\"'+url+'\"></iframe>',\n        {width:1000, height: 800}\n    );\n})\n\n\n"]}]}},{"sections":{},"groups":{"action":[{"name":["ShowUserInfo"],"script":["require(['vh/rest-on-couch/showUserInfo'], function(showUserInfo) {\n    var userInfo=API.cache('userInfo');\n    showUserInfo(userInfo);\n})"]}]}},{"sections":{},"groups":{"action":[{"name":["ContactLuc"],"script":["var page='https://form.jotformeu.com/71600609780354'\nvar html='<iframe style=\"border: 0px; \" src=\"' + page + '\" width=\"100%\" height=\"100%\"></iframe>';\n\nrequire(['src/util/ui'], function(UI) {\n    UI.dialog(html, {\n        width: 800,\n        height: 800\n    });\n});\n\n"]}]}}],"init_script":[{"sections":{},"groups":{"general":[{"script":["const baseUrl = document.location.href.replace(/(\\/\\/.*?\\/).*/,'$1').replace('blob:', ''); \nlet rocUrl = `${baseUrl}roc`;\n\nif (document.location.href.indexOf('cheminfo.org')!==-1) {\n    rocUrl = 'https://mydb.cheminfo.org/';\n}\n\nvar database = 'eln';\nvar couchDB = {\n    url: rocUrl,\n    database: database,\n    kind: 'sample'\n}\n\n//API.cache('domain', 'org.cheminfo.');\n\nlet printerRocUrl = rocUrl;\nlet printerProxy = `${baseUrl}printer-proxy`;\nvar printer = {\n    couchDB: {\n        url: printerRocUrl,\n        database: 'printers'\n    },\n    proxy: printerProxy\n};\nAPI.cache('printerConfig', printer);\n\n\nAPI.cache('couchDB',couchDB);\n\n// For demonstration purpose\nif((typeof IframeBridge)!='undefined'){\n    IframeBridge.onMessage(function(data) {\n        switch (data.type) {\n            case 'tab.message':\n                switch (data.message.action) {\n                    case 'selectEntry':\n                        return selectEntry(data.message.uuid);\n                    default:\n                        console.log('got an unknown message', data.message);\n                        return;\n                }\n                break;\n            case 'tab.focus':\n                API.doAction('refreshSample');\n                break;\n        }\n    });\n    IframeBridge.ready();\n}\n\nfunction selectEntry(uuid) {\n    if (!uuid) return;\n    const samples = API.getData('filteredSamples');\n    if (samples) {\n        const index = samples.findIndex(sample => String(sample.id) === uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    }\n}\n\n// Load custom font\nrequire(['src/util/util'], function(Util) {\n    Util.loadCss('https://www.lactame.com/lib/cheminfo-font/0.9.0/style.css');\n})"]}]}}],"custom_filters":[{"sections":{"modules":[{"sections":{},"groups":{"modules":[[{}]]}}],"filtersLib":[{"sections":{},"groups":{"filters":[[{}]]}}],"filters":[{"sections":{},"groups":{"filter":[{"name":[null],"script":[null]}],"libs":[[{}]]}}]},"groups":{}}],"actionfiles":[{"sections":{},"groups":{"action":[[{}]]}}]}
+{
+  "version": "2.111.1",
+  "grid": {
+    "layers": {
+      "Default layer": {
+        "name": "Default layer"
+      },
+      "admin": {
+        "name": "admin"
+      },
+      "Links": {
+        "name": "Links"
+      },
+      "CopyView": {
+        "name": "CopyView"
+      }
+    },
+    "xWidth": 10,
+    "yHeight": 10
+  },
+  "modules": [
+    {
+      "url": "modules/types/edition/slick_grid/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "slickCheck": [
+                [
+                  "enableCellNavigation",
+                  "rowNumbering",
+                  "forceFitColumns",
+                  "highlightScroll",
+                  "editable"
+                ]
+              ],
+              "copyPaste": [[]],
+              "copyPasteOptions": [["newRows"]],
+              "autoColumns": [[]],
+              "toolbar": [[]],
+              "colorjpath": [[]],
+              "slick.defaultColumnWidth": [null],
+              "slick.rowHeight": ["150"],
+              "slick.headerRowHeight": [30],
+              "slick.selectionModel": ["row"],
+              "idProperty": [""],
+              "filterType": ["pref"],
+              "filterRow": [
+                "if(this.event === 'renderAction') {\n    if(this.column.name === 'Make public') {\n        if(this.row.item.$owners.indexOf('anonymousRead') === -1) {\n            this.renderOptions.icon = 'fa-eye-slash';\n            this.renderOptions.tooltip = 'Private.Click to make this reaction public';\n        } else {\n            this.renderOptions.icon = 'fa-eye';\n            this.renderOptions.tooltip = 'Public. Click to make this reaction private';\n        }  \n    } else if(this.column.name === 'Is owner') {\n        var user = API.cache('user');\n        if(this.row.item.$owners.indexOf(user) === -1) {\n            this.renderOptions.icon = 'fa-lock';\n            this.renderOptions.tooltip = 'You are not an owner of this reaction';\n        } else {\n            this.renderOptions.icon = 'fa-unlock';\n            this.renderOptions.tooltip = 'You are an owner of this reaction'\n        }\n    }\n}"
+              ],
+              "customJpaths": [""]
+            }
+          ],
+          "cols": [
+            [
+              {
+                "name": "Product reference",
+                "jpath": ["value"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "twig:` <div style=\"line-height:normal\"> \t<b>{{reference}}</b> \t<table style=\"font-size:xx-small\"> \t{% for k in keyword %} \t\t<tr> \t\t<th style=\"text-align: left\">{{k.kind}}</th> \t\t<td>{{k.value}}</td> \t\t</tr> \t{%endfor%} \t</table> </div>`",
+                "editorOptions": "",
+                "width": 107,
+                "hideColumn": []
+              },
+              {
+                "name": "Last modif.",
+                "jpath": ["value", "modificationDate"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "dateFormat:'YYYY-MM-DD'",
+                "editorOptions": "",
+                "width": 78,
+                "hideColumn": []
+              },
+              {
+                "name": "Structure",
+                "jpath": ["value", "ocl"],
+                "editor": "none",
+                "forceType": "oclID",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 142,
+                "hideColumn": []
+              },
+              {
+                "name": "nb 1d",
+                "jpath": ["value", "nb1d"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 41,
+                "hideColumn": []
+              },
+              {
+                "name": "nb 2d",
+                "jpath": ["value", "nb2d"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 41,
+                "hideColumn": []
+              },
+              {
+                "name": "nb ms",
+                "jpath": ["value", "hasMass"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 41,
+                "hideColumn": []
+              },
+              {
+                "name": "nb IR",
+                "jpath": ["value", "hasIR"],
+                "editor": "none",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 50,
+                "hideColumn": []
+              }
+            ]
+          ],
+          "actionCols": [
+            [
+              {
+                "name": "Print",
+                "tooltip": "Print sample label",
+                "icon": "fa-print",
+                "backgroundColor": [255, 255, 255, 0],
+                "color": [0, 0, 0, 1],
+                "action": "printEntry",
+                "position": "end",
+                "clickMode": "text",
+                "isAction": true
+              }
+            ]
+          ],
+          "groupings": [
+            [
+              {
+                "getter": []
+              }
+            ]
+          ],
+          "actionOutButtons": [[{}]],
+          "data": [
+            {
+              "saveInView": [[]],
+              "varname": [""],
+              "data": ["[]"]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 16
+          },
+          "size": {
+            "width": 54,
+            "height": 72
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Double click to open a sample, one click to select it",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 46,
+            "top": 0
+          },
+          "size": {
+            "width": 47,
+            "height": 73
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Double click to open a sample, one click to select it",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 51,
+            "height": 21
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Double click to open a sample, one click to select it",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 16
+          },
+          "size": {
+            "width": 54,
+            "height": 72
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Double click to open a sample, one click to select it",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 1,
+      "vars_in": [
+        {
+          "rel": "list",
+          "name": "filteredSamples"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "selectRow",
+          "name": "clickRow"
+        }
+      ],
+      "title": "Double click to open a sample, one click to select it",
+      "vars_out": [
+        {
+          "event": "onRowActive",
+          "rel": "row",
+          "jpath": [],
+          "name": "sampleClicked"
+        },
+        {
+          "event": "onRowActive",
+          "rel": "row",
+          "jpath": ["value", "reference"],
+          "name": "referenceClicked"
+        }
+      ],
+      "actions_out": [
+        {
+          "event": "onDoubleClick",
+          "rel": "row",
+          "jpath": [],
+          "name": "rowDoubleClicked"
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "Refresh",
+              "icon": "fa-refresh",
+              "action": "refreshSample",
+              "position": "end",
+              "color": [100, 100, 100, 1]
+            },
+            {
+              "title": "Show user info",
+              "icon": "fa-user",
+              "action": "ShowUserInfo",
+              "position": "begin",
+              "color": [100, 100, 100, 1]
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [[]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/array_search/smart_array_filter/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "debounce": [250],
+              "limit": [0],
+              "initialValue": [""],
+              "placeholder": ["Search for samples"],
+              "fontSize": [24]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 35,
+            "height": 8
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 52,
+            "top": 59
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 5,
+            "top": 71
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 35,
+            "height": 8
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 2,
+      "vars_in": [
+        {
+          "rel": "input",
+          "name": "samples"
+        }
+      ],
+      "actions_in": [{}],
+      "title": "",
+      "vars_out": [
+        {
+          "event": "onQuery",
+          "rel": "output",
+          "jpath": [],
+          "name": "filteredSamples"
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 3,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [["buttons", "editor"]],
+              "execOnLoad": [["yes"]],
+              "asyncAwait": [["top"]],
+              "script": [
+                "var roc = API.cache('rocSample');\nvar couchDB = API.cache('couchDB');\nvar printerConfig = API.cache('printerConfig');\nvar user = API.cache('user');\n// var domain = API.cache('domain');\n\nif(this.event === 'load' && printerConfig) {\n    var printer = await printerLib(printerConfig.couchDB);\n    printerHelper.setup(printer, ['sample']);\n}\n\nif(!roc) {\n    roc = await new Roc({\n            url: couchDB.url,\n            database: couchDB.database,\n            processor: elnPlugin,\n            kind: 'sample'\n        }\n    );\n        \n    var userInfo = await roc.getUserInfo();\n    var user=await roc.getUser();\n    API.cache('user', user);\n    API.cache('userInfo', userInfo);\n    var groups = (await roc.getGroupMembership()).map(g => g.name);\n    createForm(groups);\n    \n    refreshSample();\n    API.cache('rocSample', roc);\n    return;\n}\n\n\nif(this.variable) {\n    refreshSample();\n}\n\nif(!this.action) return;\n\n\n\nswitch(this.action.name) {\n    case 'printEntry':\n        const sample = await DataObject.check(this.action.value.document).get(true);\n        await printerHelper.askPrintEntry(sample, 'sample');\n        break;\n    case 'createSample':\n        createSample();\n        break;\n    case 'deleteSample': \n        deleteSample(this.action.value);\n        break;\n    case 'refreshSample':\n        refreshSample();\n        break;\n    case 'rowDoubleClicked':\n        openDefault({\n            uuid:this.action.value.id,\n            reference: this.action.value.key.slice(1).join(' ')\n        });\n        break;\n    case 'printSample':\n        const doc = await DataObject.check(this.action.value.document).get(true);\n        printerHelper.askPrintEntry(doc, 'sample');\n        break;\n    case 'handleTileClick':\n        handleTileClick(this.action.value);\n        break;\n    case 'openView': {\n        const viewURL = await ui.enterValue({label: 'Enter view uuid'});\n        let sample = API.getData('sampleClicked');\n        if(sample) {\n            sample = {\n                reference: sample.value.reference,\n                uuid: sample.id\n            }\n        }\n        handleTileClick({\n            sample,\n            tile: {\n                kind: 'sample',\n                viewURL,\n                id: viewURL.substr(0, 6)\n            }\n        });\n    }\n    default:\n        console.warn('Unhandled sample action');\n        break;\n}\n\n//sd\nif(!this.action) return;\n\nfunction createSample(sample) {\n    var entrysample = {$content: {}}\n    ui.form(`\n        <div>\n        <form>\n            <table>\n            <tr>\n            <th align=right>Reference<br><span style='font-size: smaller'>Reaction code</span></th>\n            <td><input type=\"text\" name=\"code\" pattern=\"[A-Za-z0-9 .-]{3,}\"/></td>\n            </tr>\n            <tr>\n            <th align=right>Batch<br><span style='font-size: smaller'>Fraction</span></th>\n            <td><input type=\"text\" name=\"batch\" pattern=\"[A-Za-z0-9 .-]*\"/></td>\n            </tr>\n            <!--\n            <tr>\n            <th align=right>Sample<br><span style='font-size: smaller'>(empty most of the time)</span></th>\n            <td><input type=\"text\" name=\"sample\" pattern=\"[A-Za-z0-9 .-]*\"/></td>\n            </tr>\n            -->\n            </table>\n            <input type=\"submit\" value=\"Submit\"/>\n        </form>\n        </div>\n    `,{}).then(function(result){\n        if (!result || !result.code || result.batch == null) return;\n        entrysample.$id = [result.code, result.batch];\n        if (result.sample) entrysample.$id.push(result.sample);\n        var reference=result.code + ( result.batch ? ' '+result.batch : '');\n        var userInfo = API.cache('userInfo');\n        \n        if (userInfo && userInfo.allGroups) {\n            entrysample.$owners=userInfo.allGroups;\n        }\n\n        roc.create(entrysample).then(function(sample) {\n            openDefault({\n                uuid: sample._id,\n                reference\n            });\n            // we do like if we would have click on the line we just added\n            API.createData('sampleClicked', {id: sample._id});\n        });\n    });\n}\n\nfunction deleteSample(entry) {\n    ui.confirm('Are you sure you want to delete ' + entry.value.reference)\n    .then(function(res) {\n        if(!res) return;\n        roc.delete(entry.id);\n    });\n}\n\nfunction refreshSample() {\n    \n    var uuid=(API.getData('sampleClicked') || {}).id;\n    \n    var options = {varName: 'samples'};\n    var form = API.getData('formSample'), group;\n    if(!form) return;\n    group = form.group;\n    \n    window.localStorage.setItem('eln-default-sample-group', String(group));\n    \n    if(group === 'mine') {\n        options.mine = 1;\n    } else if(group !== 'all') {\n        options.groups = group;\n    }\n    \n    options.sort = function(a, b) {\n        if(a.value.modificationDate > b.value.modificationDate) {\n            return -1;\n        } else if(a.value.modificationDate < b.value.modificationDate) {\n            return 1;\n        } else {\n            return 0;\n        }\n    }\n    \n    roc.query('sample_toc', options).then(function(data) {\n        API.cache('nbSamples', data.length);\n        API.doAction('renderTiles');\n        // we need to select the previously selected element\n        const index = data.findIndex(sample => String(sample.id) == uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    });\n}\n\nfunction createForm(groups) {\n    var possibleGroups = [\"all\", \"mine\"].concat(groups);\n    var defaultGroup = window.localStorage.getItem('eln-default-sample-group');\n    if(possibleGroups.indexOf(defaultGroup) === -1) {\n        defaultGroup = 'all';\n    }\n    var schema = {\n        type: 'object',\n        properties: {\n            group: {\n                type: 'string',\n                enum: possibleGroups,\n                default: defaultGroup,\n                required: true\n            }\n        }\n    }\n    API.createData('formSchema', schema)\n}\n\nfunction openDefault(sample) {\n    var defaultTileURL='15c9a2dcd55c963fdedf2c18a1471b03';\n    var defaultTile=API.getData('tiles').filter(a => String(a.viewURL)===defaultTileURL);\n    if (defaultTile.length!==1) {\n        console.log('Default tile not found !!!');\n        return;\n    }\n    var tile=defaultTile[0];\n    handleTileClick({\n            tile,\n            sample\n        }\n    );\n}\n\nfunction handleTileClick(value={}) {\n    var {\n        tile,\n        sample={}\n    } = value;\n    \n    var uuid = sample.uuid;\n    var reference = sample.reference;\n\n    var referer=document.location.href.replace(/(\\/\\/.*?\\/).*/,'$1').replace('blob:','');\n    var viewURL=tile.viewURL;\n    viewURL+='?referer='+encodeURIComponent(referer);\n    if (tile.rev) viewURL+='&rev='+tile.rev;\n    \n    switch (String(tile.kind)) {\n        case 'sample':\n            if (! uuid || ! reference) return;\n            IframeBridge.postMessage('tab.open', {\n                id: `${tile.id} ${reference}`,\n                url: viewURL,\n                data: {\n                    printer: printerConfig,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                    reference\n                }\n            });\n            break;\n        case 'optionalSample':\n            uuid = uuid || '';\n            IframeBridge.postMessage('tab.open', {\n                id: tile.id,\n                url: viewURL,\n                data: {\n                    printer: printerConfig,\n                    couchDB,\n                    uuid: String(uuid),\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                }\n            });\n            break;\n        case 'newTab':\n            console.log('new tab');\n            break;\n        case 'rawIframe':\n            IframeBridge.postMessage('tab.open', {\n                id: tile.id,\n                url: window.parent.location.origin + tile.viewURL,\n                rawIframe: true,\n                data: {\n                    couchDB,\n                    data: tile.data ? JSON.parse(tile.data) : undefined,\n                }\n            });\n            break;\n    }\n    \n}"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "vh/rest-on-couch/Roc",
+                "alias": "Roc"
+              },
+              {
+                "lib": "lodash",
+                "alias": "_"
+              },
+              {
+                "lib": "src/util/ui",
+                "alias": "ui"
+              },
+              {
+                "lib": "https://www.lactame.com/lib/eln-plugin/0.0.2/eln-plugin.js",
+                "alias": "elnPlugin"
+              },
+              {
+                "lib": "vh/eln/stock/printer/printer",
+                "alias": "printerLib"
+              },
+              {
+                "lib": "vh/eln/stock/printer/helper",
+                "alias": "printerHelper"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute",
+                "hide": [],
+                "disable": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 52,
+            "top": 51
+          },
+          "size": {
+            "width": 63,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Process all the actions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 88,
+            "top": 0
+          },
+          "size": {
+            "width": 100,
+            "height": 73
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Process all the actions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 34,
+            "top": 50
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Process all the actions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 52,
+            "top": 51
+          },
+          "size": {
+            "width": 63,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Process all the actions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 3,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "formSample"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "execute",
+          "name": "deleteSample"
+        },
+        {
+          "rel": "execute",
+          "name": "openSample"
+        },
+        {
+          "rel": "execute",
+          "name": "processNMR"
+        },
+        {
+          "rel": "execute",
+          "name": "togglePublic"
+        },
+        {
+          "rel": "execute",
+          "name": "createSample"
+        },
+        {
+          "rel": "execute",
+          "name": "refreshSample"
+        },
+        {
+          "rel": "execute",
+          "name": "updateSample"
+        },
+        {
+          "rel": "execute",
+          "name": "overlayNMR"
+        },
+        {
+          "rel": "execute",
+          "name": "peakPicking"
+        },
+        {
+          "rel": "execute",
+          "name": "rowDoubleClicked"
+        },
+        {
+          "rel": "execute",
+          "name": "printSample"
+        },
+        {
+          "rel": "execute",
+          "name": "handleTileClick"
+        },
+        {
+          "rel": "execute",
+          "name": "openView"
+        },
+        {
+          "rel": "execute",
+          "name": "printEntry"
+        }
+      ],
+      "title": "Process all the actions",
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin",
+              "color": [100, 100, 100, 1]
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/edition/onde/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "hasButton": [["onload"]],
+              "button_text": ["Export"],
+              "debouncing": [0],
+              "output": ["new"],
+              "mode": ["schema"],
+              "schemaSource": ["variable"],
+              "schema": [""],
+              "onchangeFilter": [null]
+            }
+          ],
+          "data": [
+            {
+              "saveInView": [[]],
+              "varname": [""],
+              "data": ["{}"]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 4
+          },
+          "size": {
+            "width": 22,
+            "height": 6
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 21,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 18,
+            "top": 41
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 4
+          },
+          "size": {
+            "width": 22,
+            "height": 6
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 4,
+      "vars_in": [
+        {
+          "rel": "schema",
+          "name": "formSchema"
+        }
+      ],
+      "actions_in": [{}],
+      "title": "",
+      "vars_out": [
+        {
+          "event": "onFormSubmit",
+          "rel": "outputValue",
+          "jpath": [],
+          "name": "formSample"
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "zindex": 4,
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/code_editor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "mode": ["html"],
+              "outputType": [null],
+              "btnvalue": ["Send script"],
+              "iseditable": [["editable"]],
+              "hasButton": [[]],
+              "variable": [[]],
+              "storeOnChange": [["store"]],
+              "debouncing": [250],
+              "script": ["<div id=\"sample-tiles\"></div>"]
+            }
+          ],
+          "ace": [
+            {
+              "useSoftTabs": [["yes"]],
+              "tabSize": [4]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 52,
+            "top": 84
+          },
+          "size": {
+            "width": 41,
+            "height": 13
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 5,
+      "vars_in": [{}],
+      "actions_in": [{}],
+      "vars_out": [
+        {
+          "event": "onEditorChange",
+          "rel": "data",
+          "jpath": [],
+          "name": "twigTemplate"
+        }
+      ],
+      "title": "",
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "zindex": 4,
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [["editor", "buttons"]],
+              "execOnLoad": [["yes"]],
+              "asyncAwait": [[]],
+              "script": [
+                "var tilesData=get('tiles');\nvar couchDB = API.cache('couchDB');\nvar printer = API.cache('printerConfig');\nvar domain = API.cache('domain');\nvar couchPublicUrl = 'https://couch.cheminfo.org';\nvar couchPublicDatabase = 'cheminfo-public';\n\nif(tilesData) {\n    tilesData = tilesData.resurrect().map(t => {\n        return t.empty ? {} : t;\n    })\n    tiles('sample-tiles', {\n        tiles: tilesData,\n        shouldRender: tile => {\n            if(tile.hide) return false;\n            let user = API.cache('user');\n            if(user) user = user.username;\n            return (checkRights(user, tile.rights, true));\n        },\n        ribbon: tile => {\n            if(tile.rights) {\n                return 'LIMITED';\n            } else if (tile.date) {\n                const d = new Date(tile.date);\n                if(new Date() - d < 1296000000) {\n                    return 'NEW';\n                }\n            }\n            return '';\n        },\n        isActive: tile => {\n            if(tile.kind === 'sample') {\n                const sample = API.getData('sampleClicked');\n                if(sample) return true;\n            } else {\n                return true;\n            }\n            return false;\n        },\n        isLink: tile => true,\n        icon: tile => tile.icon,\n        title: tile => tile.icon ? '' : checkCache(tile.title),\n        backgroundColor: tile => String(tile.bgcolor),\n        color: tile => tile.fontcolor || 'black',\n        header: tile => tile.description,\n        footer: tile => tile.id,\n        onTileClick: (event, tile) => {\n            if(event.shiftKey && tile.viewURL) {\n                return showCode(tile);\n            }\n            \n            handleTileClick(tile);\n        },\n        isNewTabLink: (tile) => tile.kind === 'newTab',\n        href: (tile) => window.location.origin + tile.viewURL\n    });\n}\n\n\n\nasync function showCode(tile) {\n    const copiedTile = Object.assign({}, tile);\n    delete copiedTile.line;\n    \n    const res = await superagent.get(couchPublicUrl + '/' + couchPublicDatabase + '/' + tile.viewURL)\n    .set('Accept', 'application/json');\n    if(res.status === 200) {\n        copiedTile.rev = res.body._rev;\n    } else {\n        throw new Error('This view might not be public (' + res.status + ')');\n    }\n    \n    const roc = new Roc({\n        url: 'https://mydb.cheminfo.org',\n        database: 'visualizer'\n    });\n    \n    let title = '';\n    try {\n        const view = await roc.get(tile.viewURL);\n        if(res.body._rev === view._rev) {\n            title = 'Private and public revs match';\n        } else {\n            title = `Private: rev ${revNumber(view._rev)}, Pubilc: rev ${revNumber(res.body._rev)}`;\n        }\n    } catch(e) {\n        title = 'not able to get private revision of the view';\n    }\n    \n    try {\n        await UI.showCode({\n            mode: 'json',\n            content: JSON.stringify(copiedTile, null, '\\t'),\n            title: title\n        });    \n    } catch(e) {\n        UI.showNotification(e.message, 'error');\n    }\n}\n\nfunction handleTileClick(tile) {\n    console.log(tile)\n    var sample = API.getData('sampleClicked');\n    API.doAction('handleTileClick', {\n        sample: {\n            uuid: sample && sample.id,\n            reference: sample && sample.key.slice(1).join(' ')\n        },\n        tile\n    })\n}\n\nfunction checkCache(val) {\n    if(val) {\n        const parts = val.split(':');\n        if(parts[0] === 'cache') {\n            const jpath = parts[1].split('.');\n            const name = jpath.splice(0, 1);\n            if(jpath.length === 0) return API.cache(name[0]);\n            return DataObject.resurrect(DataObject.check(Object.assign({}, API.cache(name[0]))).getChildSync(jpath));\n        } else {\n            return val;\n        }\n    }\n}\n\nfunction revNumber(rev) {\n    const m = /^(\\d+)/.exec(rev);\n    return m && m[1];\n}"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "src/util/ui",
+                "alias": "UI"
+              },
+              {
+                "lib": "superagent",
+                "alias": "superagent"
+              },
+              {
+                "lib": "vh/util/tiles",
+                "alias": "tiles"
+              },
+              {
+                "lib": "vh/util/checkRights",
+                "alias": "checkRights"
+              },
+              {
+                "lib": "vh/rest-on-couch/Roc",
+                "alias": "Roc"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute",
+                "hide": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Converting the hyperlink template to hyperlinks and create functions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Converting the hyperlink template",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 22
+          },
+          "size": {
+            "width": 51,
+            "height": 106
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "Converting the hyperlink template",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "Converting the hyperlink template to hyperlinks and create functions",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 6,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "sampleClicked"
+        },
+        {
+          "rel": "inputValue",
+          "name": "tiles"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "execute",
+          "name": "renderTiles"
+        }
+      ],
+      "title": "Converting the hyperlink template",
+      "vars_out": [
+        {
+          "event": "onScriptEnded",
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "zindex": 4,
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/display/template-twig/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "selectable": [[]],
+              "template": [""],
+              "modifyInForm": [[]],
+              "debouncing": [0],
+              "formOptions": [["keepFormValueIfDataUndefined"]]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 56,
+            "top": 0
+          },
+          "size": {
+            "width": 126,
+            "height": 88
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 4
+          },
+          "size": {
+            "width": 45,
+            "height": 60
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 98,
+            "top": 80
+          },
+          "size": {
+            "width": 89,
+            "height": 40
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 56,
+            "top": 0
+          },
+          "size": {
+            "width": 126,
+            "height": 88
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 7,
+      "vars_in": [
+        {
+          "rel": "tpl",
+          "name": "twigTemplate"
+        },
+        {
+          "rel": "value",
+          "name": "links"
+        },
+        {
+          "rel": "value",
+          "name": "userInfo"
+        }
+      ],
+      "actions_in": [{}],
+      "title": "",
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [[]]
+          }
+        ]
+      },
+      "zindex": 1,
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ]
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [["editor", "buttons"]],
+              "execOnLoad": [[]],
+              "asyncAwait": [["top"]],
+              "script": [
+                "var button=getButton();\n\nswitch (button) {\n    case 'add':\n        API.doAction('createSample');\n        break;\n    case 'help':\n        API.doAction('Help');\n        break;\n}"
+              ]
+            }
+          ],
+          "libs": [[{}]],
+          "buttons": [
+            [
+              {
+                "name": "help",
+                "label": "Help",
+                "hide": []
+              },
+              {
+                "name": "add",
+                "label": "Add sample",
+                "hide": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 36,
+            "top": 0
+          },
+          "size": {
+            "width": 19,
+            "height": 5
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 36,
+            "top": 0
+          },
+          "size": {
+            "width": 19,
+            "height": 5
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 8,
+      "vars_in": [{}],
+      "actions_in": [{}],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 4
+    },
+    {
+      "url": "modules/types/edition/slick_grid/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "slickCheck": [
+                [
+                  "enableCellNavigation",
+                  "rowNumbering",
+                  "forceFitColumns",
+                  "highlightScroll",
+                  "editable",
+                  "enableAddRow"
+                ]
+              ],
+              "copyPaste": [[]],
+              "copyPasteOptions": [["newRows"]],
+              "autoColumns": [["reorder", "remove"]],
+              "toolbar": [[]],
+              "colorjpath": [[]],
+              "slick.defaultColumnWidth": [null],
+              "slick.rowHeight": [null],
+              "slick.headerRowHeight": [30],
+              "slick.selectionModel": ["row"],
+              "idProperty": [""],
+              "filterType": ["pref"],
+              "filterRow": [
+                "// Documentation: https://github.com/NPellet/visualizer/blob/87ba3af17e07f6766c266385c41b177d5094150b/src/modules/types/edition/slick_grid/view.js#L1253-L1279"
+              ],
+              "customJpaths": ["title,rights,rev,hide,data"]
+            }
+          ],
+          "cols": [
+            [
+              {
+                "name": "Date",
+                "jpath": ["date"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "dateFormat:YYYY-MM-DD",
+                "editorOptions": "",
+                "width": 96,
+                "hideColumn": []
+              },
+              {
+                "name": "Id",
+                "jpath": ["id"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 96,
+                "hideColumn": []
+              },
+              {
+                "name": "Kind",
+                "jpath": ["kind"],
+                "editor": "select",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "sample;optionalSample;rawIframe;sampleRawIframe;newTab",
+                "width": 96,
+                "hideColumn": []
+              },
+              {
+                "name": "Description",
+                "jpath": ["description"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 96,
+                "hideColumn": []
+              },
+              {
+                "name": "viewURL",
+                "jpath": ["viewURL"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 224,
+                "hideColumn": []
+              },
+              {
+                "name": "rev",
+                "jpath": ["rev"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 71,
+                "hideColumn": []
+              },
+              {
+                "name": "Icon",
+                "jpath": ["icon"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 30,
+                "hideColumn": []
+              },
+              {
+                "name": "Title",
+                "jpath": ["title"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 30,
+                "hideColumn": []
+              },
+              {
+                "name": "BG",
+                "jpath": ["bgcolor"],
+                "editor": "color",
+                "forceType": "color",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 33,
+                "hideColumn": []
+              },
+              {
+                "name": "Rights",
+                "jpath": ["rights"],
+                "editor": "string",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 209,
+                "hideColumn": []
+              },
+              {
+                "name": "Hide",
+                "jpath": ["hide"],
+                "editor": "boolean",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 68,
+                "hideColumn": []
+              },
+              {
+                "name": "Empty",
+                "jpath": ["empty"],
+                "editor": "boolean",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 97,
+                "hideColumn": []
+              },
+              {
+                "name": "Data",
+                "jpath": ["data"],
+                "editor": "longtext",
+                "forceType": "",
+                "formatter": "typerenderer",
+                "copyFormatter": "default",
+                "visibility": "both",
+                "rendererOptions": "",
+                "editorOptions": "",
+                "width": 69,
+                "hideColumn": []
+              }
+            ]
+          ],
+          "actionCols": [
+            [
+              {
+                "name": "updateView",
+                "tooltip": "Update view",
+                "icon": "fa-sync",
+                "backgroundColor": [255, 255, 255, 0],
+                "color": [0, 0, 0, 1],
+                "action": "updateView",
+                "position": "end",
+                "clickMode": "text",
+                "isAction": true
+              },
+              {
+                "name": "insertAfter",
+                "tooltip": "Insert view after",
+                "icon": "fa-plus",
+                "backgroundColor": [255, 255, 255, 0],
+                "color": [74, 134, 232, 1],
+                "action": "insertAfter",
+                "position": "end",
+                "clickMode": "text",
+                "isAction": true
+              }
+            ]
+          ],
+          "groupings": [
+            [
+              {
+                "getter": []
+              }
+            ]
+          ],
+          "actionOutButtons": [[{}]],
+          "data": [
+            {
+              "saveInView": [["yes"]],
+              "varname": ["tiles"],
+              "data": [
+                "[{\"id\":\"Samples\",\"kind\":\"nbSample\",\"description\":\"Number of sample\",\"data\":\"\",\"text\":\"\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"empty\":false,\"line\":0,\"title\":\"cache:nbSamples\"},{\"id\":\"ELN\",\"viewURL\":\"a6fb774a50448cc3edd52dd6dfd275ea\",\"kind\":\"optionalSample\",\"description\":\"Notebook\",\"icon\":\"ci-icon-glassware-round-flask\",\"bgcolor\":\"rgb(255, 242, 204)\",\"line\":0,\"date\":\"2017-04-30\",\"fontcolor\":\"rgb(0, 0, 0)\",\"hide\":false,\"rev\":\"242-696788f63c038e77d85d771808785955\"},{\"id\":\"Structure search\",\"kind\":\"optionalSample\",\"description\":\"Structure search\",\"viewURL\":\"aaa5f97c7cde94741de2938b106bb0d4\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-structure-search\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-09-20\",\"line\":0,\"rev\":\"99-8f2ad2b7c265ad232c79207a0d592bff\"},{\"id\":\"OS\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Open/edit sample\",\"viewURL\":\"15c9a2dcd55c963fdedf2c18a1471b03\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-edit\",\"bgcolor\":\"rgb(255, 242, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":0,\"rev\":\"686-75888c894bcea81fbde23985c00a8031\"},{\"date\":\"2018-05-15\",\"id\":\"Lipinski\",\"kind\":\"optionalSample\",\"viewURL\":\"5ba3ccc2681bc1ff7f370e78efd335c3\",\"description\":\"Lipinski\",\"rights\":\"\",\"bgcolor\":\"rgb(255, 242, 204)\",\"line\":0,\"icon\":\"ci-icon-chart-multi2\",\"rev\":\"31-626fe6f9422025eadf8540616b3038d3\"},{\"id\":\"\",\"line\":1,\"empty\":true},{\"id\":\"PP\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"1D NMR peak picking\",\"viewURL\":\"4c986ed7d921b11fbe6f20240f0df3a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-peak-picking\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1,\"rev\":\"960-511e255ad2737a29d1db714a84595388\"},{\"id\":\"Overlay NMR\",\"kind\":\"optionalSample\",\"description\":\"Overlay NMR\",\"viewURL\":\"f162299d0efd3f7c21b5542c85003689\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-overlay\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-05-06\",\"line\":1,\"rev\":\"293-573337a573bc7cf13c05e4be25a6c4a1\"},{\"id\":\"1H\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 1H\",\"viewURL\":\"eea0ba081ea2cc99da5c1aed2f29a0a8\",\"data\":\"\",\"text\":\"\",\"icon\":\"ci-icon-nmr-1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":1,\"rev\":\"401-12c05c54750188fd8e9184d623c2b3e4\"},{\"id\":\"13C\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict 13C\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a45f3c\",\"icon\":\"ci-icon-nmr-13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1,\"rev\":\"81-ba083d05ac2bc2ebf70f7e9f77d76850\"},{\"id\":\"COSY\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict COSY\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a607ed\",\"icon\":\"ci-icon-nmr-1h1h\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1,\"rev\":\"76-cf20e4bff30db8566bb2e725b6cee004\"},{\"id\":\"HMBC\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"NMR predict HMBC\",\"viewURL\":\"b50564ac9d207212f8e5ae8167a68433\",\"icon\":\"ci-icon-nmr-1h13c\",\"bgcolor\":\"rgb(182, 215, 168)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":1,\"rev\":\"64-de2353757f4958871eb3e58967883515\"},{\"viewURL\":\"901378074eeb9b75396aadff96b3b83a\",\"date\":\"2017-06-20\",\"id\":\"Search\",\"kind\":\"optionalSample\",\"description\":\"Search by δ\",\"icon\":\"ci-icon-nmr-search\",\"bgcolor\":\"rgb(182, 215, 168)\",\"line\":1,\"rights\":\"admin@cheminfo.org\",\"rev\":\"593-8c5464aa86c325e31327a2380e7dbe0c\"},{\"empty\":true},{\"id\":\"F\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Mass fragmentation\",\"viewURL\":\"0e35f561fff36fef6c9e7341a9eec858\",\"data\":\"\",\"text\":\"\",\"icon\":\"fa-bomb\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"black\",\"date\":\"2016-07-06\",\"line\":2,\"hide\":true,\"rev\":\"211-818d3374dd0594150f80ef5797f0015c\"},{\"empty\":false,\"viewURL\":\"daf2eda5bf803818ce48655dd963ca21\",\"id\":\"analyseMS\",\"date\":\"2018-03-20\",\"kind\":\"sample\",\"description\":\"Analyse HR mass\",\"bgcolor\":\"rgb(244, 204, 204)\",\"rights\":\"\",\"line\":2,\"icon\":\"ci-icon-mass-monoisotopic\",\"rev\":\"176-abc05267d8abf6e59584f29cc5ca50f2\"},{\"viewURL\":\"2294a250c8c1da87ca6753a6eb93c166\",\"rights\":\"\",\"date\":\"2018-03-20\",\"id\":\"EM\",\"kind\":\"sample\",\"description\":\"Monoisotopic mass\",\"icon\":\"ci-icon-mass-monoisotopic\",\"bgcolor\":\"rgb(244, 204, 204)\",\"line\":2,\"rev\":\"159-70105a90608cf5c48e0d5a0f4d047593\"},{\"viewURL\":\"4cf732cabaf4941a66d2f19cbc5875f2\",\"kind\":\"optionalSample\",\"id\":\"overlayMS\",\"date\":\"2017-09-01\",\"description\":\"Overlay Mass\",\"rights\":\"\",\"bgcolor\":\"rgb(244, 204, 204)\",\"line\":2,\"icon\":\"ci-icon-mass-overlay\",\"rev\":\"54-87c23a1e130eb1aa18476165c0f95ef3\"},{\"viewURL\":\"b60d4cd22af351b3996cb3321f169a0e\",\"bgcolor\":\"rgb(244, 204, 204)\",\"id\":\"Cont\",\"kind\":\"sample\",\"description\":\"Mass contaminants\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2,\"icon\":\"ci-icon-mass-impurities\",\"rev\":\"278-3054bb50798ec77f14d8264d43bb6835\"},{\"viewURL\":\"8fcf268d9a86be15206e3bc1fa1dca49\",\"id\":\"peptideMS\",\"kind\":\"sample\",\"description\":\"Peptide analysis\",\"bgcolor\":\"rgb(244, 204, 204)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-15\",\"line\":2,\"icon\":\"ci-icon-misc-peptide\",\"rev\":\"205-12c66ae1b8119e918da5b5dcaf421000\"},{\"empty\":true,\"hide\":true},{\"id\":\"3D\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"3D model\",\"viewURL\":\"0e019bb4d797395213d22aca403d2c93\",\"icon\":\"ci-icon-structure-3d-model\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3,\"rev\":\"87-63ea576d1842d4dc482c2ecf9511d6e0\"},{\"id\":\"Conf\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Conformations\",\"viewURL\":\"0e019bb4d797395213d22aca4043260e\",\"icon\":\"ci-icon-structure-conformers\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3,\"rights\":\"\",\"rev\":\"51-d0e0526dfce7ba37a0e569fdf23edc67\"},{\"id\":\"Dia\",\"kind\":\"sample\",\"requires\":\"sample\",\"description\":\"Diastereotopic\",\"viewURL\":\"b50564ac9d207212f8e5ae816795fb39\",\"icon\":\"ci-icon-structure-diastereotopic\",\"bgcolor\":\"rgb(207, 226, 243)\",\"fontcolor\":\"black\",\"date\":\"2016-08-06\",\"line\":3,\"rev\":\"48-de1f5d2b5472aca96fe9ea405e47d6e4\"},{\"kind\":\"optionalSample\",\"viewURL\":\"d9498d0a2ea400ea71efec8840a1273b\",\"description\":\"Property explorer\",\"bgcolor\":\"rgb(207, 226, 243)\",\"id\":\"Info\",\"date\":\"2018-06-30\",\"icon\":\"fa-calculator\",\"line\":3,\"rev\":\"53-555307b7ae8cf156019ca09def9d3195\"},{\"date\":\"2017-06-10\",\"id\":\"Xray\",\"kind\":\"sample\",\"viewURL\":\"07223c3391c6b0cde342518d240d3426\",\"description\":\"Xray structure\",\"icon\":\"ci-icon-misc-cristal2\",\"bgcolor\":\"rgb(207, 226, 243)\",\"line\":3,\"rev\":\"17-5ba9a432c91c8bda09cacb06bd882361\"},{\"empty\":true},{\"rights\":\"\",\"viewURL\":\"0471a3b7a296450267555b7982ae29ad\",\"id\":\"DNA Upload\",\"description\":\"View / Upload DNA seq\",\"date\":\"2018-06-15\",\"bgcolor\":\"rgb(234, 209, 220)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"line\":4,\"icon\":\"ci-icon-bio-upload-dna\",\"kind\":\"sample\",\"rev\":\"51-0ad1b2744da24aff0adf34b21abf34f9\"},{\"date\":\"2018-06-15\",\"id\":\"dnaFeatures\",\"kind\":\"optionalSample\",\"description\":\"Search features\",\"viewURL\":\"0f7ebf89799296e234a73591bafb6e5e\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"fontcolor\":\"rgb(0, 0, 0)\",\"line\":4,\"rev\":\"40-24922969325d812eb88dc872694eeb73\"},{\"date\":\"2018-06-15\",\"id\":\"dnaSimilar\",\"kind\":\"optionalSample\",\"description\":\"Search similar\",\"viewURL\":\"b4af40ab0f57303185700745410032db\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"line\":4,\"rev\":\"43-ab58bffc410b30d9b2f398501c6774b4\"},{\"id\":\"plasmidSearch\",\"date\":\"2018-06-15\",\"kind\":\"optionalSample\",\"description\":\"Search plasmids\",\"viewURL\":\"9ffc86418ff71dcef36a5def49d944e8\",\"icon\":\"ci-icon-bio-search-dna\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"line\":4,\"rev\":\"18-b2acbc083d0b773fa9f693daee0a55db\"},{\"date\":\"2018-06-15\",\"id\":\"Isoelectric point\",\"kind\":\"optionalSample\",\"description\":\"IEP\",\"viewURL\":\"8a6a09eabcd80af204583be5814e2d4a\",\"bgcolor\":\"rgb(234, 209, 220)\",\"rights\":\"\",\"line\":4,\"icon\":\"ci-icon-misc-peptide\",\"rev\":\"33-024ad0de0c3d0c795e4a2db798818abc\"},{\"icon\":\"ci-icon-bio-protein\",\"bgcolor\":\"rgb(234, 209, 220)\",\"viewURL\":\"46548ab75e0ca6e1e95bbc30663bee0a\",\"id\":\"Prot\",\"kind\":\"optionalSample\",\"date\":\"2018-06-30\",\"description\":\"PDB visualisation\",\"line\":4,\"rev\":\"20-8f3b398b6424f7764d8e2b97e3958f0a\"},{\"empty\":true},{\"id\":\"request\",\"kind\":\"sample\",\"icon\":\"ci-icon-mass-request\",\"bgcolor\":\"rgb(217, 210, 233)\",\"date\":\"2018-06-30\",\"description\":\"Analytical request\",\"viewURL\":\"b1af0ae8843bc4b72b5501c717197b5f\",\"rights\":\"admin@cheminfo.org\",\"line\":5,\"rev\":\"44-4cdf4d66fc8e8212dcf4d249abc16bf6\"},{\"description\":\"Sample manager\",\"viewURL\":\"83e55c39f2601bc912a45f049e7c9645\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"sampleManager\",\"line\":5,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rev\":\"73-a33db88e7f390a47fb10e4eb2f8aaad5\"},{\"viewURL\":\"105a8192b3046702221775d1c09485d2\",\"description\":\"Format manager\",\"rights\":\"admin@cheminfo.org\",\"icon\":\"fa-edit\",\"kind\":\"optionalSample\",\"id\":\"formatManager\",\"line\":5,\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-05-01\",\"rev\":\"49-c0f223af4883333e2b99e725bf6edcca\"},{\"id\":\"Add Stock\",\"kind\":\"optionalSample\",\"description\":\"Add Stock\",\"viewURL\":\"435e7dd9a4a474308d681831307220a9\",\"icon\":\"fa-plus\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"date\":\"2017-06-16\",\"rights\":\"\",\"line\":5,\"rev\":\"401-754ee82a49d19c9bd8479a502f161a5a\"},{\"date\":\"2017-06-16\",\"id\":\"Search Stock\",\"kind\":\"optionalSample\",\"description\":\"Search stock\",\"viewURL\":\"eeb03ca6c7a82d043456704a340e6d04\",\"rights\":\"\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"icon\":\"ci-icon-structure-search\",\"line\":5,\"rev\":\"267-8e8bea6175521de7575955eb10d29c57\"},{\"date\":\"2017-06-01\",\"id\":\"Inventory\",\"kind\":\"optionalSample\",\"description\":\"Inventory\",\"viewURL\":\"eeb03ca6c7a82d043456704a34972f4d\",\"icon\":\"fa-book\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"line\":5,\"rev\":\"62-a009de4de51e8d675bf221486d545851\"},{\"date\":\"2017-07-10\",\"id\":\"printAdmin\",\"kind\":\"optionalSample\",\"description\":\"Printer administration\",\"viewURL\":\"a2d22457b39108ecdbaa2d4556395053\",\"icon\":\"fa-print\",\"bgcolor\":\"rgb(217, 210, 233)\",\"fontcolor\":\"rgb(0, 0, 0)\",\"rights\":\"admin@cheminfo.org\",\"line\":5,\"rev\":\"103-1302804aca69f7906e01ba9d73685b20\"},{\"date\":\"2017-07-14\",\"id\":\"reprint\",\"kind\":\"optionalSample\",\"description\":\"Reprint\",\"viewURL\":\"26d3869ff5b6b50a9af9dc2f4e8b438b\",\"icon\":\"fa-print\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":5,\"rev\":\"23-0fdfb219e510906475786b48d47972fd\"},{\"date\":\"2018-08-09\",\"id\":\"MS Protein Request\",\"kind\":\"sample\",\"description\":\"Mass Request\",\"icon\":\"ci-icon-mass-request\",\"viewURL\":\"private/2cb2cc4665d60d4b52eee058a6d103a5\",\"rights\":\"admin@cheminfo.org,tstather@mpimf-heidelberg.mpg.de,sfabritz@mpimf-heidelberg.mpg.de\",\"bgcolor\":\"rgb(217, 210, 233)\",\"line\":5},{\"date\":\"2018-08-16\",\"id\":\"MS Molecule Request\",\"kind\":\"sample\",\"description\":\"Mass Request\",\"viewURL\":\"private/62698b2c5930ad7e317b9e318496b3e4\",\"icon\":\"ci-icon-mass-request\",\"bgcolor\":\"rgb(217, 210, 233)\",\"rights\":\"admin@cheminfo.org,tstather@mpimf-heidelberg.mpg.de,sfabritz@mpimf-heidelberg.mpg.de\",\"line\":5},{\"empty\":true},{\"date\":\"2019-01-18\",\"id\":\"SOP\",\"description\":\"Standard Op Procedures\",\"bgcolor\":\"rgb(255, 242, 204)\",\"rights\":\"admin@cheminfo.org,jhiblot@mpimf-heidelberg.mpg.de,bkoch@mpimf-heidelberg.mpg.de\",\"viewURL\":\"/next/mpi/sop/\",\"line\":6,\"kind\":\"newTab\"}]"
+              ]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 52,
+            "top": 0
+          },
+          "size": {
+            "width": 135,
+            "height": 79
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 78,
+            "height": 69
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 9,
+      "vars_in": [
+        {
+          "rel": "list",
+          "name": "tiles"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "prependRow",
+          "name": "prependTile"
+        },
+        {
+          "rel": "insertRow",
+          "name": "insertTile"
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "vars_out": [
+        {
+          "event": "onRowsSelect",
+          "rel": "rows",
+          "jpath": [],
+          "name": "selectedButtons"
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "Add view",
+              "icon": "fa-plus-circle",
+              "action": "addView",
+              "position": "begin",
+              "color": [100, 100, 100, 1]
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 4
+    },
+    {
+      "url": "modules/types/edition/rich_text/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "editable": [[]],
+              "debouncing": [0],
+              "modifyInVariable": [[]],
+              "storeInView": [["yes"]],
+              "autoHeight": [[]],
+              "bgColor": [[255, 255, 255, 1]],
+              "postit": [[]],
+              "html": [["yes"]]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 7
+          },
+          "size": {
+            "width": 55,
+            "height": 10
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 7
+          },
+          "size": {
+            "width": 55,
+            "height": 10
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": false,
+          "created": true,
+          "name": "Default layer"
+        }
+      },
+      "id": 10,
+      "vars_in": [{}],
+      "actions_in": [{}],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "richtext": "<h3>If you are using those tools please don&#39;t forget to cite us !</h3>\n\n<p>The C6H6 NMR repository: An integral solution to control the flow of your data from the magnet to the public.<br />\nPatiny L, Zasso M, Kostro D, Bernal A, Castillo AM, Bola&ntilde;os A, Asencio MA, Pellet N, Todd M, Schloerer N, Kuhn S. Magnetic Resonance in Chemistry.&nbsp;<strong>2017.</strong></p>\n\n<p>&nbsp;</p>\n",
+      "title": "",
+      "zindex": 2
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [["editor", "buttons"]],
+              "execOnLoad": [[]],
+              "asyncAwait": [["top"]],
+              "script": [
+                "var buttons = JSON.parse(JSON.stringify(API.getData('selectedButtons')));\n\nvar prepend=''; // public/\n\nconsole.log(buttons);\nbuttons.forEach( (button) => {\n    button.viewURL=prepend+button.viewURL;\n})\n\nAPI.createData('toExport', buttons);"
+              ]
+            }
+          ],
+          "libs": [[{}]],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute",
+                "hide": [],
+                "disable": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 79,
+            "top": 0
+          },
+          "size": {
+            "width": 47,
+            "height": 22
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "CopyView"
+        }
+      },
+      "id": 11,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "selectedButtons"
+        }
+      ],
+      "actions_in": [{}],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 2
+    },
+    {
+      "url": "modules/types/edition/object_editor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "editable": ["text"],
+              "expanded": [[]],
+              "storeObject": [[]],
+              "displayValue": [[]],
+              "searchBox": [["search"]],
+              "sendButton": [[]],
+              "output": ["new"],
+              "storedObject": ["{}"]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 79,
+            "top": 23
+          },
+          "size": {
+            "width": 49,
+            "height": 46
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "CopyView"
+        }
+      },
+      "id": 12,
+      "vars_in": [
+        {
+          "rel": "value",
+          "name": "toExport"
+        }
+      ],
+      "actions_in": [{}],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin"
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 2
+    },
+    {
+      "url": "modules/types/client_interaction/code_executor/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "display": [["editor", "buttons"]],
+              "execOnLoad": [[]],
+              "asyncAwait": [["top"]],
+              "script": [
+                "switch(this.action.name) {\n    case 'addView': {\n        const choice = await getViewChoice();\n        if(!choice) return;\n        const doc = await getLatestView(choice.id);\n        API.doAction('prependTile', getTileDefinition(doc));\n        break;\n    }\n    case 'insertAfter': {\n        const row = this.action.value;\n        const arr = row.__parent;\n        const idx = arr.indexOf(row);\n        const choice = await getViewChoice();\n        debugger;\n        const doc = await getLatestView(choice.id);\n        if(!choice) return;\n        API.doAction('insertTile', {\n            row: idx,\n            item: getTileDefinition(doc)\n        });\n        break;\n    }\n    case 'updateView': {\n        let viewURL = this.action.value.viewURL;\n        if(!viewURL) return;\n        viewURL = String(viewURL);\n        const doc = await getLatestView(viewURL);\n        if(doc) {\n            this.action.value.setChildSync(['rev'], doc._rev)\n            ui.showNotification(`revision updated to ${doc._rev}`, 'success')\n        }\n        break;\n    }\n    default: {\n        console.log('unhandled action');\n    }\n}\n\nasync function getViewChoice() {\n    const {body} = await superagent\n        .get('https://www.cheminfo.org/couch/cheminfo-public/_design/app/_view/docs?key=[%22c6h6%22,%20%22admin@cheminfo.org%22]')\n        .set('Accept', 'application/json');\n    \n    const choice = await ui.chooseSearch(body.rows, {\n        text: el => el.value.title,\n        groupBy: (el) => el.value.category || 'No category'\n    });\n    return choice;\n}\n\nasync function getLatestView(id) {\n    // Get latest revision\n    const {body: doc} = await superagent\n        .get(`https://www.cheminfo.org/couch/cheminfo-public/${id}`)\n        .set('Accept', 'application/json');\n    return doc;\n}\n\nfunction getTileDefinition(doc) {\n    return {\n        id: doc.$content.name,\n        rev: doc._rev,\n        icon: doc.$content.icon,\n        description: doc.$content.title,\n        viewURL: doc._id,\n        bgcolor: 'rgb(255, 255, 255)',\n        empty: false\n    }\n}\n\n"
+              ]
+            }
+          ],
+          "libs": [
+            [
+              {
+                "lib": "superagent",
+                "alias": "superagent"
+              },
+              {
+                "lib": "src/util/ui",
+                "alias": "ui"
+              }
+            ]
+          ],
+          "buttons": [
+            [
+              {
+                "name": "button1",
+                "label": "Execute",
+                "hide": [],
+                "disable": []
+              }
+            ]
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 188,
+            "top": 0
+          },
+          "size": {
+            "width": 47,
+            "height": 38
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "CopyView"
+        }
+      },
+      "id": 13,
+      "vars_in": [
+        {
+          "rel": "inputValue",
+          "name": "addView"
+        }
+      ],
+      "actions_in": [
+        {
+          "rel": "execute",
+          "name": "addView"
+        },
+        {
+          "rel": "execute",
+          "name": "updateView"
+        },
+        {
+          "rel": "execute",
+          "name": "insertAfter"
+        }
+      ],
+      "vars_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "actions_out": [
+        {
+          "jpath": []
+        }
+      ],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin",
+              "color": [100, 100, 100, 1]
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 2
+    },
+    {
+      "url": "modules/types/client_interaction/button_action/",
+      "configuration": {
+        "sections": {},
+        "groups": {
+          "group": [
+            {
+              "toggle": ["click"],
+              "label": ["Open custom view"],
+              "onLabel": ["Toggle action off"],
+              "offLabel": ["Toggle action on"],
+              "title": [""],
+              "onColor": [[0, 0, 0, 1]],
+              "offColor": [[0, 0, 0, 1]],
+              "startState": ["off"],
+              "text": [""],
+              "askConfirm": [[]],
+              "confirmText": ["Are you sure?"],
+              "okLabel": ["Ok"],
+              "cancelLabel": ["Cancel"],
+              "content": [""],
+              "contentType": ["content"],
+              "maskOpacity": [0.6]
+            }
+          ]
+        }
+      },
+      "layers": {
+        "Default layer": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Default layer"
+        },
+        "admin": {
+          "position": {
+            "left": 0,
+            "top": 65
+          },
+          "size": {
+            "width": 15,
+            "height": 9
+          },
+          "zIndex": 0,
+          "display": true,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "admin"
+        },
+        "Links": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "Links"
+        },
+        "CopyView": {
+          "position": {
+            "left": 0,
+            "top": 0
+          },
+          "size": {
+            "width": 20,
+            "height": 20
+          },
+          "zIndex": 0,
+          "display": false,
+          "title": "",
+          "bgColor": [255, 255, 255, 0],
+          "wrapper": true,
+          "created": true,
+          "name": "CopyView"
+        }
+      },
+      "id": 14,
+      "vars_in": [],
+      "actions_in": [{}],
+      "actions_out": [
+        {
+          "event": "onClick",
+          "rel": "actionText",
+          "jpath": [],
+          "name": "openView"
+        }
+      ],
+      "vars_out": [],
+      "toolbar": {
+        "custom": [
+          [
+            {
+              "title": "",
+              "icon": "",
+              "action": "",
+              "position": "begin",
+              "color": [100, 100, 100, 1]
+            }
+          ]
+        ],
+        "common": [
+          {
+            "toolbar": [["Open Preferences"]]
+          }
+        ]
+      },
+      "css": [
+        {
+          "fontSize": [""],
+          "fontFamily": [""]
+        }
+      ],
+      "title": "",
+      "zindex": 2
+    }
+  ],
+  "variables": [
+    {
+      "varname": "reagentsCalculator",
+      "jpath": ["reagentsCalculator"]
+    },
+    {
+      "varname": "samplesCalculator",
+      "jpath": ["samplesCalculator"]
+    },
+    {
+      "varname": "reportTemplate",
+      "jpath": ["reportTemplate"]
+    },
+    {
+      "varname": "eln-procedure-snipets",
+      "jpath": ["eln-procedure-snipets"]
+    },
+    {
+      "varname": "reactions",
+      "jpath": ["reactions"]
+    }
+  ],
+  "aliases": [
+    {
+      "path": "https://www.lactame.com/github/cheminfo-js/visualizer-helper/aa9144871202a298e3c23f23a979a445d82e376e/",
+      "alias": "vh"
+    },
+    {
+      "path": "https://a17ef982.ngrok.io/cheminfo-js/visualizer-helper/",
+      "alias": "vhxx"
+    }
+  ],
+  "configuration": {
+    "title": "Samples"
+  },
+  "actionscripts": [
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": ["togglePublic"],
+            "script": [
+              "require(['superagent', 'src/util/ui'], function(superagent, ui) {\n    var couchUrl = API.cache('couchUrl');\n    var database = API.cache('database');\n    var roc = API.cache('rocReaction');\n    if(value.$owners.indexOf('anonymousRead') !== -1) {\n        makePrivate();\n    } else {\n        makePublic();\n    }\n    \n    function getEntry(id) {\n        roc.get(id);\n    }\n    \n    function makePublic() {\n        superagent.put(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made public', 'success')\n                    getEntry(value._id);\n                } else {\n                    ui.showNotification('make reaction public failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction public failed', 'error');\n            });\n    }\n    \n    function makePrivate() {\n        superagent.del(couchUrl + 'db/' + database + '/entry/' + value._id + '/_owner/anonymousRead')\n            .withCredentials()\n            .then(function(res) {\n                if(res.status === 200) {\n                    ui.showNotification('reaction was made private', 'success');\n                    getEntry(value._id)\n                } else {\n                    ui.showNotification('make reaction private failed', 'error');\n                }\n            }).catch(function(err) {\n                ui.showNotification('make reaction private failed', 'error');\n            });\n    }\n});"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": ["Help"],
+            "script": [
+              "var url='https://docs.google.com/document/d/e/2PACX-1vR0GL9cCSK_PI6pGgoiXp6_rCsBKd5Qksg9L75Nc_FKicYZ8NqSGhATSy_xSA3FWzEjxk0c_HJdKCJR/pub?embedded=true';\n \nrequire(['src/util/ui'], function(UI) {\n    UI.dialog(\n        '<iframe frameBorder=\"0\" width=\"100%\" height=\"100%\" src=\"'+url+'\"></iframe>',\n        {width:1000, height: 800}\n    );\n})\n\n\n"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": ["ShowUserInfo"],
+            "script": [
+              "require(['vh/rest-on-couch/showUserInfo'], function(showUserInfo) {\n    var userInfo=API.cache('userInfo');\n    showUserInfo(userInfo);\n})"
+            ]
+          }
+        ]
+      }
+    },
+    {
+      "sections": {},
+      "groups": {
+        "action": [
+          {
+            "name": ["ContactLuc"],
+            "script": [
+              "var page='https://form.jotformeu.com/71600609780354'\nvar html='<iframe style=\"border: 0px; \" src=\"' + page + '\" width=\"100%\" height=\"100%\"></iframe>';\n\nrequire(['src/util/ui'], function(UI) {\n    UI.dialog(html, {\n        width: 800,\n        height: 800\n    });\n});\n\n"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "init_script": [
+    {
+      "sections": {},
+      "groups": {
+        "general": [
+          {
+            "script": [
+              "const baseUrl = document.location.href.replace(/(\\/\\/.*?\\/).*/,'$1').replace('blob:', ''); \nlet rocUrl = `${baseUrl}roc`;\nlet printerRocUrl = rocUrl;\nlet printerProxy = `${baseUrl}printer-proxy`;\n\n\nvar database = 'eln';\nvar couchDB = {\n    url: rocUrl,\n    database: database,\n    kind: 'sample'\n}\n\nAPI.cache('domain', 'de.mpg.');\n\n\nvar printer = {\n    couchDB: {\n        url: printerRocUrl,\n        database: 'printers',\n        proxy: printerProxy\n     },\n     proxy: printerProxy\n    };\n    \n\nAPI.cache('printerConfig', printer);\n\nAPI.cache('couchDB',couchDB);\n\n// For demonstration purpose\nif((typeof IframeBridge)!='undefined'){\n    IframeBridge.onMessage(function(data) {\n        switch (data.type) {\n            case 'tab.message':\n                switch (data.message.action) {\n                    case 'selectEntry':\n                        return selectEntry(data.message.uuid);\n                    default:\n                        console.log('got an unknown message', data.message);\n                        return;\n                }\n                break;\n            case 'tab.focus':\n                API.doAction('refreshSample');\n                break;\n        }\n    });\n    IframeBridge.ready();\n}\n\nfunction selectEntry(uuid) {\n    if (!uuid) return;\n    const samples = API.getData('filteredSamples');\n    if (samples) {\n        const index = samples.findIndex(sample => String(sample.id) === uuid);\n        if (index !== -1) {\n            API.doAction('clickRow', index);\n        }\n    }\n}\n\n// Load custom font\nrequire(['src/util/util'], function(Util) {\n    Util.loadCss('https://www.lactame.com/lib/cheminfo-font/0.7.2/style.css');\n})"
+            ]
+          }
+        ]
+      }
+    }
+  ],
+  "custom_filters": [
+    {
+      "sections": {
+        "modules": [
+          {
+            "sections": {},
+            "groups": {
+              "modules": [[{}]]
+            }
+          }
+        ],
+        "filtersLib": [
+          {
+            "sections": {},
+            "groups": {
+              "filters": [[{}]]
+            }
+          }
+        ],
+        "filters": [
+          {
+            "sections": {},
+            "groups": {
+              "filter": [
+                {
+                  "name": [null],
+                  "script": [null]
+                }
+              ],
+              "libs": [[{}]]
+            }
+          }
+        ]
+      },
+      "groups": {}
+    }
+  ],
+  "actionfiles": [
+    {
+      "sections": {},
+      "groups": {
+        "action": [[{}]]
+      }
+    }
+  ]
+}
