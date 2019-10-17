@@ -4,17 +4,17 @@ This project installs the necessary services (dockers) to run a full electronic 
 
 ## Install docker and docker-compose and some dependencies
 
-```
-$ yum update -y
-$ yum install epel-release -y
-$ yum install git docker docker-compose -y
+```bash
+yum update -y
+yum install epel-release -y
+yum install git docker docker-compose -y
 ```
 
 ## Install Node.js
 
-```
-$ curl -sL https://rpm.nodesource.com/setup_10.x | bash -
-$ yum install -y nodejs
+```bash
+curl -sL https://rpm.nodesource.com/setup_10.x | bash -
+yum install -y nodejs
 ```
 
 ## Permanently disable SELinux
@@ -27,19 +27,19 @@ Follow the guide to configure Docker to use the proxy: https://docs.docker.com/e
 
 ## Start docker daemon
 
-```
-$ systemctl start docker
-$ systemctl enable docker
+```bash
+systemctl start docker
+systemctl enable docker
 ```
 
 ## Copy this repo
 
-```
-$ mkdir /usr/local/docker
-$ cd /usr/local/docker
-$ curl -L https://github.com/cheminfo/roc-eln-docker/archive/master.tar.gz | tar xz
-$ mv roc-eln-docker-master roc-eln-docker
-$ cd roc-eln-docker
+```bash
+mkdir /usr/local/docker
+cd /usr/local/docker
+curl -L https://github.com/cheminfo/roc-eln-docker/archive/master.tar.gz | tar xz
+mv roc-eln-docker-master roc-eln-docker
+cd roc-eln-docker
 ```
 
 ## Edit configuration
@@ -60,37 +60,37 @@ If LDAP configuration is needed, edit `rest-on-couch/home/ldap.js`.
 
 Copy the visualizer config to `rest-on-couch/home/visualizer`:
 
-```
-$ cd rest-on-couch/home
-$ curl -L https://github.com/cheminfo/roc-visualizer-config/archive/master.tar.gz | tar xz
-$ mv roc-visualizer-config-master visualizer
+```bash
+cd rest-on-couch/home
+curl -L https://github.com/cheminfo/roc-visualizer-config/archive/master.tar.gz | tar xz
+mv roc-visualizer-config-master visualizer
 ```
 
 ### ELN
 
 Copy the ELN config to `rest-on-couch/home/eln`:
 
-```
-$ cd rest-on-couch/home
-$ curl -L https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz | tar xz
-$ mv roc-eln-config-master eln
-$ cd eln
-$ npm i
+```bash
+cd rest-on-couch/home
+curl -L https://github.com/cheminfo/roc-eln-config/archive/master.tar.gz | tar xz
+mv roc-eln-config-master eln
+cd eln
+npm i
 ```
 
 ### Printers
 
 Copy the printer config to `rest-on-couch/home/printers`:
 
-```
-$ cd rest-on-couch/home
-$ curl -L https://github.com/cheminfo/roc-printers-config/archive/master.tar.gz | tar xz
-$ mv roc-printers-config-master printers
+```bash
+cd rest-on-couch/home
+curl -L https://github.com/cheminfo/roc-printers-config/archive/master.tar.gz | tar xz
+mv roc-printers-config-master printers
 ```
 
 ## Start application
 
-```
+```bash
 docker-compose pull
 docker-compose up -d --build
 ```
