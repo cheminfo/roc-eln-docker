@@ -148,5 +148,9 @@ docker push cheminfo/eln-flavor-builder
 
 ### selinux
 
+```bash
+chcon -R -t container_file_t rock-eln-docker/
+```
+
 https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
 
