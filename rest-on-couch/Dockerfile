@@ -1,4 +1,4 @@
-FROM cheminfo/rest-on-couch:v7.1.0
+FROM cheminfo/rest-on-couch:v7.1.1
 
 # Install useful packages
 RUN apt-get update && apt-get install -y vim
