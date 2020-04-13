@@ -36,9 +36,11 @@ NEVER put a ServerAlias !!!! Because the authentication is valid only from one d
     SetEnvIf Origin "^(.*)$" AccessControlAllowOrigin=$0
     Header set Access-Control-Allow-Origin %{AccessControlAllowOrigin}e env=AccessControlAllowOrigin
     Header set Vary Origin
+    Header set Access-Control-Expose-Headers "ETag, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
 
-	ProxyPass / http://localhost:4444/
-	ProxyPassReverse / http://localhost:4444/
+    AllowEncodedSlashes NoDecode
+    ProxyPass / http://localhost:4444/
+    ProxyPassReverse / http://localhost:4444/
 </VirtualHost>
 ```
 
