@@ -39,7 +39,7 @@ NEVER put a ServerAlias !!!! Because the authentication is valid only from one d
     Header set Access-Control-Expose-Headers "ETag, Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With"
 
     AllowEncodedSlashes NoDecode
-    ProxyPass / http://localhost:4444/
+    ProxyPass / http://localhost:4444/ nocanon
     ProxyPassReverse / http://localhost:4444/
 </VirtualHost>
 ```
