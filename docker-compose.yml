@@ -1,9 +1,9 @@
-version: '2.2'
+version: "2.2"
 services:
   nginx-proxy:
     image: docker.io/nginx:1.14-alpine
     ports:
-      - '127.0.0.1:${NGINX_PORT}:80'
+      - "127.0.0.1:${NGINX_PORT}:80"
     depends_on:
       - rest-on-couch
       - flavor-builder
@@ -16,7 +16,7 @@ services:
   couchdb:
     image: docker.io/couchdb:2.3
     ports:
-      - '127.0.0.1:${COUCHDB_PORT}:5984'
+      - "127.0.0.1:${COUCHDB_PORT}:5984"
     environment:
       # CouchDB admin credentials
       COUCHDB_USER: admin
@@ -46,9 +46,10 @@ services:
     command: >
       bash -c "/wait.sh && pm2-docker start /pm2-roc-import.yaml"
     environment:
-      REST_ON_COUCH_LOG_LEVEL: 'FATAL'
+      REST_ON_COUCH_LOG_LEVEL: "FATAL"
     volumes:
       - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
+      - ./rest-on-couch-home:/rest-on-couch/home
     depends_on:
       - couchdb
     restart: always
@@ -72,7 +73,7 @@ services:
   flavor-builder:
     image: docker.io/cheminfo/eln-flavor-builder:v1.1.1
     environment:
-      DEBUG: 'flavor-builder*'
+      DEBUG: "flavor-builder*"
       COUCHDB_USER: admin
       COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
     volumes:
