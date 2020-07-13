@@ -156,3 +156,7 @@ chcon -R -t container_file_t rock-eln-docker/
 
 https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
 
+### How to edit homepage
+
+When going to your website: http://localhost/on-tabs/ and login using the credentials specifield in the docker-compose.yml file you will be able to edit the home page view as well as to define custom local views.
+
