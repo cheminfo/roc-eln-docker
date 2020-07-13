@@ -160,3 +160,12 @@ https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
 
 When going to your website: http://localhost/on-tabs/ and login using the credentials specifield in the docker-compose.yml file you will be able to edit the home page view as well as to define custom local views.
 
+You will see a view manager as shown below 
+
+![view manager](static/viewmanager.png)
+
+which allows you toggle between revisions. 
+
+If you want to change for example the tiles that are shown on the home screen, you can right click and then select `switch to layer/Links` where you will be able to delete, move and add tiles. 
+
+![right click](static/changelayer.png)
