@@ -169,3 +169,6 @@ which allows you toggle between revisions.
 If you want to change for example the tiles that are shown on the home screen, you can right click and then select `switch to layer/Links` where you will be able to delete, move and add tiles. 
 
 ![right click](static/changelayer.png)
+
+What you for example might want to do is to change the document to which the help button redirects to. 
+For this, you can go to the `on-tabs` website, right click on and select `Global preferences`, then under `Action Scripting` you can edit the `Action Help`
