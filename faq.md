@@ -172,3 +172,17 @@ If you want to change for example the tiles that are shown on the home screen, y
 
 What you for example might want to do is to change the document to which the help button redirects to. 
 For this, you can go to the `on-tabs` website, right click on and select `Global preferences`, then under `Action Scripting` you can edit the `Action Help`
+
+### How to modify views
+
+Views are `json` files for the [visualizer](https://github.com/NPellet/visualizer) for which [there is a tutorial on cheminfo.org](http://www.cheminfo.org/Tutorial/1._Introduction/1.1_Basic_example/index.html).
+
+To develop own views (or customize views as the one for the samples), you can use https://my.cheminfo.org/.
+
+To use a view you saved locally using the `on-tabs` website (`http://localhost/on-tabs/`, e.g., paste a view developed on https://my.cheminfo.org/), the permissions need to be set to `public`.
+
+![set permissions for view](static/permission_view.png)
+
+Then, the uuid needs to be prefixed with `private/`. I.e., for the example shown below, one would add `private/b692c1543c088ba6c4b5810414036f0b` as URL in the `links` view of the ELN.
+
+![id view](static/uuid_view.png)
