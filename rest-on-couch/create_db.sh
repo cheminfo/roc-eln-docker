@@ -26,7 +26,7 @@ if [ ${response} == "404" ]; then
           -d '{ "_id": "org.couchdb.user:printer@cheminfo.org", "name": "printer@cheminfo.org", "type": "user", "roles": [], "password": "'${COUCHDB_PRINTER_PASSWORD}'" }'
      curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/_users/_security \
           -H 'Content-Type: application/json' \
-          -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+          -d '{ "admins": { "names": [""], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
      curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/printers
      curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/printers/_security \
