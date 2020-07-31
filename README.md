@@ -91,6 +91,7 @@ mv roc-printers-config-master printers
 ## Start application
 
 ```bash
+cd /usr/local/docker/roc-eln-docker
 docker-compose pull
 docker-compose up -d --build
 ```
