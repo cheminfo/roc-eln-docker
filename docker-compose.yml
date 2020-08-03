@@ -9,7 +9,7 @@ services:
       - flavor-builder
       - printer-proxy
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./www:/data/www/
     restart: always
 
