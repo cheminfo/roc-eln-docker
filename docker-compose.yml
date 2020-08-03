@@ -11,6 +11,7 @@ services:
     volumes:
       - ./nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ./www:/data/www/
+      - ./nginx/cache:/cache
     restart: always
 
   couchdb:
