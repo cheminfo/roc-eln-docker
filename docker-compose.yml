@@ -9,7 +9,6 @@ networks:
         - subnet: 192.168.231.0/24
           gateway: 192.168.231.1
 
-
 services:
   nginx-proxy:
     image: docker.io/nginx:1.14-alpine
@@ -92,6 +91,8 @@ services:
       - ./flavor-builder-config.json:/flavor-config.json
       - ./www:/var/www/html/
     # Uncomment to use a custom on-tabs flavor-builder config
+    # This config is only used to build the admin interface at /on-tabs/
+    # See the default config https://github.com/cheminfo/flavor-builder-docker/blob/master/on-tabs-config.json
     # This is usually unnecessary
     #  - ./flavor-builder-on-tabs-config.json:/on-tabs-config.json
     depends_on:
