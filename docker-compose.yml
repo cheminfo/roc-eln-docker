@@ -1,4 +1,15 @@
 version: "2.2"
+
+networks:
+  default:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 192.168.231.0/24
+          gateway: 192.168.231.1
+
+
 services:
   nginx-proxy:
     image: docker.io/nginx:1.14-alpine
@@ -72,7 +83,7 @@ services:
   #      - .env
 
   flavor-builder:
-    image: docker.io/cheminfo/eln-flavor-builder:v1.2.4
+    image: docker.io/cheminfo/eln-flavor-builder:v2.0.0
     environment:
       DEBUG: "flavor-builder*"
       COUCHDB_USER: admin
