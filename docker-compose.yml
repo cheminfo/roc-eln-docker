@@ -1,13 +1,14 @@
 version: "2.2"
 
-networks:
-  default:
-    driver: bridge
-    ipam:
-      driver: default
-      config:
-        - subnet: 192.168.231.0/24
-          gateway: 192.168.231.1
+# Uncomment if you need to fixe the subnet range
+#networks:
+#  default:
+#    driver: bridge
+#    ipam:
+#      driver: default
+#      config:
+#        - subnet: 192.168.231.0/24
+#          gateway: 192.168.231.1
 
 services:
   nginx-proxy:
