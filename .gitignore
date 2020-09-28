@@ -4,3 +4,10 @@
 !/www/visualizer
 .env
 node_modules
+
+/rest-on-couch/home/
+!/rest-on-couch/home/config.js
+!/rest-on-couch/home/ldap.js
+
+nginx/cache
+
