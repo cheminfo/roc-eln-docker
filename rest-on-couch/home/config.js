@@ -37,7 +37,6 @@ module.exports = {
   logLevel: 'FATAL',
   proxyPrefix: proxyPrefix + '/roc/',
   publicAddress: allowedOrigins[0],
-  sessionSecure: process.env.REST_ON_COUCH_SESSION_SECURE === 'true',
   auth: {
     ldap: ldapConfig,
     // do not disable couchdb login. You can enable "showLogin" if necessary
