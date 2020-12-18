@@ -1,5 +1,5 @@
 rest-on-couch:
-  url: http://rest-on-couch:3000/ # Change to appropriate rest-on-couch url
+  url: http://nginx-proxy/roc/ # Change to appropriate rest-on-couch url
   database: printers # in most cases no need to change this
   username: admin@cheminfo.org # DO NOT CHANGE
   password: password # change here
