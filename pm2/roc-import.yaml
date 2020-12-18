@@ -1,3 +1,0 @@
-name: rest-on-couch-import
-script: /rest-on-couch-source/bin/rest-on-couch-import.js
-args: --continuous

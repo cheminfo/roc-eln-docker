@@ -45,8 +45,6 @@ services:
       COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
     expose:
       - 3000
-    volumes:
-      - ./pm2/rest-on-couch.yaml:/pm2-rest-on-couch.yaml
     depends_on:
       - couchdb
     restart: always
@@ -56,11 +54,10 @@ services:
   rest-on-couch-import:
     build: ./rest-on-couch
     command: >
-      bash -c "/wait.sh && pm2-docker start /pm2-roc-import.yaml"
+      bash -c "/wait.sh && node /rest-on-couch-source/bin/rest-on-couch-import.js --continuous"
     environment:
       REST_ON_COUCH_LOG_LEVEL: "FATAL"
     volumes:
-      - ./pm2/roc-import.yaml:/pm2-roc-import.yaml
       - ./rest-on-couch-home:/rest-on-couch/home
     depends_on:
       - couchdb
@@ -71,9 +68,7 @@ services:
   #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
   #  rest-on-couch-file-drop:
   #    build: ./rest-on-couch
-  #    command: pm2-docker start /pm2-roc-file-drop.yaml
-  #    volumes:
-  #      - ./pm2/roc-file-drop.yaml:/pm2-roc-file-drop.yaml
+  #    command: node /rest-on-couch-source/bin/rest-on-couch-file-drop.js
   #    depends_on:
   #      - couchdb
   #    expose:
