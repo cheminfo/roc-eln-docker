@@ -78,7 +78,7 @@ services:
   #      - .env
 
   flavor-builder:
-    image: docker.io/cheminfo/eln-flavor-builder:v2.0.1
+    image: docker.io/cheminfo/eln-flavor-builder:v2.0.2
     environment:
       DEBUG: "flavor-builder*"
       COUCHDB_USER: admin

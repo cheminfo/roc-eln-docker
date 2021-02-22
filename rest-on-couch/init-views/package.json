@@ -4,6 +4,6 @@
   "version": "1.0.0",
   "main": "copy-views.js",
   "dependencies": {
-    "nano": "^7.1.1"
+    "nano": "^9.0.3"
   }
 }
