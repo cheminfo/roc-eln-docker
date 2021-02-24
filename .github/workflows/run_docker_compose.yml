@@ -1,0 +1,46 @@
+name: Docker Image CI
+
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    env:
+      COUCHDB_DATA_DIRECTORY: "./couchdb-data"
+      COUCHDB_ADMIN_PASSWORD: "admin123"
+      NGINX_PORT: 4444
+      COUCHDB_PORT: 4445
+    steps:
+      - uses: actions/checkout@v1
+      - name: Make envfile
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_NGINX_PORT: 4444
+          envkey_COUCHDB_PORT: 4445
+          envkey_COUCHDB_DATA_DIRECTORY: "./couchdb-data"
+          envkey_COUCHDB_ADMIN_PASSWORD: "admin123"
+          envkey_COUCHDB_PRINTER_PASSWORD: "printer123"
+          envkey_COUCHDB_ROC_SERVER_PASSWORD: "roc123"
+          envkey_COUCHDB_ROC_ADMIN_PASSWORD: "rocadmin123"
+          envkey_REST_ON_COUCH_SESSION_DOMAIN: "localhost"
+          envkey_DEBUG: "couch:error,couch:warn,couch:debug"
+          envkey_REST_ON_COUCH_SESSION_KEY: "koa:roc-eln"
+          envkey_REST_ON_COUCH_ORIGINS: "*"
+          envkey_REST_ON_COUCH_APP_KEYS: "sfgdhdjfnjfjogirthyd690fgjchmb874wtu9ogifdhcvn"
+          envkey_REST_ON_COUCH_ADMIN_USERS: ""
+          envkey_REST_ON_COUCH_PROXY_PATH: ""
+      - name: Get the configuration files
+        run: bash ./ci/install.sh
+      - name: Build the docker-compose stack
+        run: docker-compose up -d
+      - name: Sleep for 60 seconds to give everything time to start up
+        uses: jakejarvis/wait-action@master
+        with:
+          time: "60s"
+      - name: Check running containers
+        run: docker ps
+      - name: Check if everything is up and responsive
+        run: |
+          cd ci &&
+          npm i && 
+          npm run test
