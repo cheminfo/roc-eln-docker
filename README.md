@@ -4,6 +4,11 @@ This project installs the necessary services (dockers) to run a full electronic 
 
 For common questions, please have a look at the [FAQ](faq.md). For some background information about the ELN [you can have a look at our website](https://cheminfo.github.io/eln.epfl.ch/).
 
+## System requirements
+
+To host an instance of the ELN no special hardware is needed. In principle, an old computer with 8 GB of RAM and an old CPU can be used.
+The system itself will not need a lot of space of the hard drive and the required hard drive space will depend on the amount of data you want to store (to get started, even 32 GB are enough to store >6,000 5 MB files, and most chemical files are smaller).
+
 ## Installing dependencies
 
 ### 1. Install docker and docker-compose and some dependencies
@@ -26,7 +31,6 @@ yum install -y nodejs
 ```
 
 You can use [similar commands or installers](https://nodejs.org/en/download/) on other operating systems.
-
 
 ### 3. Optional configurations
 
