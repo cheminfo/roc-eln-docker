@@ -16,7 +16,19 @@ yum install epel-release -y
 yum install git docker docker-compose -y
 ```
 
-### 2. Optional configurations
+### 2. Install Node.js
+
+On Red Hat Linux/CentOS you need to run the following commands:
+
+```bash
+curl -sL https://rpm.nodesource.com/setup_14.x | bash -
+yum install -y nodejs
+```
+
+You can use [similar commands or installers](https://nodejs.org/en/download/) on other operating systems.
+
+
+### 3. Optional configurations
 
 - [On CentOS/Red Hat Linux you might want to permanently disable SE Linux](https://www.rootusers.com/how-to-enable-or-disable-selinux-in-centos-rhel-7/)
 - If you are behind a corporate proxy you can follow [the guide to configure Docker to use the proxy](https://docs.docker.com/engine/admin/systemd/#/http-proxy)
