@@ -1,15 +1,15 @@
 ## FAQ
 
-### How to update a docker image ?
+### How to update a docker image?
 
 The docker-compose.yml file contains the list of all the docker images required by this project,
 their version as well as their dependencies.
 If you want to update the version of an image you should change the name in the docker-compose.yml. After changing
 this file you should run: `docker-compose up -d --build` (-d allows to put the process in background).
 
-### Don't use docker !
+### Don't use docker!
 
-You should not use the `docker` instruction because it is not aware of dependencies and it could lead to unexpected results.
+You should not use the `docker` instruction because it is not aware of dependencies, and it could lead to unexpected results.
 Please always use `docker-compose` instead.
 
 In order to check all the running docker images: `docker-compose ps`
@@ -24,7 +24,7 @@ systemctl enable httpd
 
 By default the docker nginx-proxy listen to port 4444. You should add in `/etc/httpd/conf.d` a proxy to this port.
 
-NEVER put a ServerAlias !!!! Because the authentication is valid only from one domain.
+NEVER put a `ServerAlias` because the authentication is valid only from one domain.
 
 `vi /etc/httpd/conf.d/eln.conf`
 
@@ -50,10 +50,9 @@ You should then start httpd:
 $ systemctl start httpd
 ```
 
-If you have an error in your apache configuration file you can use `apachectl configtest` to determine the line with
-the error.
+If you have an error in your apache configuration file you can use `apachectl configtest` to determine the line with the error.
 
-Don't forget to check iptables if it is running ! By default only port 22 is allowed.
+Don't forget to check iptables if it is running! By default, only port 22 is allowed.
 
 ### Installing iptables
 
@@ -63,7 +62,7 @@ $ systemctl start iptables
 $ systemctl enable iptables
 ```
 
-You should edit the file add add a rule to allow http.
+You should edit the file add a rule to allow http.
 `vi /etc/sysconfig/iptables`
 
 `-A INPUT -p tcp --dport 80 -m state --state NEW,ESTABLISHED -j ACCEPT`
@@ -79,7 +78,7 @@ $ systemctl restart docker
 
 ### Automatic importation of files (jcamp, etc.)
 
-rest-on-couch allows to import automatically files based on a filter that is placed
+rest-on-couch allows to automatically import files based on a filter that is placed
 in the corresponding folder.
 
 In `roc-eln-docker` folder you will find `rest-on-couch` that contains a folder `eln`
@@ -93,7 +92,7 @@ processed they will be moved to
 `/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/processed` or in case of error to
 `/usr/local/docker/roc-eln-docker/rest-on-couch/eln/nmr/errored`.
 
-In order to debug a file that is in errored and to edit the import.js file you may run the
+In order to debug a file that is in `errored` and to edit the import.js file you may run the
 importation in an interactive way.
 For this you may go in the docker image. First find the id of the `rest-on-couch-import`image
 using `docker ps` and then go in the image using `docker exec -it fe2acfbb9bba sh` (replace
@@ -118,7 +117,7 @@ curl -H 'Content-Type: application/json' -X POST http://localhost:5984/_replicat
 do that for `eln`, `visualizer` and `printers` databases.
 
 **note**: take care if you are running this command from the roc-eln-docker couchdb container
-because the available port outside of the container is 4445 but inside is the 5984.
+because the available port outside the container is 4445 but inside is the 5984.
 
 Then you do:
 
@@ -158,19 +157,19 @@ https://www.projectatomic.io/blog/2016/03/dwalsh_selinux_containers/
 
 ### How to edit homepage
 
-When going to your website: http://localhost/on-tabs/ and login using the credentials specifield in the docker-compose.yml file you will be able to edit the home page view as well as to define custom local views.
+When going to your website: http://localhost/on-tabs/ and login using the credentials specified in the docker-compose.yml file you will be able to edit the home page view as well as to define custom local views.
 
-You will see a view manager as shown below 
+You will see a view manager as shown below
 
 ![view manager](static/viewmanager.png)
 
-which allows you toggle between revisions. 
+which allows you toggle between revisions.
 
-If you want to change for example the tiles that are shown on the home screen, you can right click and then select `switch to layer/Links` where you will be able to delete, move and add tiles. 
+If you want to change for example the tiles that are shown on the home screen, you can right-click and then select `switch to layer/Links` where you will be able to delete, move and add tiles.
 
 ![right click](static/changelayer.png)
 
-What you for example might want to do is to change the document to which the help button redirects to. 
+What you for example might want to do is to change the document to which the help button redirects to.
 For this, you can go to the `on-tabs` website, right click on and select `Global preferences`, then under `Action Scripting` you can edit the `Action Help`
 
 ### How to modify views
@@ -183,6 +182,6 @@ To use a view you saved locally using the `on-tabs` website (`http://localhost/o
 
 ![set permissions for view](static/permission_view.png)
 
-Then, the uuid needs to be prefixed with `private/`. I.e., for the example shown below, one would add `private/b692c1543c088ba6c4b5810414036f0b` as URL in the `links` view of the ELN.
+Then, the `uuid` needs to be prefixed with `private/`. That is, for the example shown below, one would add `private/b692c1543c088ba6c4b5810414036f0b` as URL in the `links` view of the ELN.
 
 ![id view](static/uuid_view.png)
