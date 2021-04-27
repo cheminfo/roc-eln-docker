@@ -184,4 +184,8 @@ To use a view you saved locally using the `on-tabs` website (`http://localhost/o
 
 Then, the `uuid` needs to be prefixed with `private/`. That is, for the example shown below, one would add `private/b692c1543c088ba6c4b5810414036f0b` as URL in the `links` view of the ELN.
 
-![id view](static/uuid_view.png)
+![id view](static/uuid_view.
+
+### How can I back up the system?
+
+Since CouchDB is an append-only database, using a [rsync](https://rsync.samba.org/)/[rsnapshot](https://rsnapshot.org/)-based solution is a safe option. Alternatively, you can use the [CouchDB replication feature to another server](https://guide.couchdb.org/draft/replication.html). You can conveniently set up replication from the [Fauxton graphical interface](https://couchdb.apache.org/fauxton-visual-guide/index.html) at the `_utils` endpoint.
