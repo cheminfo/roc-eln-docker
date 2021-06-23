@@ -1,4 +1,4 @@
-FROM cheminfo/rest-on-couch:v8.2.0
+FROM ghcr.io/cheminfo/rest-on-couch:8
 
 # Install useful packages
 RUN apt-get update && apt-get install -y vim
