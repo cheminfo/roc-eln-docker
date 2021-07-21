@@ -67,6 +67,20 @@ if [ ${response} == "404" ]; then
           -H 'Content-Type: application/json' \
           -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
 
+     curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/templates
+     curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/templates \
+          -H 'Content-Type: application/json' \
+          -d '{"$type": "group", "$owners": ["admin@cheminfo.org"], "name": "anonymousRead", "users": [], "rights": ["read"], "$lastModification": "admin@cheminfo.org", "$modificationDate": 0, "$creationDate": 0}'
+     curl -X POST http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/templates \
+          -H 'Content-Type: application/json' \
+          -d '{"$type": "group", "$owners": ["admin@cheminfo.org"], "name": "anyuserRead", "users": [], "rights": ["read"], "$lastModification": "admin@cheminfo.org", "$modificationDate": 0, "$creationDate": 0}'
+     curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/templates/defaultGroups \
+          -H 'Content-Type: application/json' \
+          -d '{"_id": "defaultGroups","$type": "db","anonymous": ["anonymousRead"],"anyuser": ["anyuserRead"]}'
+     curl -X PUT http://${COUCHDB_USER}:${COUCHDB_PASSWORD}@couchdb:5984/templates/_security \
+          -H 'Content-Type: application/json' \
+          -d '{ "admins": { "names": ["rest-on-couch"], "roles": [] }, "members": { "names": ["rest-on-couch"], "roles": [] } }'
+
      node /init-views/copy-views.js
 
 else
