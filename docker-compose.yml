@@ -18,7 +18,7 @@ services:
     depends_on:
       - rest-on-couch
       - flavor-builder
-      # - printer-proxy
+      - printer-proxy
     volumes:
       - ${PWD}/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
       - ${PWD}/www:/data/www/
@@ -95,16 +95,16 @@ services:
       - couchdb
     restart: always
 
-  # printer-proxy:
-  #   image: docker.io/cheminfo/eln-printer-proxy:v1.2.0
-  #   command: pm2-docker start /pm2-proxy.yml
-  #   volumes:
-  #     - ${PWD}/printer-proxy-config.yml:/config.yml
-  #     # Uncomment to use a custom pm2 config
-  #     # This should normally not be necessary
-  #     #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
-  #   depends_on:
-  #     - rest-on-couch
-  #   expose:
-  #     - 7770
-  #   restart: always
+  printer-proxy:
+    image: docker.io/cheminfo/eln-printer-proxy:v1.2.0
+    command: pm2-docker start /pm2-proxy.yml
+    volumes:
+      - ${PWD}/printer-proxy-config.yml:/config.yml
+      # Uncomment to use a custom pm2 config
+      # This should normally not be necessary
+      #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
+    depends_on:
+      - rest-on-couch
+    expose:
+      - 7770
+    restart: always
