@@ -8,14 +8,14 @@ jobs:
     env:
       COUCHDB_DATA_DIRECTORY: "./couchdb-data"
       COUCHDB_ADMIN_PASSWORD: "admin123"
-      NGINX_PORT: 4444
+      NGINX_PORT: 80
       COUCHDB_PORT: 4445
     steps:
       - uses: actions/checkout@v1
       - name: Make envfile
         uses: SpicyPizza/create-envfile@v1
         with:
-          envkey_NGINX_PORT: 4444
+          envkey_NGINX_PORT: 80
           envkey_COUCHDB_PORT: 4445
           envkey_COUCHDB_DATA_DIRECTORY: "./couchdb-data"
           envkey_COUCHDB_ADMIN_PASSWORD: "admin123"
