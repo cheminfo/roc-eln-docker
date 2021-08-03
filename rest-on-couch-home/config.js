@@ -42,7 +42,7 @@ module.exports = {
     // do not disable couchdb login. You can enable "showLogin" if necessary
     couchdb: {
       showLogin: true,
-      title: "Login with a Cheminfo account"
+      title: "Login with a cheminfo ELN account"
     }
   },
 

@@ -10,4 +10,4 @@ node_modules
 !/rest-on-couch/home/ldap.js
 
 nginx/cache
-
+.DS_Store
