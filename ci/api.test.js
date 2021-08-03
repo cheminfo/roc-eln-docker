@@ -7,13 +7,13 @@ test("couchdb is up", async () => {
 });
 
 test("root is up", async () => {
-  const response = await axios.get("http://localhost:80/");
+  const response = await axios.get("http://localhost:4444/");
   expect(response.status).toEqual(200);
   expect(response.data).toContain("<title>\n        ELN\n    </title>");
 });
 
 test("rest-on-couch interface is up", async () => {
-  const response = await axios.get("http://localhost:80/roc/#/");
+  const response = await axios.get("http://localhost:4444/roc/#/");
   expect(response.status).toEqual(200);
   expect(response.data).toContain(" <title>rest-on-couch</title>");
 });
