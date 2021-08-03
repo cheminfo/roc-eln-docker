@@ -10,6 +10,9 @@ RUN chmod +x /create_db.sh
 # Install dependencies
 COPY init-views/package.json init-views/package-lock.json /init-views/
 RUN cd /init-views && npm ci
+RUN mkdir /rest-on-couch
+# ToDo: we shouldn't hardcode this 
+RUN npm -g  i genbank-parser nmr-metadata openchemlib superagent
 
 # Script used to initialize views on the first start
 COPY init-views /init-views/

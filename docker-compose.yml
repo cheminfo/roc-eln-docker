@@ -50,7 +50,7 @@ services:
     expose:
       - 3000
     volumes:
-      - ./rest-on-couch-home:/rest-on-couch
+      - ./rest-on-couch/rest-on-couch-home:/rest-on-couch
     depends_on:
       - couchdb
     restart: always
