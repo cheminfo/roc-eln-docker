@@ -1,6 +1,6 @@
 version: "3.3"
 
-# Uncomment if you need to fixe the subnet range
+# Uncomment if you need to fix the subnet range
 #networks:
 #  default:
 #    driver: bridge
@@ -14,7 +14,7 @@ services:
   nginx-proxy:
     image: nginx:1.17-alpine
     ports:
-      - "127.0.0.1:${NGINX_PORT}:80"
+      - "${NGINX_PORT}:80"
     depends_on:
       - rest-on-couch
       - flavor-builder
@@ -25,7 +25,8 @@ services:
       - ${PWD}/nginx/cache:/cache
       - ${PWD}/nginx/certs:/certs
     restart: always
-    command: [nginx-debug, '-g', 'daemon off;']
+    # uncomment for debugging
+    # command: [nginx-debug, '-g', 'daemon off;']
 
   couchdb:
     image: docker.io/couchdb:2.3.1
@@ -50,7 +51,7 @@ services:
     expose:
       - 3000
     volumes:
-      - ./rest-on-couch/rest-on-couch-home:/rest-on-couch
+      - ./rest-on-couch-home:/rest-on-couch
     depends_on:
       - couchdb
     restart: always

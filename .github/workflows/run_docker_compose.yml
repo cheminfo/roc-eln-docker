@@ -33,10 +33,10 @@ jobs:
         run: bash install_dependencies.sh
       - name: Build the docker-compose stack
         run: docker-compose up -d
-      - name: Sleep for 60 seconds to give everything time to start up
+      - name: Sleep for 90 seconds to give everything time to start up
         uses: jakejarvis/wait-action@master
         with:
-          time: "60s"
+          time: "90s"
       - name: Check running containers
         run: docker ps
       - name: Check if everything is up and responsive

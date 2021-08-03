@@ -1,4 +1,4 @@
-FROM cheminfo/rest-on-couch:v8.3.0
+FROM ghcr.io/cheminfo/rest-on-couch:8
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
@@ -10,10 +10,9 @@ RUN chmod +x /create_db.sh
 # Install dependencies
 COPY init-views/package.json init-views/package-lock.json /init-views/
 RUN cd /init-views && npm ci
-RUN mkdir /rest-on-couch
-# ToDo: we shouldn't hardcode this 
-RUN npm -g  i genbank-parser nmr-metadata openchemlib superagent
 
 # Script used to initialize views on the first start
 COPY init-views /init-views/
+COPY start.sh /
 
+CMD ["bash", "start.sh"]
