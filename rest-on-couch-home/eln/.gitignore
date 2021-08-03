@@ -1,0 +1,8 @@
+node_modules
+dna/userLookup.js
+dna/to_process
+dna/processed
+dna/errored
+nmr/to_process
+nmr/processed
+nmr/errored

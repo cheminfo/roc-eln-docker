@@ -1,0 +1,16 @@
+{
+  "name": "roc-eln-config",
+  "version": "1.0.0",
+  "description": "Rest-on-couch basic configuration for eln database",
+  "main": "config.js",
+  "repository": "git@github.com:cheminfo/roc-eln-config.git",
+  "author": "Daniel Kostro <kostro.d@gmail.com>",
+  "license": "MIT",
+  "private": true,
+  "dependencies": {
+    "genbank-parser": "^1.2.4",
+    "nmr-metadata": "^3.1.1",
+    "openchemlib": "^7.4.0",
+    "superagent": "^6.1.0"
+  }
+}
