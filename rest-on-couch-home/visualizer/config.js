@@ -11,6 +11,7 @@ module.exports = {
         designDoc: 'app',
         map: function (doc) {
           if (doc.$type !== 'entry') return;
+          if (doc.$deleted) return;
           emit(doc.$content.version);
         },
         reduce: '_count'
@@ -19,6 +20,7 @@ module.exports = {
         designDoc: 'app',
         map: function (doc) {
           if (doc.$type !== 'entry') return;
+          if (doc.$deleted) return;
           function uniq(a) {
             var temp = {};
             for (var i = 0; i < a.length; i++) {
@@ -86,6 +88,7 @@ module.exports = {
         designDoc: 'app',
         map: function (doc) {
           if (doc.$type !== 'entry') return;
+          if (doc.$deleted) return;
           function uniq(a) {
             var temp = {};
             for (var i = 0; i < a.length; i++) {
@@ -149,7 +152,7 @@ module.exports = {
         designDoc: 'app',
         map: function (doc) {
           if (doc.$type !== 'entry') return;
-
+          if (doc.$deleted) return;
           for (var i in doc.$content.flavors) {
             emit(doc.$owners[0], i);
           }
@@ -181,6 +184,7 @@ module.exports = {
         designDoc: 'app',
         map: function (doc) {
           if (doc.$type !== 'entry') return;
+          if (doc.$deleted) return;
           if (doc.$owners.indexOf('anonymousRead') === -1) return;
 
           var content = doc.$content;
