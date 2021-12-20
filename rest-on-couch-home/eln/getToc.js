@@ -10,9 +10,11 @@ exports.getToc = function (doc) {
   var xray = spectra.xray;
   var uv = spectra.uv;
   var dsc = spectra.differentialScanningCalorimetry;
+  var ea = spectra.elementalAnalysis;
   var tga = spectra.thermogravimetricAnalysis;
   var xrd = spectra.xrd;
   var xps = spectra.xps;
+  var isotherm = spectra.isotherm;
   var location = undefined;
   if (
     content.stock &&
@@ -69,6 +71,8 @@ exports.getToc = function (doc) {
     nbUV: (uv && uv.length) || undefined,
     nbXPS: (xps && xps.length) || undefined,
     nbXRD: (xrd && xrd.length) || undefined,
+    nbIsotherm: (isotherm && isotherm.length) || undefined,
+    nbEA: (ea && ea.length) || undefined,
     nbChromatogram: (chromatagram && chromatagram.length) || undefined,
     nbXray: (xray && xray.length) || undefined,
     hidden: content.hidden || false,
