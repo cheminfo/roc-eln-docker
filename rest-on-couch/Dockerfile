@@ -13,6 +13,3 @@ RUN cd /init-views && npm ci
 
 # Script used to initialize views on the first start
 COPY init-views /init-views/
-COPY start.sh /
-
-CMD ["bash", "start.sh"]
