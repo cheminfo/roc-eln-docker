@@ -29,8 +29,6 @@ jobs:
           envkey_REST_ON_COUCH_APP_KEYS: "sfgdhdjfnjfjogirthyd690fgjchmb874wtu9ogifdhcvn"
           envkey_REST_ON_COUCH_ADMIN_USERS: ""
           envkey_REST_ON_COUCH_PROXY_PATH: ""
-      - name: Get the configuration files
-        run: bash install_dependencies.sh
       - name: Build the docker-compose stack
         run: docker-compose up -d
       - name: Sleep for 90 seconds to give everything time to start up
