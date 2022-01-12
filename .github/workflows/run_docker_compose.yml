@@ -31,10 +31,10 @@ jobs:
           envkey_REST_ON_COUCH_PROXY_PATH: ""
       - name: Build the docker-compose stack
         run: docker-compose up -d
-      - name: Sleep for 90 seconds to give everything time to start up
+      - name: Sleep for 400 seconds to give everything time to start up
         uses: jakejarvis/wait-action@master
         with:
-          time: "300s"
+          time: "400s"
       - name: Check running containers
         run: docker ps
       - name: Check if everything is up and responsive
