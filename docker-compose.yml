@@ -14,7 +14,7 @@ services:
   nginx-proxy:
     image: nginx:1.17-alpine
     ports:
-      - "127.0.0.1:${NGINX_PORT}:80"
+      - "${NGINX_PORT}:80"
     depends_on:
       - rest-on-couch
       - flavor-builder
