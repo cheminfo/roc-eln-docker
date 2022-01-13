@@ -6,7 +6,7 @@
     "test": "jest  --env=node"
   },
   "dependencies": {
-    "axios": "^0.21.1",
+    "axios": "^0.21.2",
     "jest": "^27.0.6"
   }
 }
