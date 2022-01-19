@@ -43,7 +43,7 @@ services:
 
   rest-on-couch:
     build: ./rest-on-couch
-    command:  "/start.sh" 
+    command: "/start.sh"
     environment:
       # CouchDB admin credentials
       COUCHDB_USER: admin
@@ -58,23 +58,23 @@ services:
     env_file:
       - .env
 
-#  rest-on-couch-import:
-#    build: ./rest-on-couch
-#    command: >
-#      bash -c "node /rest-on-couch-source/bin/rest-on-couch-import.js --continuous"
-#    environment:
-#      # CouchDB admin credentials
-#      COUCHDB_USER: admin
-#      COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
-#    volumes:
-#      - ./rest-on-couch-home:/rest-on-couch
-#      - ./rest-on-couch-home:/rest-on-couch-home
-#    depends_on:
-#      - couchdb
-#      - rest-on-couch # make sure that not both try to create the db at the same time
-#    restart: always
-#    env_file:
-#      - .env
+  #  rest-on-couch-import:
+  #    build: ./rest-on-couch
+  #    command: >
+  #      bash -c "node /rest-on-couch-source/bin/rest-on-couch-import.js --continuous"
+  #    environment:
+  #      # CouchDB admin credentials
+  #      COUCHDB_USER: admin
+  #      COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
+  #    volumes:
+  #      - ./rest-on-couch-home:/rest-on-couch
+  #      - ./rest-on-couch-home:/rest-on-couch-home
+  #    depends_on:
+  #      - couchdb
+  #      - rest-on-couch # make sure that not both try to create the db at the same time
+  #    restart: always
+  #    env_file:
+  #      - .env
 
   #  To enable the service, uncomment here and edit ./nginx-proxy/conf.nginx
   #  rest-on-couch-file-drop:
@@ -106,17 +106,17 @@ services:
       - couchdb
       - rest-on-couch
     restart: always
-
-  printer-proxy:
-    image: docker.io/cheminfo/eln-printer-proxy:v1.3.4
-    command: pm2-docker start /pm2-proxy.yml
-    volumes:
-      - ${PWD}/printer-proxy-config.yml:/config.yml
-      # Uncomment to use a custom pm2 config
-      # This should normally not be necessary
-      #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
-    depends_on:
-      - rest-on-couch
-    expose:
-      - 7770
-    restart: always
+#  This service is only needed if you have Zebra printers on the network
+#  printer-proxy:
+#    image: docker.io/cheminfo/eln-printer-proxy:v1.3.4
+#    command: pm2-docker start /pm2-proxy.yml
+#    volumes:
+#      - ${PWD}/printer-proxy-config.yml:/config.yml
+#      # Uncomment to use a custom pm2 config
+#      # This should normally not be necessary
+#      #- ./pm2/printer-proxy.yml:/pm2-proxy.yml
+#    depends_on:
+#      - rest-on-couch
+#    expose:
+#      - 7770
+#    restart: always
