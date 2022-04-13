@@ -1,4 +1,4 @@
-version: "3.3"
+version: '3.3'
 
 # Uncomment if you need to fix the subnet range
 #networks:
@@ -14,7 +14,7 @@ services:
   nginx-proxy:
     image: nginx:1.17-alpine
     ports:
-      - "127.0.0.1:${NGINX_PORT}:80"
+      - '127.0.0.1:${NGINX_PORT}:80'
     depends_on:
       - rest-on-couch
       - flavor-builder
@@ -29,9 +29,9 @@ services:
     # command: [nginx-debug, '-g', 'daemon off;']
 
   couchdb:
-    image: docker.io/couchdb:2.3.1
+    image: docker.io/couchdb:3.2.0
     ports:
-      - "127.0.0.1:${COUCHDB_PORT}:5984"
+      - '127.0.0.1:${COUCHDB_PORT}:5984'
     environment:
       # CouchDB admin credentials
       COUCHDB_USER: admin
@@ -43,7 +43,7 @@ services:
 
   rest-on-couch:
     build: ./rest-on-couch
-    command: "/start.sh"
+    command: '/start.sh'
     environment:
       # CouchDB admin credentials
       COUCHDB_USER: admin
@@ -91,7 +91,7 @@ services:
   flavor-builder:
     image: docker.io/cheminfo/eln-flavor-builder:v2.0.2
     environment:
-      DEBUG: "flavor-builder*"
+      DEBUG: 'flavor-builder*'
       COUCHDB_USER: admin
       COUCHDB_PASSWORD: ${COUCHDB_ADMIN_PASSWORD}
     volumes:
