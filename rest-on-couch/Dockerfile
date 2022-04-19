@@ -1,4 +1,4 @@
-FROM ghcr.io/cheminfo/rest-on-couch:8
+FROM ghcr.io/cheminfo/rest-on-couch:11
 
 COPY start.sh /start.sh
 RUN chmod +x /start.sh
