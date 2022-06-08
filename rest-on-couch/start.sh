@@ -1,5 +1,7 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 /create_db.sh
 cd /rest-on-couch/eln && npm i;
-node /rest-on-couch-source/bin/rest-on-couch-server.js
+
+# https://unix.stackexchange.com/a/196053/116499
+exec node /rest-on-couch-source/bin/rest-on-couch-server.js
